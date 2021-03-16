@@ -31,8 +31,8 @@ export default {
   }
 
   h1 {
-    background-color:steelblue;
+    background-color: #8FA984;
     color:white;
-    padding: 50px;
+    padding: 70px;
   }
 </style>
