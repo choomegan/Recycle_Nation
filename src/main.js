@@ -6,12 +6,13 @@ import Routes from './routes.js'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
+//register routes
 const myRouter = new VueRouter({
-  routes: Routes,
-  mode: 'history'
+    routes: Routes,
+    mode: 'history'
 })
 
-new Vue({
-  render: h => h(App),
-  router: myRouter
+new Vue ({
+    render: h => h(App),
+    router: myRouter
 }).$mount('#app')
