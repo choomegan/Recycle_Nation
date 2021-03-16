@@ -1,7 +1,7 @@
 <template> 
     <div>
         <ul>
-            <li><router-link to="/" exact>Home</router-link></li>
+            <li><router-link to="/Home" exact>Home</router-link></li>
             <li><router-link to="/MyProfile" exact>My Profile</router-link></li>
             <li><router-link to="/RecyclingHistory" exact>Recycling History</router-link></li>
             <li><router-link to="/MapOfBins" exact>Map Of Bins</router-link></li>
