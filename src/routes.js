@@ -9,9 +9,6 @@ import MyRewards from './components/MyRewards.vue'
 import RecyclingHistory from './components/RecyclingHistory.vue'
 import Registration from './components/Registration.vue'
 
-
-
-
 export default[
     { name:'AboutUs', path: '/AboutUs', component: AboutUs},
     { name:'Home', path: '/', component: Home},
