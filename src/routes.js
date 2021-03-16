@@ -11,9 +11,9 @@ import Registration from './components/Registration.vue'
 
 export default[
     { name:'AboutUs', path: '/AboutUs', component: AboutUs},
-    { name:'Home', path: '/', component: Home},
+    { name:'Home', path: '/Home', component: Home},
     { name:'IdentifiedItem', path: '/IdentifiedItem', component: IdentifiedItem },
-    { name:'Login', path: '/Login', component: Login},
+    { name:'Login', path: '/', component: Login},
     { name:'MapOfBins', path: '/MapOfBins', component: MapOfBins},
     { name:'MyAchievements', path: '/MyAchievements', component: MyAchievements},
     { name:'MyProfile', path: '/MyProfile', component: MyProfile},
