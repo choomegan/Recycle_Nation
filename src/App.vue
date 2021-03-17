@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Recycle Nation</h1>
+    <h1 id="title">Recycle Nation</h1>
     <Header v-if="navigation"></Header>
     <router-view></router-view>
   </div>
@@ -48,7 +48,7 @@ export default {
     color:black;
   }
 
-  h1 {
+  #title {
     background-color: #8FA984;
     color:white;
     margin-top: 0;
