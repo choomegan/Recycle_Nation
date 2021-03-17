@@ -29,11 +29,11 @@ ul {
   padding: 0;
 }
 li {
-  flex-grow: 1;
-  flex-basis: 300px;
-  text-align: center;
-  padding: 10px;
-  border: 1px solid #222;
-  margin: 10px;
+    color: #795D2C;
+    flex-grow: 1;
+    flex-basis: 200px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
 }
 </style>
