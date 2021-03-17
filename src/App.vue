@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Recycle Nation</h1>
-    <Header></Header>
+    <Header v-if="navigation"></Header>
     <router-view></router-view>
   </div>
 </template>
@@ -13,10 +13,27 @@ export default {
   data() {
     return {
       title: 'Header',
+      navigation: true
     }
   },
   components: {
     Header
+  },
+  methods: {
+    showNavigation: function() {
+      console.log(this.$route.path)
+      if (this.$route.path == "/") {
+        this.navigation = false;
+      } else if (this.$route.path == "/Registration"){
+        this.navigation = false;
+      
+      } else {
+        this.navigation = true;
+      }
+    }
+  },
+  created : function() {
+    this.showNavigation()
   }
 }
 </script>
