@@ -26,13 +26,15 @@ export default {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-size:20px;
     text-align:center;
-    margin-top: 60px;
+    margin-top: 0;
+    padding-top: 0;
     color:black;
   }
 
   h1 {
     background-color: #8FA984;
     color:white;
+    margin-top: 0;
     padding: 70px;
   }
 </style>
