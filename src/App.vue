@@ -27,7 +27,10 @@ export default {
       } else if (this.$route.path == "/Registration"){
         this.navigation = false;
       
-      } else {
+      } else if (this.$route.path == "/IdentifiedItem") {
+        this.navigation = false;
+      }
+      else {
         this.navigation = true;
       }
     }
