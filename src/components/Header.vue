@@ -1,5 +1,5 @@
 <template> 
-    <div>
+    <div id="header">
         <ul>
             <li><router-link to="/Home" exact>Home</router-link></li>
             <li><router-link to="/MyProfile" exact>My Profile</router-link></li>
@@ -35,5 +35,8 @@ li {
     text-align: center;
     padding: 10px;
     margin: 10px;
+}
+#header {
+    background-color:floralwhite;
 }
 </style>
