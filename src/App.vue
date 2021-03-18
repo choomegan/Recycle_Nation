@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <h1 id="title">Recycle Nation</h1>
+    <h1 id="title">{{title}}</h1>
     <Header v-if="navigation"></Header>
-    <router-view></router-view>
+    
+    <content><router-view></router-view></content>
   </div>
 </template>
 
@@ -12,10 +13,11 @@ export default {
   name: 'App',
   data() {
     return {
-      title: 'Header',
+      title: 'Recycle Nation',
       navigation: true
     }
   },
+
   components: {
     Header
   },
@@ -33,10 +35,23 @@ export default {
       else {
         this.navigation = true;
       }
+    },
+    updatingHeader: function() {
+      if (this.$route.name == "Login" || this.$route.name =="Registration") {
+      this.title = 'Recycle Nation';
+      } else {
+      this.title = this.$route.name;
+    }
     }
   },
+  
   created : function() {
     this.showNavigation()
+    this.updatingHeader()
+  },
+  updated: function() {
+    this.showNavigation();
+    this.updatingHeader()
   }
 }
 </script>
@@ -56,5 +71,9 @@ export default {
     color:white;
     margin-top: 0;
     padding: 70px;
+  }
+
+  content {
+    background-color: #E8E1CF;
   }
 </style>

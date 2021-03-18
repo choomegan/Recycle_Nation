@@ -10,14 +10,14 @@ import RecyclingHistory from './components/RecyclingHistory.vue'
 import Registration from './components/Registration.vue'
 
 export default[
-    { name:'AboutUs', path: '/AboutUs', component: AboutUs},
+    { name:'About Us', path: '/AboutUs', component: AboutUs},
     { name:'Home', path: '/Home', component: Home},
-    { name:'IdentifiedItem', path: '/IdentifiedItem', component: IdentifiedItem },
+    { name:'Identified Item', path: '/IdentifiedItem', component: IdentifiedItem },
     { name:'Login', path: '/', component: Login},
-    { name:'MapOfBins', path: '/MapOfBins', component: MapOfBins},
-    { name:'MyAchievements', path: '/MyAchievements', component: MyAchievements},
-    { name:'MyProfile', path: '/MyProfile', component: MyProfile},
-    { name:'MyRewards', path: '/MyRewards', component: MyRewards},
-    { name:'RecyclingHistory', path: '/RecyclingHistory', component: RecyclingHistory},
+    { name:'Map Of Bins', path: '/MapOfBins', component: MapOfBins},
+    { name:'My Achievements', path: '/MyAchievements', component: MyAchievements},
+    { name:'My Profile', path: '/MyProfile', component: MyProfile},
+    { name:'My Rewards', path: '/MyRewards', component: MyRewards},
+    { name:'Recycling History', path: '/RecyclingHistory', component: RecyclingHistory},
     { name:'Registration', path: '/Registration', component: Registration}
 ]
