@@ -5,13 +5,11 @@
         <div class="recycle-box">
             <div class="recycle" v-for="recycle in this.info" v-bind:key="recycle">
                 <p id="item">{{recycle.type}}</p>
-                <ul v-for="item in recycle.data" v-bind:key="item[0]">
+                <ul v-for="item in recycle.data" v-bind:key="item">
                     <li>{{item}}</li>
                 </ul>
             </div>
         </div>
-
-        
     </div>
 </template>
 
@@ -20,10 +18,10 @@ export default {
     data() {
         return {
             info: [
-                {type: 'Paper', data: ['Flyers, Letters, Envelopes', 'Newspaper', 'Flattened tissue box']},
-                {type: 'Plastic', data: ['Plastic packaging from food','Empty detergent, soap and condiment bottles', 'Cosmetic bottles and containers']},
-                {type: 'Glass', data: ['Empty condiment bottles and containers', 'Glassware']},
-                {type: 'Metal', data: ['Aluminum cans (from canned drinks and canned food)', 'Aerosal can']},
+                {type: 'Paper',     data: ['Flyers, Letters, Envelopes', 'Newspaper', 'Flattened tissue box']},
+                {type: 'Plastic',   data: ['Plastic packaging from food','Empty detergent, soap and condiment bottles', 'Cosmetic bottles and containers']},
+                {type: 'Glass',     data: ['Empty condiment bottles and containers', 'Glassware']},
+                {type: 'Metal',     data: ['Aluminum cans (from canned drinks and canned food)', 'Aerosal can']},
             ]
         }
     }
@@ -34,7 +32,7 @@ export default {
 #Home {
     padding: 60px;
     background-color: #E8E1CF;
-    text-align: top;
+    text-align: center;
 }
 .recycle-box {
     display: flex;
