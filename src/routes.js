@@ -17,7 +17,7 @@ export default[
     { name:'Map Of Bins', path: '/MapOfBins', component: MapOfBins},
     { name:'My Achievements', path: '/MyAchievements', component: MyAchievements},
     { name:'My Profile', path: '/MyProfile', component: MyProfile},
-    { name:'My Rewards', path: '/MyRewards', component: MyRewards},
+    { name:'Rewards Shop', path: '/MyRewards', component: MyRewards},
     { name:'Recycling History', path: '/RecyclingHistory', component: RecyclingHistory},
     { name:'Registration', path: '/Registration', component: Registration}
 ]
