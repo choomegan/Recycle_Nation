@@ -59,7 +59,6 @@ export default {
 <style>
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    font-size:20px;
     text-align:center;
     margin-top: 0;
     padding-top: 0;
@@ -70,7 +69,9 @@ export default {
     background-color: #8FA984;
     color:white;
     margin-top: 0;
-    padding: 70px;
+    padding: 50px;
+    font-weight: bold;
+    font-size: 50px;
   }
 
   content {

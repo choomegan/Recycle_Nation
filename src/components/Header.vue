@@ -6,7 +6,6 @@
             <li><router-link to="/RecyclingHistory" exact>Recycling History</router-link></li>
             <li><router-link to="/MapOfBins" exact>Map Of Bins</router-link></li>
             <li><router-link to="/AboutUs" exact>About Us</router-link></li>       
-            
         </ul>
     </div> 
 </template>
@@ -15,7 +14,7 @@
 export default {
     data() {
         return {
-            name: "Orders"
+            name: "Header",
         }
     }
 }
@@ -29,14 +28,21 @@ ul {
   padding: 0;
 }
 li {
-    color: #795D2C;
     flex-grow: 1;
     flex-basis: 200px;
     text-align: center;
     padding: 10px;
-    margin: 10px;
+}
+li a {
+    text-decoration-line: none;
+    color:saddlebrown;
+}
+.router-link-active {
+    text-decoration-line: underline;
+    font-weight: bold;
 }
 #header {
-    background-color:floralwhite;
+    background-color:white;
+    font-size: 20px;
 }
 </style>
