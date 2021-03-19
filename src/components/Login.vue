@@ -35,6 +35,7 @@ export default {
 <style> 
 #login{
     font-size: 25px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     text-align: center;
     padding: 170px;
     background-color: #E8E1CF;
@@ -47,12 +48,19 @@ input {
     height: 20px;
 }
 
+label {
+    width: 125px;
+    text-align: left;
+    display: inline-block;  
+}
+
 #signUp:hover {
     color: blue;
 }
 
 p {
     font-size: 18px;
+    padding: 10px;
 }
 
 button {
