@@ -1,22 +1,20 @@
 <template>
     <div id="register">
         <form> 
-            <label>User ID: </label>
-            <input type="text" id="userID" name="userID">
-        </form>
-        <form> 
+            <label>Username: </label>
+            <input type="text" id="username" name="username">
+            <br>
             <label>Email:</label>
             <input type="text" id="email" name="email">
-        </form> 
-        <form> 
+            <br>
             <label>Password: </label>
             <input type="text" id="userID" name="userID">
-        </form>
-        <form> 
+            <br>
             <label>Re-enter Password: </label>
             <input type="text" id="password" name="password">
-        </form><br>
-        <button type="button" v-on:click="home()">Sign up</button>
+            <br><br>
+            <button type="submit" v-on:click="home()">Sign up</button>
+        </form>
     </div> 
 </template>
 
@@ -52,6 +50,7 @@ label {
     width: 210px;
     text-align: left;
     display: inline-block;  
+    padding: 5px;
 }
 
 button {
