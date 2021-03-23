@@ -26,10 +26,14 @@ export default {
       console.log(this.$route.path)
       if (this.$route.path == "/") {
         this.navigation = false;
-      } else if (this.$route.path == "/Registration"){
+      } 
+      else if (this.$route.path == "/Registration"){
         this.navigation = false;
-      
-      } else if (this.$route.path == "/IdentifiedItem") {
+      } 
+      else if (this.$route.path.startsWith("/IdentifiedItem")) {
+        this.navigation = false;
+      } 
+      else if (this.$route.path.startsWith("/Login")) {
         this.navigation = false;
       }
       else {
