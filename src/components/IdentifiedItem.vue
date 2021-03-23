@@ -11,8 +11,16 @@
 export default {
   methods: {
       directed: function() {
-          this.$router.push({ path: '/Home' })
+        this.$router.push({ path: '/Home' })
+      },
+      getData: function() {
+        var data = this.$route.params.data;
+        console.log("data: " + data);
+        this.recycledData = data
       }
+  },
+  created() {
+    this.getData();
   }
 }
 </script>
