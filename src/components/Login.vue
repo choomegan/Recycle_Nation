@@ -19,6 +19,7 @@
 export default {
     data() {
         return {
+            recycledData: {}
         }
     },
     methods :{
@@ -26,8 +27,21 @@ export default {
             this.$router.push({path:'Registration'})
         },
         home: function() {
-            this.$router.push({path:'Home'})
+            if (typeof this.recycledData === "undefined") { //user logged in normally
+                this.$router.push({path:'Home'})
+            }
+            else {
+                this.$router.push({ path: `/IdentifiedItem/${this.recycledData}`})
+            }
+        },
+        getData: function() {
+            var data = this.$route.params.data;
+            console.log("data: " + data);
+            this.recycledData = data
         }
+    },
+    created() {
+        this.getData();
     }
 }
 </script> 
