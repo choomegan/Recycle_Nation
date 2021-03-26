@@ -36,12 +36,15 @@ export default {
       else if (this.$route.path.startsWith("/Login")) {
         this.navigation = false;
       }
+      else if (this.$route.path.startsWith("/ForgotPassword")) {
+        this.navigation = false;
+      }
       else {
         this.navigation = true;
       }
     },
     updatingHeader: function() {
-      if (this.$route.name == "Login" || this.$route.name =="Registration") {
+      if (this.$route.name == "Login" || this.$route.name =="Registration" || this.$route.name =="Forgot Password") {
       this.title = 'Recycle Nation';
       } else {
       this.title = this.$route.name;

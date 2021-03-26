@@ -7,11 +7,13 @@
         <form> 
             <label>Password: </label>
             <input type="text" id="password" name="password" v-model="password" required>
-        </form> 
-        <p>Don't have an account?
-            <span id="signUp" v-on:click="route()">Sign up here!</span>
-        </p>
+        </form>
         <button type="button" v-on:click="login()">Login</button>
+        <div id="extras">
+            <span id="signUp" v-on:click="register()">CREATE ACCOUNT</span>
+            <span id="forgotPW" v-on:click="resetPW()">FORGOT PASSWORD?</span>
+        </div>
+
     </div> 
 </template> 
 
@@ -27,9 +29,14 @@ export default {
         }
     },
     methods :{
-        route: function() {
+        register: function() {
             this.$router.push({path:'Registration'})
         },
+
+        resetPW: function() {
+            this.$router.push({path:'ForgotPassword'})
+        },
+
         login: function() {
             firebase
                     .auth()
@@ -48,6 +55,7 @@ export default {
                 this.$router.push({ path: `/IdentifiedItem/${this.recycledData}`})
             }
         },
+
         getData: function() {
             var data = this.$route.params.data;
             console.log("data: " + data);
@@ -60,7 +68,7 @@ export default {
 }
 </script> 
 
-<style> 
+<style scoped> 
 #login{
     font-size: 25px;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -68,6 +76,7 @@ export default {
     padding: 170px;
     background-color: #E8E1CF;
 }
+
 form {
     margin-bottom: 15px;
 }
@@ -83,12 +92,19 @@ label {
 }
 
 #signUp:hover {
-    color: blue;
+    color: #184eff;
+    text-decoration: underline;
 }
 
-p {
-    font-size: 18px;
-    padding: 10px;
+#forgotPW:hover {
+    color: rgb(240, 41, 75);
+    text-decoration: underline;
+}
+
+p,span {
+    color: #565755;
+    font-size: 16px;
+    padding: 20px;
 }
 
 button {
@@ -97,6 +113,10 @@ button {
     background-color: #7D6558;
     height: 50px;
     width: 150px;
+}
+
+#extras {
+    padding: 20px;
 }
 </style> 
 
