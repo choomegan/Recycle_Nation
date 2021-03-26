@@ -2,32 +2,56 @@
     <div id="register">
         <form> 
             <label>Username: </label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" v-model="name" required>
             <br>
             <label>Email:</label>
-            <input type="text" id="email" name="email">
+            <input type="email" id="email" name="email" v-model="email" required>
             <br>
             <label>Password: </label>
-            <input type="text" id="userID" name="userID">
+            <input type="text" id="password" name="password" v-model="password" required>
             <br>
             <label>Re-enter Password: </label>
-            <input type="text" id="password" name="password">
+            <input type="text" id="Repassword" name="Repassword" v-model="rePassword" required>
             <br><br>
-            <button type="submit" v-on:click="home()">Sign up</button>
+            <input type="button" id="button" v-on:click="register()" value="Sign up">
         </form>
     </div> 
 </template>
 
 <script>
+import database from '../firebase.js'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 export default {
     data() {
         return {
+            name:"",
+            email:"",
+            password:"",
+            rePassword:""
         }
     },
     methods :{
-        home: function() {
-            this.$router.push({path:'Home'})
-        }
+        input: function() {
+            database.collection(this.name).add()
+        },
+        register:function() {
+            console.log("buttonno issue")
+            firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.email, this.password)
+            .then((data) => {
+                data.user.updateProfile( {
+                    displayName: this.username
+                })
+                database.collection(this.email).add({email: this.email, username: this.name, password: this.password})
+                alert('Successfully registered! Please login.');
+                this.$router.push({path:'/'});
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        },
     }
 }
 </script> 
@@ -53,7 +77,7 @@ label {
     padding: 5px;
 }
 
-button {
+#button {
     font-size: 20px;
     color: white;
     background-color: #7D6558;

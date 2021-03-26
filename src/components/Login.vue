@@ -2,11 +2,11 @@
     <div id="login"> 
         <form> 
             <label>User ID: </label>
-            <input type="text" id="userID" name="userID">
+            <input type="text" id="email" name="email" v-model="email" required>
         </form>
         <form> 
             <label>Password: </label>
-            <input type="text" id="password" name="password">
+            <input type="text" id="password" name="password" v-model="password" required>
         </form> 
         <p>Don't have an account?
             <span id="signUp" v-on:click="route()">Sign up here!</span>
@@ -16,10 +16,14 @@
 </template> 
 
 <script>
+import firebase from 'firebase/app'
+
 export default {
     data() {
         return {
-            recycledData: {}
+            recycledData: {},
+            email:"",
+            password:"",
         }
     },
     methods :{
@@ -28,9 +32,16 @@ export default {
         },
         home: function() {
             if (typeof this.recycledData === "undefined") { //user logged in normally
-                this.$router.push({path:'Home'})
-            }
-            else {
+                firebase
+                    .auth()
+                    .signInWithEmailAndPassword(this.email, this.password)
+                    .then(() => {
+                    this.$router.push({path:'Home'})
+                    })
+                    .catch(err => {
+                    this.error = err.message;
+                    });
+            } else {
                 this.$router.push({ path: `/IdentifiedItem/${this.recycledData}`})
             }
         },
