@@ -42,9 +42,9 @@ export default {
             .createUserWithEmailAndPassword(this.email, this.password)
             .then((data) => {
                 data.user.updateProfile( {
-                    displayName: this.username
+                    displayName: this.name
                 })
-                database.collection(this.email).doc("Authenication").set({email: this.email, username: this.name, password: this.password})
+                database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
                 alert('Successfully registered! Please login.');
                 this.$router.push({path:'/'});
             })

@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h1 id="visionhead">Our Vision</h1>
-        <h1 id="visionbody">Encouraging all Singaporeans to actively recycle</h1>
-        <h1 id="missionhead">Our Mission</h1>
-        <h1 id="missionbody">We aim to promote green movement by making recycling easier for you</h1>
+    <div id="AboutUs">
+        <h1>Our Vision</h1>
+        <p>Encouraging all Singaporeans to actively recycle</p>
+        <h1>Our Mission</h1>
+        <p>We aim to promote green movement by making recycling easier for you</p>
     </div>
 </template>
 
@@ -14,5 +14,19 @@ export default {
 </script>
 
 <style scoped>
-
+#AboutUs {
+    position:absolute;
+    width: 100%;
+    height: 73%;
+    background-color: #E8E1CF;
+    text-align: center;
+}
+h1 {
+    padding-top: 6.5%;
+    font-size: 40px;
+    color: rgb(88, 44, 2);
+}
+p {
+    font-size: 30px;
+}
 </style>

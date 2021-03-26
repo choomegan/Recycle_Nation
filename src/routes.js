@@ -8,6 +8,7 @@ import MyProfile from './components/MyProfile.vue'
 import MyRewards from './components/MyRewards.vue'
 import RecyclingHistory from './components/RecyclingHistory.vue'
 import Registration from './components/Registration.vue'
+import ForgotPassword from './components/ForgotPassword.vue'
 
 export default[
     { name:'About Us', path: '/AboutUs', component: AboutUs},
@@ -20,5 +21,6 @@ export default[
     { name:'My Profile', path: '/MyProfile', component: MyProfile},
     { name:'Rewards Shop', path: '/MyRewards', component: MyRewards},
     { name:'Recycling History', path: '/RecyclingHistory', component: RecyclingHistory},
-    { name:'Registration', path: '/Registration', component: Registration}
+    { name:'Registration', path: '/Registration', component: Registration},
+    { name:'Forgot Password', path: '/ForgotPassword', component: ForgotPassword}
 ]
