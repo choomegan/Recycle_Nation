@@ -3,7 +3,7 @@
         <p>Common Recyclable Items </p>
         <br>
         <div class="recycle-box">
-            <div class="recycle" v-for="recycle in this.info" v-bind:key="recycle">
+            <div class="recycle" v-for="recycle in this.info" v-bind:key="recycle[0]">
                 <p id="item">{{recycle.type}}</p>
                 <ul v-for="item in recycle.data" v-bind:key="item">
                     <li>{{item}}</li>
@@ -37,6 +37,7 @@ export default {
 .recycle-box {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 .recycle {
     border:solid;
