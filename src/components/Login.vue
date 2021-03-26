@@ -1,7 +1,7 @@
 <template> 
     <div id="login"> 
         <form> 
-            <label>User ID: </label>
+            <label>Email: </label>
             <input type="text" id="email" name="email" v-model="email" required>
         </form>
         <form> 
@@ -11,7 +11,7 @@
         <p>Don't have an account?
             <span id="signUp" v-on:click="route()">Sign up here!</span>
         </p>
-        <button type="button" v-on:click="home()">Login</button>
+        <button type="button" v-on:click="login()">Login</button>
     </div> 
 </template> 
 
@@ -30,17 +30,20 @@ export default {
         route: function() {
             this.$router.push({path:'Registration'})
         },
-        home: function() {
-            if (typeof this.recycledData === "undefined") { //user logged in normally
-                firebase
+        login: function() {
+            firebase
                     .auth()
                     .signInWithEmailAndPassword(this.email, this.password)
                     .then(() => {
-                    this.$router.push({path:'Home'})
+                    this.home()
                     })
                     .catch(err => {
                     this.error = err.message;
                     });
+        },
+        home: function() {
+            if (typeof this.recycledData === "undefined") { //user logged in normally
+                this.$router.push({path:'/Home'})
             } else {
                 this.$router.push({ path: `/IdentifiedItem/${this.recycledData}`})
             }
