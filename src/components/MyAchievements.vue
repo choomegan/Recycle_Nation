@@ -1,5 +1,26 @@
 <template>
     <div id="MyAchievements">
+        <div class="sideBySide">
+            <div class="side" v-for="item in data" v-bind:key="item.name"> 
+                <a v-if="item.completed">
+                    <img id="star" v-bind:src="goldStar" v-on:mouseover="item.hover = true"
+                        v-on:mouseleave="item.hover = false"/>
+                    <div v-if="item.hover">
+                            {{item.name}}<br>
+                            Completed!
+                        </div>
+                </a>
+                <a v-if="!item.completed">
+                    <img id="star" v-bind:src="greyStar" v-on:mouseover="item.hover = true"
+                        v-on:mouseleave="item.hover = false"/>
+                        <div v-if="item.hover">
+                            {{item.name}}<br>
+                            {{item.numberRequired}} more to go!
+                        </div>
+                        
+                </a>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -7,7 +28,34 @@
 export default {
     data() {
         return {
-
+            goldStar: require('../assets/goldStar.png'),
+            greyStar: require('../assets/greyStar.png'),
+            data: [
+                {
+                    name: "Recycled 3 days in a row",
+                    numberRequired: 0,
+                    completed: true,
+                    hover: false
+                },
+                {
+                    name: "Reycled 3 plastic items",
+                    numberRequired: 3,
+                    completed: false,
+                    hover: false
+                },
+                {
+                    name: "Recycled 3 metal items",
+                    numberRequired: 1,
+                    completed: false,
+                    hover: false
+                },
+                {
+                    name: "Recycled 3 paper items",
+                    numberRequired: 2,
+                    completed: false,
+                    hover: false
+                },
+            ]
         }
     }
 }
@@ -16,7 +64,22 @@ export default {
 <style scoped>
 #MyAchievements {
     font-size: 25px;
-    padding: 170px;
+    padding: 100px;
     background-color: #E8E1CF;
+    height: 400px;
 }
+.sideBySide {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+.side {
+    padding: 20px;
+    align-content:flex-start;
+    width: 200px;
+}
+#star {
+    height: 120px;
+}
+
 </style>
