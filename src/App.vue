@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <h1 id="title">Recycle Nation</h1>
+    <h1 id="title">{{title}}</h1>
     <Header v-if="navigation"></Header>
-    <router-view></router-view>
+    
+    <content><router-view></router-view></content>
   </div>
 </template>
 
@@ -12,10 +13,11 @@ export default {
   name: 'App',
   data() {
     return {
-      title: 'Header',
+      title: 'Recycle Nation',
       navigation: true
     }
   },
+
   components: {
     Header
   },
@@ -24,16 +26,39 @@ export default {
       console.log(this.$route.path)
       if (this.$route.path == "/") {
         this.navigation = false;
-      } else if (this.$route.path == "/Registration"){
+      } 
+      else if (this.$route.path == "/Registration"){
         this.navigation = false;
-      
-      } else {
+      } 
+      else if (this.$route.path.startsWith("/IdentifiedItem")) {
+        this.navigation = false;
+      } 
+      else if (this.$route.path.startsWith("/Login")) {
+        this.navigation = false;
+      }
+      else if (this.$route.path.startsWith("/ForgotPassword")) {
+        this.navigation = false;
+      }
+      else {
         this.navigation = true;
       }
+    },
+    updatingHeader: function() {
+      if (this.$route.name == "Login" || this.$route.name =="Registration" || this.$route.name =="Forgot Password") {
+      this.title = 'Recycle Nation';
+      } else {
+      this.title = this.$route.name;
+    }
     }
   },
+  
   created : function() {
     this.showNavigation()
+    this.updatingHeader()
+  },
+  updated: function() {
+    this.showNavigation();
+    this.updatingHeader()
   }
 }
 </script>
@@ -41,15 +66,23 @@ export default {
 <style>
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    font-size:20px;
     text-align:center;
-    margin-top: 60px;
+    margin-top: 0;
+    padding-top: 0;
     color:black;
   }
 
   #title {
     background-color: #8FA984;
     color:white;
-    padding: 70px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 50px;
+    font-weight: bold;
+    font-size: 50px;
+  }
+
+  content {
+    background-color: #E8E1CF;
   }
 </style>

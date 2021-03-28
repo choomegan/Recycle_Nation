@@ -8,16 +8,19 @@ import MyProfile from './components/MyProfile.vue'
 import MyRewards from './components/MyRewards.vue'
 import RecyclingHistory from './components/RecyclingHistory.vue'
 import Registration from './components/Registration.vue'
+import ForgotPassword from './components/ForgotPassword.vue'
 
 export default[
-    { name:'AboutUs', path: '/AboutUs', component: AboutUs},
+    { name:'About Us', path: '/AboutUs', component: AboutUs},
     { name:'Home', path: '/Home', component: Home},
-    { name:'IdentifiedItem', path: '/IdentifiedItem', component: IdentifiedItem },
-    { name:'Login', path: '/', component: Login},
-    { name:'MapOfBins', path: '/MapOfBins', component: MapOfBins},
-    { name:'MyAchievements', path: '/MyAchievements', component: MyAchievements},
-    { name:'MyProfile', path: '/MyProfile', component: MyProfile},
-    { name:'MyRewards', path: '/MyRewards', component: MyRewards},
-    { name:'RecyclingHistory', path: '/RecyclingHistory', component: RecyclingHistory},
-    { name:'Registration', path: '/Registration', component: Registration}
+    { name:'Identified Item', path: '/IdentifiedItem/:data', component: IdentifiedItem }, 
+    { name:'Login', path: '/Login/:data', component: Login}, // data in form of {"01-01-2021":["glass":40]}
+    { name:'Login', path: '/', component: Login}, //entrypoint to website
+    { name:'Map Of Bins', path: '/MapOfBins', component: MapOfBins},
+    { name:'My Achievements', path: '/MyAchievements', component: MyAchievements},
+    { name:'My Profile', path: '/MyProfile', component: MyProfile},
+    { name:'Rewards Shop', path: '/MyRewards', component: MyRewards},
+    { name:'Recycling History', path: '/RecyclingHistory', component: RecyclingHistory},
+    { name:'Registration', path: '/Registration', component: Registration},
+    { name:'Forgot Password', path: '/ForgotPassword', component: ForgotPassword}
 ]

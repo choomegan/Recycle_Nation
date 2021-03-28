@@ -1,0 +1,87 @@
+<template>
+    <div id="register">
+        <form> 
+            <label>Username: </label>
+            <input type="text" id="username" name="username" v-model="name" required>
+            <br>
+            <label>Email:</label>
+            <input type="email" id="email" name="email" v-model="email" required>
+            <br>
+            <label>Password: </label>
+            <input type="text" id="password" name="password" v-model="password" required>
+            <br>
+            <label>Re-enter Password: </label>
+            <input type="text" id="Repassword" name="Repassword" v-model="rePassword" required>
+            <br><br>
+            <input type="button" id="button" v-on:click="register()" value="Sign up">
+        </form>
+    </div> 
+</template>
+
+<script>
+import database from '../firebase.js'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+export default {
+    data() {
+        return {
+            name:"",
+            email:"",
+            password:"",
+            rePassword:""
+        }
+    },
+    methods :{
+        input: function() {
+            database.collection(this.name).add()
+        },
+        register:function() {
+            console.log("buttonno issue")
+            firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.email, this.password)
+            .then((data) => {
+                data.user.updateProfile( {
+                    displayName: this.username
+                })
+                database.collection(this.email).doc("Authenication").set({email: this.email, username: this.name, password: this.password})
+                alert('Successfully registered! Please login.');
+                this.$router.push({path:'/'});
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        },
+    }
+}
+</script> 
+
+<style scoped> 
+#register{
+    font-size: 23px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    text-align: center;
+    padding: 150px;
+    background-color: #E8E1CF;
+    margin: 0;
+}
+
+input {
+    height: 20px;
+}
+
+label {
+    width: 210px;
+    text-align: left;
+    display: inline-block;  
+    padding: 5px;
+}
+
+#button {
+    font-size: 20px;
+    color: white;
+    background-color: #7D6558;
+    height: 50px;
+    width: 150px;
+}
+</style> 
