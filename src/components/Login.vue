@@ -42,10 +42,18 @@ export default {
                     .auth()
                     .signInWithEmailAndPassword(this.email, this.password)
                     .then(() => {
-                    this.home()
+                        if (typeof this.recycledData === "undefined") { //user logged in normally
+                            this.email = document.getElementById("email").value;
+                            this.$router.push({name:"Home", params:{ userEmail:this.email }});
+                        } 
+                        else { // user logged in through scanning of QR code
+                            this.email = document.getElementById("email").value;
+                            this.$router.push({name:"Identified Item", params:{ userEmail:this.email, data: this.recycledData }});
+                        }
+                        //this.home()
                     })
                     .catch(err => {
-                    this.error = err.message;
+                        this.error = err.message;
                     });
         },
         home: function() {
