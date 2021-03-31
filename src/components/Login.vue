@@ -46,28 +46,18 @@ export default {
                             this.email = document.getElementById("email").value;
                             this.$router.push({name:"Home", params:{ userEmail:this.email }});
                         } 
-                        else { // user logged in through scanning of QR code
+                        else { // user logged in through scanning of QR code (data in form of [{"glass":40}])
                             this.email = document.getElementById("email").value;
-                            this.$router.push({name:"Identified Item", params:{ userEmail:this.email, data: this.recycledData }});
+                            this.$router.push({name:"Identified Item", 
+                                                params:{ userEmail:this.email, data: this.recycledData }});
                         }
-                        //this.home()
                     })
                     .catch(err => {
                         this.error = err.message;
                     });
         },
-        home: function() {
-            if (typeof this.recycledData === "undefined") { //user logged in normally
-                this.$router.push({path:'/Home'})
-            } else {
-                this.$router.push({ path: `/IdentifiedItem/${this.recycledData}`})
-            }
-        },
-
         getData: function() {
-            var data = this.$route.params.data;
-            console.log("data: " + data);
-            this.recycledData = data
+            this.recycledData = this.$route.params.data;
         }
     },
     created() {
