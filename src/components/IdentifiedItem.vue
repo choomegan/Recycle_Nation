@@ -1,12 +1,12 @@
 <template>
   <div id="content">
     
-          <img src="../assets/glass.jpg" width="200" height="200" v-if="this.item=='glass'"/>
-          <img src="../assets/plastic.jpg" width="200" height="200" v-if="this.item=='plastic'"/>
-          <img src="../assets/paper.jpg" width="200" height="200" v-if="this.item=='paper'"/>
-          <img src="../assets/metal.jpg" width="200" height="200" v-if="this.item=='metal'"/>
-          <p>Item recycled: {{this.item}}</p>
-          <p>Points Earned: {{this.points}}</p>
+    <img src="../assets/glass.jpg" width="200" height="200" v-if="this.item=='glass'"/>
+    <img src="../assets/plastic.jpg" width="200" height="200" v-if="this.item=='plastic'"/>
+    <img src="../assets/paper.jpg" width="200" height="200" v-if="this.item=='paper'"/>
+    <img src="../assets/metal.jpg" width="200" height="200" v-if="this.item=='metal'"/>
+    <p>Item recycled: {{this.item}}</p>
+    <p>Points earned: {{this.points}}</p>
     
     <button v-on:click="directed()">Back to Home</button>
   </div>
@@ -20,7 +20,8 @@ export default {
     return {
       email: "",
       item: "",
-      points: ""
+      points: "",
+      data:null
     }
   },
   methods: {
@@ -50,18 +51,25 @@ export default {
         var year = dateTime.getFullYear();
         var hour = dateTime.getHours();
         var minute = dateTime.getMinutes();
-        var dateFormat = date + '-' + month + '-' + year + " "
-        var time = hour + ":" + minute
+        var dateFormat = date + '-' + month + '-' + year
+        var time
+        if (minute < 10) {
+          time = hour + ":0" + minute
+        } else {
+          time = hour + ":" + minute
+        }
         console.log(dateFormat);
         console.log(hour);
         console.log(minute);
         
-        // Counter for number of recycled items
-        /* db.collection(this.email).doc("Recycling history").set({ "hist":{
-          Date: dateFormat, Time: time, Item: this.item, Points: this.points}}); */
         // Push to database
-        db.collection(this.email).doc("Recycling history").set({ "hist":{
-          Date: dateFormat, Time: time, Item: this.item, Points: this.points}});
+        db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
+          Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
+      },
+      update: function() {
+        db.collection(this.$route.params.userEmail).doc("Achievement").get().then(snapshot => {
+          this.data = snapshot.data()
+        })
       }
   },
   created() {

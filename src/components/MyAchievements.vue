@@ -1,27 +1,29 @@
 <template>
     <div id="MyAchievements">
         <div class="sideBySide">
-            <div class="side" v-for="item in data" v-bind:key="item.name"> 
-                <a v-if="item.completed">
-                    <img id="star" v-bind:src="goldStar" v-tooltip.bottom="item.name"/>
-                </a>
-                <a v-if="!item.completed">
-                    <img id="star" v-bind:src="greyStar" v-tooltip.bottom="item.name"/>                      
-                </a>
+            <div class="boxDisplay" v-for="item in data" v-bind:key="item.name"> 
+                <div class="box">
+                    <img id="star" v-bind:src= "completed(item.completed)"/>
+                </div> 
+                <br><br>
+                <div class="box" id="name">
+                    {{item.name}}
+                </div>
+                <div class="box" v-if="item.completed">
+                    Achievement Unlocked!
+                </div>
+                <div class="box" v-if="!item.completed">
+                    {{item.numberRequired}} more to go!
+                </div>
             </div>
         </div>
-        <!-- <div class="boxDisplay" v-for="item in data" v-bind:key="item.name"> 
-            <div class="box">
-                {{item.name}}
-            </div>
-            <div class="box">
-                <img id="star" v-bind:src="greyStar"/>
-            </div>     
-        </div> -->
     </div>
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import db from '../firebase.js'
+
 export default {
     data() {
         return {
@@ -29,38 +31,94 @@ export default {
             greyStar: require('../assets/greyStar.png'),
             data: [
                 {
-                    name: "Recycled 3 days in a row",
+                    name: "Recycled for 3 days",
                     numberRequired: 0,
-                    completed: true,
-                    hover: false
+                    completed: true
+                },
+                {
+                    name: "Recycled for 30 days",
+                    numberRequired: 27,
+                    completed: false
                 },
                 {
                     name: "Reycled 3 plastic items",
                     numberRequired: 3,
-                    completed: false,
-                    hover: false
+                    completed: false
+                },
+                {
+                    name: "Reycled 30 plastic items",
+                    numberRequired: 30,
+                    completed: false
                 },
                 {
                     name: "Recycled 3 metal items",
                     numberRequired: 1,
-                    completed: false,
-                    hover: false
+                    completed: false
+                },
+                {
+                    name: "Reycled 30 metal items",
+                    numberRequired: 28,
+                    completed: false
                 },
                 {
                     name: "Recycled 3 paper items",
                     numberRequired: 2,
-                    completed: false,
-                    hover: false
+                    completed: false
+                },
+                {
+                    name: "Recycled 30 paper items",
+                    numberRequired: 29,
+                    completed: false
+                },
+                {
+                    name: "Recycled 3 glass items",
+                    numberRequired: 0,
+                    completed: true
+                },
+                {
+                    name: "Recycled 30 glass items",
+                    numberRequired: 27,
+                    completed: false
+                },
+                {
+                    name: "Recycled 10 items in total",
+                    numberRequired: 4,
+                    completed: false
+                },
+                {
+                    name: "Recycled 100 items in total",
+                    numberRequired: 94,
+                    completed: false
                 },
             ]
         }
+    },
+    methods: {
+        completed: function(complete) {
+            if (complete) {
+                return this.goldStar;
+            } else {
+                return this.greyStar;
+            }
+        },
+        retrieve: function() {
+            var user = firebase.auth().currentUser;
+            var email = user.email;
+            db.collection(email).doc("Achievements").get().then((querySnapShot) => {
+                console.log(querySnapShot.data())
+                this.data = querySnapShot.data();
+            })
+        }
+    },
+    created: function() {
+        this.retrieve();
     }
 }
 </script>
 
 <style scoped>
 #MyAchievements {
-    font-size: 25px;
+    font-size: 20px;
     padding: 100px;
     background-color: #E8E1CF;
 }
@@ -78,16 +136,19 @@ export default {
     height: 120px;
 }
 .boxDisplay {
-    padding: 10px;
-    border: 1px solid; 
-    display: flex;
-    flex-direction: row;
-    flex-flow: wrap;
-    box-shadow:turquoise;
-    margin:10px;
-}
-.box{
     padding: 40px;
-    margin: 10px;
+    justify-content: center;
+    margin:10px;
+    width: 300px;
+    height: 300px;
+    background-color:rgb(224, 212, 194);
+}
+.box {
+    padding: 10px;
+}
+
+#name {
+    font-weight: bold;
+    font-size: 25px;
 }
 </style>
