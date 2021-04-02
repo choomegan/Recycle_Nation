@@ -30,12 +30,12 @@ export default {
       directed: function() {        
         this.$router.push({name:"Home", params:{ userEmail: this.email }})
       },
-      getData: function() {
+      /**getData: function() {
         var data = JSON.parse(this.$route.params.data);
         console.log(data);
         this.recycledData.push(data);
         console.log(this.recycledData);
-      },
+      },**/
       getUser: function() {
         this.email = this.$route.params.userEmail;
         console.log("email: " + this.email);
@@ -52,12 +52,12 @@ export default {
         
         // Push to database
         // Need to retrieve from db and check for same dates and combine (recycling more than once a day)
-        db.collection(this.email).doc("Recycling History").add({ 
-          dateTimeNewFormat: this.recycledData[0]}); 
+        db.collection(this.email).doc("Recycling History").set({ 
+          DateTime: dateTimeNewFormat}); 
       }
   },
   created() {
-    this.getData();
+    //this.getData();
     this.getUser();
     this.addToDB();
   }
