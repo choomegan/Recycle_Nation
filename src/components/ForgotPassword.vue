@@ -5,16 +5,29 @@
             <label>Enter email address: </label> 
             <input type="email" id="email" name="email" v-model="email" required> 
             <br><br>
-            <input type="button" id="button" value="Send Login Link">
+            <input type="button" id="button" value="Send Login Link" v-on:click="sendEmail()">
         </form> 
     </div> 
 </template> 
 
 <script> 
+import firebase from 'firebase/app'
+
 export default {
     data() {
         return {
             email: ""
+        }
+    },
+    methods: {
+        sendEmail: function() {
+            firebase.auth().sendPasswordResetEmail(this.email).then(function() {
+                // Email sent.
+                console.log("sent email")
+                }).catch(function(error) {
+                // An error happened.
+                console.log(error)
+            });
         }
     }
 }
