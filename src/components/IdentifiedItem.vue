@@ -1,12 +1,12 @@
 <template>
   <div id="content">
     
-          <img src="../assets/glass.jpg" width="200" height="200" v-if="this.item=='glass'"/>
-          <img src="../assets/plastic.jpg" width="200" height="200" v-if="this.item=='plastic'"/>
-          <img src="../assets/paper.jpg" width="200" height="200" v-if="this.item=='paper'"/>
-          <img src="../assets/metal.jpg" width="200" height="200" v-if="this.item=='metal'"/>
-          <p>Item recycled: {{this.item}}</p>
-          <p>Points Earned: {{this.points}}</p>
+    <img src="../assets/glass.jpg" width="200" height="200" v-if="this.item=='glass'"/>
+    <img src="../assets/plastic.jpg" width="200" height="200" v-if="this.item=='plastic'"/>
+    <img src="../assets/paper.jpg" width="200" height="200" v-if="this.item=='paper'"/>
+    <img src="../assets/metal.jpg" width="200" height="200" v-if="this.item=='metal'"/>
+    <p>Item recycled: {{this.item}}</p>
+    <p>Points earned: {{this.points}}</p>
     
     <button v-on:click="directed()">Back to Home</button>
   </div>
@@ -27,14 +27,9 @@ export default {
       directed: function() {        
         this.$router.push({name:"Home", params:{ userEmail: this.email }})
       },
-      /**getData: function() {
+      getData: function() {
         var data = JSON.parse(this.$route.params.data);
         console.log(data);
-<<<<<<< HEAD
-        this.recycledData.push(data);
-        console.log(this.recycledData);
-      },**/
-=======
         console.log(data[0].item); //{item: "glass"}
         console.log(data[1].points); //{points: 40}
         this.item = data[0].item;
@@ -43,7 +38,6 @@ export default {
         console.log(this.item);
         console.log(this.points);
       },
->>>>>>> c2c088b1502530432000789435069d735a8bb40c
       getUser: function() {
         this.email = this.$route.params.userEmail;
         console.log("email: " + this.email);
@@ -54,36 +48,26 @@ export default {
         var month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
         var date = ('0' + dateTime.getDate()).slice(-2);
         var year = dateTime.getFullYear();
-<<<<<<< HEAD
-        var time = dateTime.getHours() + ':' + dateTime.getMinutes()
-        var dateTimeNewFormat = date + '/' + month + '/' + year + " " + time
-        console.log(dateTimeNewFormat);
-=======
         var hour = dateTime.getHours();
         var minute = dateTime.getMinutes();
-        var dateFormat = date + '-' + month + '-' + year + " "
-        var time = hour + ":" + minute
+        var dateFormat = date + '-' + month + '-' + year
+        var time
+        if (minute < 10) {
+          time = hour + ":0" + minute
+        } else {
+          time = hour + ":" + minute
+        }
         console.log(dateFormat);
         console.log(hour);
         console.log(minute);
->>>>>>> c2c088b1502530432000789435069d735a8bb40c
         
-        // Counter for number of recycled items
-        /* db.collection(this.email).doc("Recycling history").set({ "hist":{
-          Date: dateFormat, Time: time, Item: this.item, Points: this.points}}); */
         // Push to database
-<<<<<<< HEAD
-        // Need to retrieve from db and check for same dates and combine (recycling more than once a day)
-        db.collection(this.email).doc("Recycling History").set({ 
-          DateTime: dateTimeNewFormat}); 
-=======
-        db.collection(this.email).doc("Recycling history").set({ "hist":{
-          Date: dateFormat, Time: time, Item: this.item, Points: this.points}});
->>>>>>> c2c088b1502530432000789435069d735a8bb40c
+        db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
+          Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
       }
   },
   created() {
-    //this.getData();
+    this.getData();
     this.getUser();
     this.addToDB();
   }
