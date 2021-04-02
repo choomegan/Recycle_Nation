@@ -44,8 +44,13 @@ export default {
 
             var achievements =[
                 {
-                    name: "Recycled 3 days in a row",
+                    name: "Recycled for 3 days",
                     numberRequired: 0,
+                    completed: true
+                },
+                {
+                    name: "Recycled for 30 days",
+                    numberRequired: 30,
                     completed: false
                 },
                 {
@@ -54,15 +59,51 @@ export default {
                     completed: false
                 },
                 {
+                    name: "Reycled 30 plastic items",
+                    numberRequired: 30,
+                    completed: false
+                },
+                {
                     name: "Recycled 3 metal items",
-                    numberRequired: 1,
+                    numberRequired: 3,
+                    completed: false
+                },
+                {
+                    name: "Reycled 30 metal items",
+                    numberRequired: 30,
                     completed: false
                 },
                 {
                     name: "Recycled 3 paper items",
-                    numberRequired: 2,
+                    numberRequired: 3,
                     completed: false
                 },
+                {
+                    name: "Recycled 30 paper items",
+                    numberRequired: 30,
+                    completed: false
+                },
+                {
+                    name: "Recycled 3 glass items",
+                    numberRequired: 3,
+                    completed: true
+                },
+                {
+                    name: "Recycled 30 glass items",
+                    numberRequired: 30,
+                    completed: false
+                },
+                {
+                    name: "Recycled 10 items in total",
+                    numberRequired: 10,
+                    completed: false
+                },
+                {
+                    name: "Recycled 100 items in total",
+                    numberRequired: 100,
+                    completed: false
+                },
+                
             ]
 
             firebase
