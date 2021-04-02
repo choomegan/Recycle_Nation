@@ -20,7 +20,8 @@ export default {
     return {
       email: "",
       item: "",
-      points: ""
+      points: "",
+      data:null
     }
   },
   methods: {
@@ -64,6 +65,11 @@ export default {
         // Push to database
         db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
           Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
+      },
+      update: function() {
+        db.collection(this.$route.params.userEmail).doc("Achievement").get().then(snapshot => {
+          this.data = snapshot.data()
+        })
       }
   },
   created() {
