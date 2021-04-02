@@ -31,22 +31,26 @@ export default {
                 {
                     name: "Recycled 3 days in a row",
                     numberRequired: 0,
-                    completed: true
+                    completed: true,
+                    hover: false
                 },
                 {
                     name: "Reycled 3 plastic items",
                     numberRequired: 3,
-                    completed: false
+                    completed: false,
+                    hover: false
                 },
                 {
                     name: "Recycled 3 metal items",
                     numberRequired: 1,
-                    completed: false
+                    completed: false,
+                    hover: false
                 },
                 {
                     name: "Recycled 3 paper items",
                     numberRequired: 2,
-                    completed: false
+                    completed: false,
+                    hover: false
                 },
             ]
         }
