@@ -36,15 +36,45 @@ export default {
             database.collection(this.name).add()
         },
         register:function() {
-            console.log("buttonno issue")
+            var dateTime = new Date();
+            var month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
+            var date = ('0' + dateTime.getDate()).slice(-2);
+            var year = dateTime.getFullYear();
+            var dateTimeNewFormat = date + '-' + month + '-' + year; 
+
+            var achievements =[
+                {
+                    name: "Recycled 3 days in a row",
+                    numberRequired: 0,
+                    completed: false
+                },
+                {
+                    name: "Reycled 3 plastic items",
+                    numberRequired: 3,
+                    completed: false
+                },
+                {
+                    name: "Recycled 3 metal items",
+                    numberRequired: 1,
+                    completed: false
+                },
+                {
+                    name: "Recycled 3 paper items",
+                    numberRequired: 2,
+                    completed: false
+                },
+            ]
+
             firebase
             .auth()
             .createUserWithEmailAndPassword(this.email, this.password)
             .then((data) => {
                 data.user.updateProfile( {
-                    displayName: this.name
+                    displayName: this.name,
                 })
                 database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
+                database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTimeNewFormat})
+                database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                 alert('Successfully registered! Please login.');
                 this.$router.push({path:'/'});
             })
