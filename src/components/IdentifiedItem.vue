@@ -20,7 +20,8 @@ export default {
     return {
       email: "",
       item: "",
-      points: ""
+      points: "",
+      pushData: [] // to collate all past recycling items
     }
   },
   methods: {
@@ -60,10 +61,36 @@ export default {
         console.log(dateFormat);
         console.log(hour);
         console.log(minute);
+        console.log(time);
+
+        // Get existing history from db
+        /* db.collection(this.email).doc("Recycling history").get().then(snapshot => {
+          var data = snapshot.data();
+          var numOfRecycledItems = Object.keys(data).length;
+          console.log("length: "+ numOfRecycledItems);
+          if (typeof data === "undefined") { // User is recycling for the first time
+            db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
+              Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
+          }
+          else { //retrieve the data and add into array to push to db with updated recycled items
+            //console.log(data[0]);
+
+            for (let i = 0; i < numOfRecycledItems; i++) {
+              this.pushData.push(data[i]);
+            }
+
+          }
+        });
+
+        // Lastly push the current recycled item into the array
+        this.pushData.push({Date: dateFormat, Time: time, Item: this.item, Points: this.points})
         
         // Push to database
+        db.collection(this.email).doc("Recycling history").set(Object.assign({},this.pushData));  */
         db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
-          Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
+              Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
+
+ 
       }
   },
   created() {
