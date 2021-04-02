@@ -7,7 +7,7 @@
             <div class="halves">
                 <a id="name">{{username}} </a>
                 <br>
-                Joined {{days}} days ago
+                Joined {{date}}
             </div>
         </div>
         <br><br>
@@ -33,7 +33,7 @@
 
 <script>
 import firebase from 'firebase/app'
-//import db from '../firebase.js'
+import db from '../firebase.js'
 
 export default {
     data() {
@@ -41,7 +41,7 @@ export default {
             image:require('../assets/holding_plants.png'),
             points: 0,
             username: "",
-            days:0,
+            date: "",
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png')
         }
@@ -56,7 +56,11 @@ export default {
         updatePage: function() {
             var user = firebase.auth().currentUser;
             this.username = user.displayName;
-            
+            db.collection(user.email).doc("Profile").get().then((items) => {
+                this.date = items.data().dateJoined
+                console.log(items.data())
+            })
+
         }
     },
     created: function() {
