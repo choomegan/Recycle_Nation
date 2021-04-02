@@ -21,7 +21,7 @@ export default {
       email: "",
       item: "",
       points: "",
-      data:null
+      pushData:[]
     }
   },
   methods: {
@@ -30,18 +30,11 @@ export default {
       },
       getData: function() {
         var data = JSON.parse(this.$route.params.data);
-        console.log(data);
-        console.log(data[0].item); //{item: "glass"}
-        console.log(data[1].points); //{points: 40}
         this.item = data[0].item;
         this.points = data[1].points;
-  
-        console.log(this.item);
-        console.log(this.points);
       },
       getUser: function() {
         this.email = this.$route.params.userEmail;
-        console.log("email: " + this.email);
       },
       addToDB: function() { // add newly recycled information into recycling history
         // Get today's date
@@ -58,17 +51,24 @@ export default {
         } else {
           time = hour + ":" + minute
         }
-        console.log(dateFormat);
-        console.log(hour);
-        console.log(minute);
         
-        // Push to database
-        db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
-          Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
-      },
-      update: function() {
-        db.collection(this.$route.params.userEmail).doc("Achievement").get().then(snapshot => {
-          this.data = snapshot.data()
+        db.collection(this.email).doc("Recycling history").get().then(snapshot => {
+          var data = snapshot.data();
+          var numOfRecycledItems = Object.keys(data).length;
+          if (numOfRecycledItems == 0) { // User is recycling for the first time
+            db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
+              Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
+          }
+          else {
+            var x;
+            for (x of Object.values(data)) {
+              this.pushData.push(x)
+            }
+            this.pushData.push({
+              Date: dateFormat, Time: time, Item: this.item, Points: this.points})
+              console.log(this.pushData)
+              db.collection(this.email).doc("Recycling history").set(Object.assign({},this.pushData))
+          }
         })
       }
   },
