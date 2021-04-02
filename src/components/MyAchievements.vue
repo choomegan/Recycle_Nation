@@ -9,10 +9,10 @@
                 <div class="box" id="name">
                     {{item.name}}
                 </div>
-                <div class="box" id="unlocked" v-if="item.completed">
+                <div class="box" v-if="item.completed">
                     Achievement Unlocked!
                 </div>
-                <div class="box" id="locked" v-if="!item.completed">
+                <div class="box" v-if="!item.completed">
                     {{item.numberRequired}} more to go!
                 </div>
             </div>
@@ -21,33 +21,15 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import db from '../firebase.js'
+
 export default {
     data() {
         return {
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png'),
-            data: [
-                {
-                    name: "Recycled for 3 days",
-                    numberRequired: 0,
-                    completed: true
-                },
-                {
-                    name: "Reycled 3 plastic items",
-                    numberRequired: 3,
-                    completed: false
-                },
-                {
-                    name: "Recycled 3 metal items",
-                    numberRequired: 1,
-                    completed: false
-                },
-                {
-                    name: "Recycled 3 paper items",
-                    numberRequired: 2,
-                    completed: false
-                },
-            ]
+            data: []
         }
     },
     methods: {
@@ -57,14 +39,25 @@ export default {
             } else {
                 return this.greyStar;
             }
+        },
+        retrieve: function() {
+            var user = firebase.auth().currentUser;
+            var email = user.email;
+            db.collection(email).doc("Achievements").get().then((querySnapShot) => {
+                console.log(querySnapShot.data())
+                this.data = querySnapShot.data();
+            })
         }
+    },
+    created: function() {
+        this.retrieve();
     }
 }
 </script>
 
 <style scoped>
 #MyAchievements {
-    font-size: 25px;
+    font-size: 20px;
     padding: 100px;
     background-color: #E8E1CF;
 }
@@ -79,14 +72,14 @@ export default {
     width: 200px;
 }
 #star {
-    height: 180px;
+    height: 120px;
 }
 .boxDisplay {
     padding: 40px;
     justify-content: center;
     margin:10px;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background-color:rgb(224, 212, 194);
 }
 .box {
@@ -95,6 +88,6 @@ export default {
 
 #name {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
 }
 </style>
