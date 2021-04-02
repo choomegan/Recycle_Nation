@@ -3,24 +3,21 @@
         <div class="sideBySide">
             <div class="side" v-for="item in data" v-bind:key="item.name"> 
                 <a v-if="item.completed">
-                    <img id="star" v-bind:src="goldStar" v-on:mouseover="item.hover = true"
-                        v-on:mouseleave="item.hover = false"/>
-                    <div v-if="item.hover">
-                            {{item.name}}<br>
-                            Completed!
-                        </div>
+                    <img id="star" v-bind:src="goldStar" v-tooltip.bottom="item.name"/>
                 </a>
                 <a v-if="!item.completed">
-                    <img id="star" v-bind:src="greyStar" v-on:mouseover="item.hover = true"
-                        v-on:mouseleave="item.hover = false"/>
-                        <div v-if="item.hover">
-                            {{item.name}}<br>
-                            {{item.numberRequired}} more to go!
-                        </div>
-                        
+                    <img id="star" v-bind:src="greyStar" v-tooltip.bottom="item.name"/>                      
                 </a>
             </div>
         </div>
+        <!-- <div class="boxDisplay" v-for="item in data" v-bind:key="item.name"> 
+            <div class="box">
+                {{item.name}}
+            </div>
+            <div class="box">
+                <img id="star" v-bind:src="greyStar"/>
+            </div>     
+        </div> -->
     </div>
 </template>
 
@@ -66,7 +63,6 @@ export default {
     font-size: 25px;
     padding: 100px;
     background-color: #E8E1CF;
-    height: 400px;
 }
 .sideBySide {
     display: flex;
@@ -81,5 +77,17 @@ export default {
 #star {
     height: 120px;
 }
-
+.boxDisplay {
+    padding: 10px;
+    border: 1px solid; 
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    box-shadow:turquoise;
+    margin:10px;
+}
+.box{
+    padding: 40px;
+    margin: 10px;
+}
 </style>

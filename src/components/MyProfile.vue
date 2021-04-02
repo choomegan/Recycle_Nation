@@ -32,12 +32,15 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+//import db from '../firebase.js'
+
 export default {
     data() {
         return {
             image:require('../assets/holding_plants.png'),
             points: 0,
-            username: "ABC",
+            username: "",
             days:0,
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png')
@@ -49,7 +52,15 @@ export default {
         },
         achievements: function() {
             this.$router.push({path:"/MyAchievements"})
+        },
+        updatePage: function() {
+            var user = firebase.auth().currentUser;
+            this.username = user.displayName;
+            
         }
+    },
+    created: function() {
+        this.updatePage();
     }
 }
 </script>

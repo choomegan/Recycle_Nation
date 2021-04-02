@@ -2,6 +2,7 @@
     <div id="MyRewards">
         <div class="split">
             <div class="halves">
+                <p>Rewards Catalog </p>
                 <div class="sideBySide">
                     <div class="side" v-for="item in rewards" v-bind:key ="item.name">
                         <img id="icon" v-bind:src="item.image"/>
@@ -14,7 +15,8 @@
                 </div>
             </div>
             <div class="halves">
-                My Rewards
+                <p>My Rewards</p>
+                You currently have no existing rewards.
             </div>
         </div>
     </div>
@@ -61,27 +63,33 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
-    
 }
 .sideBySide {
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
     flex-flow: wrap;
+    justify-content: center;
 }
 .halves {
     padding: 20px 100px 20px 100px;
     background-color:oldlace;
-    align-content:flex-start;
+    margin:10px;
 }
+
 
 .side {
     background-color:oldlace;
-    padding: 10px 40px 10px 40px;
+    padding: 10px;
+
 }
 
 #icon {
     height: 120px;
     width: 150px;
+}
+
+p {
+    font-size: 30px;
+    text-decoration-line:underline;
 }
 </style>
