@@ -4,8 +4,10 @@
             <div class="halves">
                 <p>Rewards Catalog </p>
                 <div class="sideBySide">
-                    <div class="side" v-for="item in rewards" v-bind:key ="item.name">
+                    <div class="side" v-for="item in rewards" v-bind:key ="item.title">
                         <img id="icon" v-bind:src="item.image"/>
+                        <br>
+                        {{item.name}}
                         <br>
                         {{item.points}} points
                         <br>
@@ -28,24 +30,28 @@ export default {
         return {
             rewards: [
                 {
-                    name: 'tree',
+                    title: "tree",
+                    name: "Plant a real tree!",
                     image: require('../assets/tree.png'),
-                    points: 0,
+                    points: 500,
                 },
                 {
-                    name: 'grabFood',
+                    title: 'GrabFood',
+                    name: "$10 GrabFood Voucher",
                     image: require('../assets/grabFood.png'),
-                    points: 0,
+                    points: 500,
                 },
                 {
-                    name: "grabGifts",
+                    title: "grabGifts",
+                    name: "$10 GrabRide Voucher",
                     image: require('../assets/grabGifts.png'),
-                    points: 0,
+                    points: 500,
                 },
                 {
-                    name: "donate",
+                    title: "donate",
+                    name: "Donate $1!",
                     image: require('../assets/donate.png'),
-                    points: 0,
+                    points: 100,
                 },
             ]
         }
@@ -80,12 +86,13 @@ export default {
 .side {
     background-color:oldlace;
     padding: 10px;
+    width: 300px;
 
 }
 
 #icon {
     height: 120px;
-    width: 150px;
+    max-width: 250px;
 }
 
 p {
