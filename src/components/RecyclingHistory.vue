@@ -1,16 +1,19 @@
 <template>
-  <div>
+  <div id="History">
     
   </div>
 </template>
 
 <script>
-//import Header from './components/Header.vue'
-export default {
+  export default {
   
-}
+  }
 </script>
 
 <style>
-
+#History {
+    padding: 60px;
+    background-color: #E8E1CF;
+    text-align: center;
+}
 </style>
