@@ -42,24 +42,22 @@ export default {
                     .auth()
                     .signInWithEmailAndPassword(this.email, this.password)
                     .then(() => {
-                    this.home()
+                        if (typeof this.recycledData === "undefined") { //user logged in normally
+                            this.email = document.getElementById("email").value;
+                            this.$router.push({name:"Home", params:{ userEmail:this.email }});
+                        } 
+                        else { // user logged in through scanning of QR code (data in form of [{"glass":40}])
+                            this.email = document.getElementById("email").value;
+                            this.$router.push({name:"Identified Item", 
+                                                params:{ userEmail:this.email, data: this.recycledData }});
+                        }
                     })
                     .catch(err => {
-                    this.error = err.message;
+                        this.error = err.message;
                     });
         },
-        home: function() {
-            if (typeof this.recycledData === "undefined") { //user logged in normally
-                this.$router.push({path:'/Home'})
-            } else {
-                this.$router.push({ path: `/IdentifiedItem/${this.recycledData}`})
-            }
-        },
-
         getData: function() {
-            var data = this.$route.params.data;
-            console.log("data: " + data);
-            this.recycledData = data
+            this.recycledData = this.$route.params.data;
         }
     },
     created() {
