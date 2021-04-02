@@ -17,7 +17,7 @@
 </template>
 
 <script>
-//import db from "../firebase.js"
+import db from "../firebase.js"
 
 export default {
   data() {
@@ -46,13 +46,14 @@ export default {
         var month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
         var date = ('0' + dateTime.getDate()).slice(-2);
         var year = dateTime.getFullYear();
-        var dateTimeNewFormat = date + '-' + month + '-' + year;
+        var time = dateTime.getHours() + ':' + dateTime.getMinutes()
+        var dateTimeNewFormat = date + '/' + month + '/' + year + " " + time
         console.log(dateTimeNewFormat);
         
         // Push to database
         // Need to retrieve from db and check for same dates and combine (recycling more than once a day)
-        //db.collection(this.email).doc("Recycling history").update({ 
-          //dateTimeNewFormat: this.recycledData[0]}); 
+        db.collection(this.email).doc("Recycling History").add({ 
+          dateTimeNewFormat: this.recycledData[0]}); 
       }
   },
   created() {
