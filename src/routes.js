@@ -13,8 +13,8 @@ import ForgotPassword from './components/ForgotPassword.vue'
 export default[
     { name:'About Us', path: '/AboutUs', component: AboutUs},
     { name:'Home', path: '/Home', component: Home},
-    { name:'Identified Item', path: '/IdentifiedItem/:data', component: IdentifiedItem }, 
-    { name:'Login', path: '/Login/:data', component: Login}, // data in form of {"01-01-2021":["glass":40]}
+    { name:'Identified Item', path: '/IdentifiedItem', component: IdentifiedItem }, 
+    { name:'Login', path: '/Login/:data', component: Login}, // data in form of [{"date":"2021-01-01"},{"time":"1.45pm"},[{"glass":40}, {"plastic":20}]]
     { name:'Login', path: '/', component: Login}, //entrypoint to website
     { name:'Map Of Bins', path: '/MapOfBins', component: MapOfBins},
     { name:'My Achievements', path: '/MyAchievements', component: MyAchievements},
