@@ -1,29 +1,26 @@
 <template>
   <div id="content">
-    <div v-for="items in recycledData" v-bind:key="items[0][0]">
-      <div v-for="item in items" v-bind:key="item[0]">
-        <div v-for="(value, index) in item" v-bind:key="index" id='display'>
-          <img src="../assets/glass.jpg" width="200" height="200" v-if="index=='Glass'"/>
-          <img src="../assets/plastic.jpg" width="200" height="200" v-if="index=='Plastic'"/>
-          <img src="../assets/paper.jpg" width="200" height="200" v-if="index=='Paper'"/>
-          <img src="../assets/metal.jpg" width="200" height="200" v-if="index=='Metal'"/>
-          <p>Item recycled: {{index}}</p>
-          <p>Points Earned: {{value}}</p>
-        </div>
-      </div>
-    </div>
+    
+          <img src="../assets/glass.jpg" width="200" height="200" v-if="this.item=='glass'"/>
+          <img src="../assets/plastic.jpg" width="200" height="200" v-if="this.item=='plastic'"/>
+          <img src="../assets/paper.jpg" width="200" height="200" v-if="this.item=='paper'"/>
+          <img src="../assets/metal.jpg" width="200" height="200" v-if="this.item=='metal'"/>
+          <p>Item recycled: {{this.item}}</p>
+          <p>Points Earned: {{this.points}}</p>
+    
     <button v-on:click="directed()">Back to Home</button>
   </div>
 </template>
 
 <script>
-//import db from "../firebase.js"
+import db from "../firebase.js"
 
 export default {
   data() {
     return {
       email: "",
-      recycledData: [],
+      item: "",
+      points: ""
     }
   },
   methods: {
@@ -33,8 +30,13 @@ export default {
       getData: function() {
         var data = JSON.parse(this.$route.params.data);
         console.log(data);
-        this.recycledData.push(data);
-        console.log(this.recycledData);
+        console.log(data[0].item); //{item: "glass"}
+        console.log(data[1].points); //{points: 40}
+        this.item = data[0].item;
+        this.points = data[1].points;
+  
+        console.log(this.item);
+        console.log(this.points);
       },
       getUser: function() {
         this.email = this.$route.params.userEmail;
@@ -46,13 +48,20 @@ export default {
         var month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
         var date = ('0' + dateTime.getDate()).slice(-2);
         var year = dateTime.getFullYear();
-        var dateTimeNewFormat = date + '-' + month + '-' + year;
-        console.log(dateTimeNewFormat);
+        var hour = dateTime.getHours();
+        var minute = dateTime.getMinutes();
+        var dateFormat = date + '-' + month + '-' + year + " "
+        var time = hour + ":" + minute
+        console.log(dateFormat);
+        console.log(hour);
+        console.log(minute);
         
+        // Counter for number of recycled items
+        /* db.collection(this.email).doc("Recycling history").set({ "hist":{
+          Date: dateFormat, Time: time, Item: this.item, Points: this.points}}); */
         // Push to database
-        // Need to retrieve from db and check for same dates and combine (recycling more than once a day)
-        //db.collection(this.email).doc("Recycling history").update({ 
-          //dateTimeNewFormat: this.recycledData[0]}); 
+        db.collection(this.email).doc("Recycling history").set({ "hist":{
+          Date: dateFormat, Time: time, Item: this.item, Points: this.points}});
       }
   },
   created() {
