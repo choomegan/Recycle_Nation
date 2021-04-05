@@ -45,8 +45,8 @@ export default {
             var achievements =[
                 {
                     name: "Recycled for 3 days",
-                    numberRequired: 0,
-                    completed: true
+                    numberRequired: 3,
+                    completed: false
                 },
                 {
                     name: "Recycled for 30 days",
@@ -86,7 +86,7 @@ export default {
                 {
                     name: "Recycled 3 glass items",
                     numberRequired: 3,
-                    completed: true
+                    completed: false
                 },
                 {
                     name: "Recycled 30 glass items",
