@@ -86,7 +86,7 @@ export default {
                 {
                     name: "Recycled 3 glass items",
                     numberRequired: 3,
-                    completed: true
+                    completed: false
                 },
                 {
                     name: "Recycled 30 glass items",
