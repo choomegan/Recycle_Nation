@@ -58,6 +58,7 @@ export default {
             this.username = user.displayName;
             db.collection(user.email).doc("Profile").get().then((items) => {
                 this.date = items.data().dateJoined
+                this.points = items.data().points
                 console.log(items.data())
             })
 

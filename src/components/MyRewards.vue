@@ -55,6 +55,7 @@ export default {
         return {
             points:0,
             myRewards: [],
+            email: "",
             rewardsCatelog: [
                 {
                     title: "tree",
@@ -108,22 +109,22 @@ export default {
             }
         },
         redeem: function(item) {
-            var currentUser = firebase.auth().currentUser;
-            db.collection(currentUser.email).doc("Profile").get().then((doc) => {
+            db.collection(this.email).doc("Profile").get().then((doc) => {
                 this.points = doc.data().points;
-                console.log(currentUser.email, this.points, item.title)
+                console.log(this.email, this.points, item.title)
                 if (this.points - item.points < 0) {
                     console.log(this.points, item.title)
                     alert("You do not have enough points to redeem this reward. Recycle more to earn more points!")
                 } else {
                     this.points -= item.points;
-                    db.collection(currentUser.email).doc("Profile").update({
+                    db.collection(this.email).doc("Profile").update({
                         points: this.points
                     }).then(() => console.log("Successfully updated points")).catch((error) => {
                         // The document probably doesn't exist.
                         console.error("Error updating document: ", error);
                     });
                     this.success(item)
+                    console.log("myRewards")
                     console.log(this.myRewards)
                     
                 }
@@ -141,7 +142,9 @@ export default {
                     code: "",
                 }
                 item.code = this.displayCode(item);
+                console.log(this.myRewards);
                 this.myRewards.push(item);
+                this.updateDatabase()
                 alert("Congratulations you have redeemed a GrabFood Voucher! You can now view the voucher and redemption code at [My Rewards]")
             } else if (item.title == "GrabGifts") {
                 item = {
@@ -153,6 +156,7 @@ export default {
                 }
                 item.code = this.displayCode(item);
                 this.myRewards.push(item);
+                this.updateDatabase()
                 alert("Congratulations you have redeemed a GrabGifts Voucher! You can now view the voucher and redemption code at [My Rewards]")
             } else if (item.title == "Donate") {
                 alert("Congratulations you have donated $1!")
@@ -182,7 +186,34 @@ export default {
                     break;
                 }
             }
+            console.log(this.myRewards)
+            this.updateDatabase();
+        },
+        getMyRewards: function() {
+            var currentUser = firebase.auth().currentUser;
+            this.email = currentUser.email
+            db.collection(this.email).doc("Profile").get().then((doc) => {
+                console.log("doc.data().rewards")
+                console.log(doc.data())
+                if(doc.data().rewards != null) {
+                    for (var i = 0; i <Object.keys(doc.data().rewards); i++) {
+                        this.myRewards.push(doc.data().rewards[i])
+                    }
+                }
+            })
+        },
+        updateDatabase: function() {
+            db.collection(this.email).doc("Profile").update({
+                rewards: Object.assign({}, this.myRewards)
+            }).then(() => {
+                console.log("updated rewards")
+            })
         }
+    },
+    created: function() {
+        console.log("created")
+        this.getMyRewards()
+        
     },
 }
 </script>
@@ -215,6 +246,7 @@ export default {
 }
 .start {
     width: 430px;
+    padding: 20px 10px 20px 30px;
 }
 .block {
     display: flex;
