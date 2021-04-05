@@ -54,8 +54,7 @@ export default {
         
         db.collection(this.email).doc("Recycling history").get().then(snapshot => {
           var data = snapshot.data();
-          var numOfRecycledItems = Object.keys(data).length;
-          if (numOfRecycledItems == 0) { // User is recycling for the first time
+          if (data == undefined) { // User is recycling for the first time
             db.collection(this.email).doc("Recycling history").set(Object.assign({},[{
               Date: dateFormat, Time: time, Item: this.item, Points: this.points}]));
           }
