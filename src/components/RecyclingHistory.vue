@@ -9,6 +9,7 @@
         </tr> 
       </thead> 
     </table> 
+    <h2>Summary and Statistics</h2> 
     <PieChart></PieChart>
   </div>
 </template>
@@ -55,26 +56,36 @@ export default {
 </script>
 
 <style scoped>
-#table{
-    text-align: center;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
+div {
+  padding: 170px;
+  background-color: #E8E1CF;
+}
+table{
+    margin: 20px;
+    font-size: 15px;
     font-family: sans-serif;
-    min-width: 400px;
-    align-content: center ;
+    min-width: 1000px;
+    background-color: white;
 }
 
-#table thead tr {
-    background-color: #009879;
+thead {
+    background-color: #70533b;
     color: #ffffff;
     text-align: left;
-    padding: 10px;
 }
+
+tr {
+  color: blue;
+  border-bottom: thin;
+}
+
 th, td{
-  padding: 12px;
+  text-align: center;
+  padding: 10px;
 }
-#history {
-  justify-content: center;
+
+h2 {
+  color: #69815e;
 }
+
 </style>

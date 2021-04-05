@@ -1,6 +1,7 @@
 <template>
     <div>
-        <PieChart></PieChart>
+      <h2>Pie Chart</h2>
+      <PieChart></PieChart>
     </div>
 </template>
 
