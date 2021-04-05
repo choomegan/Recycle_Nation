@@ -1,18 +1,19 @@
 <template>
-  <div class="chart">
-    <h2>Pie Chart</h2>
-    <chart></chart>
-  </div>
+    <div>
+      <h2>Pie Chart</h2>
+      <PieChart></PieChart>
+    </div>
 </template>
 
 <script>
-import Chart from "./PieChart.js";
+import PieChart from './PieChart.js'
 export default {
-  components: {
-    Chart
-  }
-};
+    components: {
+        PieChart
+    }
+}
 </script>
 
-<style>
+<style scoped>
+
 </style>

@@ -27,30 +27,27 @@ export default {
     methods: {
         chartData: function() {
             var user = firebase.auth().currentUser;
-            db.collection(user.email).doc("Recycling history").get().then(doc => {
-            
-                Object.values(doc.data()).forEach(item => {
-                    console.log("hello")
-                    console.log(this.datacollection.datasets.data)
-                    console.log("printed")
-                    if (item.Item == "glass") { 
-                        this.datacollection.datasets.data[0] += 1;
-                    } else if (item.Item == "plastic") {
-                        this.datacollection.datasets.data[1] += 1;
-                    } else if (item.Item == "paper") {
-                        this.datacollection.datasets.data[2] += 1;
+            db.collection(user.email).doc("Recycling history").get().then((doc) => {
+                var index;
+                var item = doc.data()
+                for(index = 0; index < Object.keys(item).length; index++) {
+                    if (item[index].Item == "glass") { 
+                        this.datacollection.datasets[0].data[0] += 1;
+                    } else if (item[index].Item == "plastic") {
+                        this.datacollection.datasets[0].data[1] += 1;
+                    } else if (item[index].Item == "paper") {
+                        this.datacollection.datasets[0].data[2] += 1;
                     } else {
-                        this.datacollection.datasets.data[3] += 1;
-                    }
-                })
-            })
-            //console.log(this.datacollection.datasets.data)
+                        this.datacollection.datasets[0].data[3] += 1;
+                    }       
+                }
+                this.renderChart(this.datacollection, this.options)
+            });
+            
+            
         }
     },
     created() {
         this.chartData();
     },
-    mounted() {
-        this.renderChart(this.datacollection, this.options)
-    }
 }

@@ -2,15 +2,15 @@
   <div id="history">
     <table id="table">
       <thead> 
-          <th>Date/ Time</th> 
-          <th> Name of Item </th> 
-          <th>Points Earned </th>
+        <tr> 
+          <th>Date/Time</th> 
+          <th>Name of Item</th> 
+          <th>Points Earned</th>
+        </tr> 
       </thead> 
-    </table><br><br> 
+    </table> 
     <h2>Summary and Statistics</h2> 
-    <div id="pie">
-      <pie-chart></pie-chart>
-    </div> 
+    <PieChart></PieChart>
   </div>
 </template>
 
@@ -20,32 +20,35 @@ import db from '../firebase.js'
 import PieChart from './Charts/PieChart.vue'
 
 export default {
-    name: 'pie',
-    components: {
-        PieChart
-    },
     data() {
       return {
+        title: "Recycling History"
       }
+    },
+    components: {
+      PieChart
     },
     methods: {
         retrieveData: function() {
             var user = firebase.auth().currentUser;
+            console.log("hello")
             db.collection(user.email).doc("Recycling history").get().then(doc => {
-                Object.values(doc.data()).forEach(item => {
-                    //console.log(item)
-                    //console.log("item")
-                    let row = `<tr>
+              console.log(doc.data()) 
+              console.log("doc.data()")
+              Object.values(doc.data()).forEach(item => {
+                console.log(item)
+                console.log("item")
+                let row = `<tr>
                               <td>${item.Date} ${item.Time}</td>
                               <td>${item.Item}</td> 
                               <td>${item.Points}</td> 
-                              <tr>`
-                    let table = document.getElementById("table")
-                    table.innerHTML += row 
-                })
+                          <tr>`
+                let table = document.getElementById("table")
+                table.innerHTML += row 
+              })
             })
         }
-    },   
+    },
     created() {
       this.retrieveData();
     }
