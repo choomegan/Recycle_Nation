@@ -60,10 +60,12 @@ export default {
         updatePage: function() {
             var user = firebase.auth().currentUser;
             this.username = user.displayName;
-            this.email = user.email;
-            db.collection(this.email).doc("Profile").get().then((items) => {
-                this.date = items.data().dateJoined
-                this.points = items.data().points
+            db.collection(user.email).doc("Profile").get().then((items) => {
+                var month = ('0' + (items.data().dateJoined.getMonth() + 1)).slice(-2);
+                var date = ('0' + items.data().dateJoined.getDate()).slice(-2);
+                var year = items.data().dateJoined.getFullYear();
+                var dateTimeNewFormat = date + '-' + month + '-' + year; 
+                this.date = dateTimeNewFormat
                 console.log(items.data())
                 this.computeStar()
             })

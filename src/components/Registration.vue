@@ -37,10 +37,6 @@ export default {
         },
         register:function() {
             var dateTime = new Date();
-            var month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
-            var date = ('0' + dateTime.getDate()).slice(-2);
-            var year = dateTime.getFullYear();
-            var dateTimeNewFormat = date + '-' + month + '-' + year; 
 
             var achievements =[
                 {
@@ -114,7 +110,7 @@ export default {
                     displayName: this.name,
                 })
                 database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
-                database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTimeNewFormat})
+                database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime})
                 database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                 alert('Successfully registered! Please login.');
                 this.$router.push({path:'/'});

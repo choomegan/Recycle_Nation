@@ -21,7 +21,8 @@ export default {
       email: "",
       item: "",
       points: "",
-      pushData:[]
+      pushData:[],
+      data:{}
     }
   },
   methods: {
@@ -65,16 +66,290 @@ export default {
             }
             this.pushData.push({
               Date: dateFormat, Time: time, Item: this.item, Points: this.points})
-              console.log(this.pushData)
               db.collection(this.email).doc("Recycling history").set(Object.assign({},this.pushData))
           }
         })
-      }
-  },
+      },
+      update: function() {
+        db.collection(this.email).doc("Achievements").get().then((querySnapShot) => {
+          for (let i = 0; i < Object.keys(querySnapShot.data()).length; i++) {
+            this.data[i] = Object.values(querySnapShot.data())[i]
+          }
+          console.log(this.data)
+          var glasscount = 30 - this.data[9].numberRequired
+          var papercount = 30 - this.data[7].numberRequired
+          var metalcount = 30 - this.data[5].numberRequired
+          var plasticcount = 30 - this.data[3].numberRequired
+          var totalcount = 100 - this.data[11].numberRequired
+          if (this.item == 'glass') {
+            glasscount += 1
+            if (glasscount < 3) {
+              db.collection(this.email).doc("Achievements").update({
+                8: {
+                  completed: false,
+                  name: "Recycled 3 glass items",
+                  numberRequired: 3 - glasscount
+                },
+                9: {
+                  completed: false,
+                  name: "Recycled 30 glass items",
+                  numberRequired: 30 - glasscount
+                }
+              })
+            } else if (glasscount >= 30) {
+              db.collection(this.email).doc("Achievements").update({
+                8: {
+                  completed: true,
+                  name: "Recycled 3 glass items",
+                  numberRequired: 0
+                },
+                9: {
+                  completed: true,
+                  name: "Recycled 30 glass items",
+                  numberRequired: 0
+                }
+              })
+            } else {
+              db.collection(this.email).doc("Achievements").update({
+                8: {
+                  completed: true,
+                  name: "Recycled 3 glass items",
+                  numberRequired: 0
+                },
+                9: {
+                  completed: false,
+                  name: "Recycled 30 glass items",
+                  numberRequired: 30 - glasscount
+                }
+              })
+            }
+          } else if (this.item == "paper") {
+            papercount += 1
+            if (papercount < 3) {
+              db.collection(this.email).doc("Achievements").update({
+                6: {
+                  completed: false,
+                  name: "Recycled 3 paper items",
+                  numberRequired: 3 - papercount
+                },
+                7: {
+                  completed: false,
+                  name: "Recycled 30 paper items",
+                  numberRequired: 30 - papercount
+                }
+              })
+            } else if (papercount >= 30) {
+              db.collection(this.email).doc("Achievements").update({
+                6: {
+                  completed: true,
+                  name: "Recycled 3 paper items",
+                  numberRequired: 0
+                },
+                7: {
+                  completed: true,
+                  name: "Recycled 30 paper items",
+                  numberRequired: 0
+                }
+              })
+            } else {
+              db.collection(this.email).doc("Achievements").update({
+                6: {
+                  completed: true,
+                  name: "Recycled 3 paper items",
+                  numberRequired: 0
+                },
+                7: {
+                  completed: false,
+                  name: "Recycled 30 paper items",
+                  numberRequired: 30 - papercount
+                }
+              })
+            }
+          } else if (this.item == "metal") {
+            metalcount += 1
+            if (metalcount < 3) {
+              db.collection(this.email).doc("Achievements").update({
+                4: {
+                  completed: false,
+                  name: "Recycled 3 metal items",
+                  numberRequired: 3 - metalcount
+                },
+                5: {
+                  completed: false,
+                  name: "Recycled 30 metal items",
+                  numberRequired: 30 - metalcount
+                }
+              })
+            } else if (metalcount >= 30) {
+              db.collection(this.email).doc("Achievements").update({
+                4: {
+                  completed: true,
+                  name: "Recycled 30 metal items",
+                  numberRequired: 0
+                },
+                5: {
+                  completed: true,
+                  name: "Recycled 30 metal items",
+                  numberRequired: 0
+                }
+              })
+            } else {
+              db.collection(this.email).doc("Achievements").update({
+                4: {
+                  completed: true,
+                  name: "Recycled 3 metal items",
+                  numberRequired: 0
+                },
+                5: {
+                  completed: false,
+                  name: "Recycled 30 metal items",
+                  numberRequired: 30 - metalcount
+                }
+              })
+            }
+          } else if (this.item == "plastic") {
+            plasticcount += 1
+            if (plasticcount < 3) {
+              db.collection(this.email).doc("Achievements").update({
+                2: {
+                  completed: false,
+                  name: "Recycled 3 plastic items",
+                  numberRequired: 3 - plasticcount
+                },
+                3: {
+                  completed: false,
+                  name: "Recycled 30 metal items",
+                  numberRequired: 30 - plasticcount
+                }
+              })
+            } else if (plasticcount >= 30) {
+              db.collection(this.email).doc("Achievements").update({
+                2: {
+                  completed: true,
+                  name: "Recycled 3 metal items",
+                  numberRequired: 0
+                },
+                3: {
+                  completed: true,
+                  name: "Recycled 30 metal items",
+                  numberRequired: 0
+                }
+              })
+            } else {
+              db.collection(this.email).doc("Achievements").update({
+                2: {
+                  completed: true,
+                  name: "Recycled 3 metal items",
+                  numberRequired: 0
+                },
+                3: {
+                  completed: false,
+                  name: "Recycled 30 metal items",
+                  numberRequired: 30 - plasticcount
+                }
+              })
+            }
+          }
+          totalcount += 1
+          if (totalcount < 10) {
+            db.collection(this.email).doc("Achievements").update({
+              10: {
+                completed: false,
+                name: "Recycled 10 items in total",
+                numberRequired: 10 - totalcount
+              },
+              11: {
+                completed: false,
+                name: "Recycled 100 items in total",
+                numberRequired: 100 - totalcount
+              }
+            })
+          } else if (totalcount > 100) {
+            db.collection(this.email).doc("Achievements").update({
+              10: {
+                completed: true,
+                name: "Recycled 10 items in total",
+                numberRequired: 0
+              },
+              11: {
+                completed: true,
+                name: "Recycled 100 items in total",
+                "numberRequired": 0
+              }
+            })
+          } else {
+            db.collection(this.email).doc("Achievements").update({
+              10: {
+                completed: true,
+                name: "Recycled 10 items in total",
+                numberRequired: 0
+              },
+              11: {
+                completed: false,
+                name: "Recycled 100 items in total",
+                numberRequired: 100 - totalcount
+              }
+            })
+          }
+          db.collection(this.email).doc("Profile").get().then(snapShot => {
+            var current = new Date()
+            var diff = current.getTime()/1000 - snapShot.data()["dateJoined"]["seconds"]
+            var days = Math.floor(diff/86400)
+            if (days < 3) {
+              db.collection(this.email).doc("Achievements").update({
+                0: {
+                  completed: false,
+                  name: "Recycled for 3 days",
+                  numberRequired: 3 - days
+                },
+                1: {
+                  completed: false,
+                  name: "Recycled for 30 days",
+                  numberRequired: 30 - days
+                }
+              })
+            } else if (days > 30) {
+              db.collection(this.email).doc("Achievements").update({
+                0: {
+                  completed: true,
+                  name: "Recycled for 3 days",
+                  numberRequired: 0
+                },
+                1: {
+                  completed: true,
+                  name: "Recycled for 30 days",
+                  numberRequired: 0
+                }
+              })
+            } else {
+              db.collection(this.email).doc("Achievements").update({
+                0: {
+                  completed: true,
+                  name: "Recycled for 3 days",
+                  numberRequired: 0
+                },
+                1: {
+                  completed: false,
+                  name: "Recycled for 30 days",
+                  numberRequired: 30 - days
+                }
+              })
+            }
+
+            db.collection(this.email).doc("Profile").update({
+              dateJoined: snapShot.data()["dateJoined"],
+              points: snapShot.data()["points"] + this.points,
+              username: snapShot.data()["username"]
+            })
+          })
+        })
+      }  
+    },
   created() {
     this.getData();
     this.getUser();
     this.addToDB();
+    this.update();
   }
 }
 </script>
