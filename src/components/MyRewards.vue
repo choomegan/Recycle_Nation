@@ -93,7 +93,9 @@ export default {
         checkUser: function(item) {
             var currentUser = firebase.auth().currentUser;
             if (currentUser == null) {
-                console.log("no user logged in")
+                console.log("no user logged in");
+                alert("Please log in to continue.")
+                this.$router.push('/');
             } else {
                 console.log(currentUser.email)
                 this.redeem(item)
