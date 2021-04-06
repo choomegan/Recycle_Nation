@@ -25,7 +25,7 @@ export default {
         return {
             recycledData: {},
             email:"",
-            password:"",
+            password:""
         }
     },
     methods :{

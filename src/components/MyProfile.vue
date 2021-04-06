@@ -57,7 +57,11 @@ export default {
             var user = firebase.auth().currentUser;
             this.username = user.displayName;
             db.collection(user.email).doc("Profile").get().then((items) => {
-                this.date = items.data().dateJoined
+                var month = ('0' + (items.data().dateJoined.getMonth() + 1)).slice(-2);
+                var date = ('0' + items.data().dateJoined.getDate()).slice(-2);
+                var year = items.data().dateJoined.getFullYear();
+                var dateTimeNewFormat = date + '-' + month + '-' + year; 
+                this.date = dateTimeNewFormat
                 console.log(items.data())
             })
 
