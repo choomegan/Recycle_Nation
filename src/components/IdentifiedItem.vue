@@ -14,6 +14,7 @@
 
 <script>
 import db from "../firebase.js"
+import firebase from 'firebase/app'
 
 export default {
   data() {
@@ -29,12 +30,18 @@ export default {
         this.$router.push({name:"Home", params:{ userEmail: this.email }})
       },
       getData: function() {
+        var user = firebase.auth().currentUser;
+        if (user) {
+            //user signed in
+            this.email = user.email;
+        }
+        else {
+            alert("Please log in to continue.")
+            this.$router.push('/');
+        }
         var data = JSON.parse(this.$route.params.data);
         this.item = data[0].item;
         this.points = data[1].points;
-      },
-      getUser: function() {
-        this.email = this.$route.params.userEmail;
       },
       addToDB: function() { // add newly recycled information into recycling history
         // Get today's date
@@ -73,7 +80,6 @@ export default {
   },
   created() {
     this.getData();
-    this.getUser();
     this.addToDB();
   }
 }

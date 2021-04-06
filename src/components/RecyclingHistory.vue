@@ -31,6 +31,13 @@ export default {
     methods: {
         retrieveData: function() {
             var user = firebase.auth().currentUser;
+            if (user) {
+                //user signed in
+            }
+            else {
+              alert("Please log in to continue.")
+                this.$router.push('/');
+            }
             console.log("hello")
             db.collection(user.email).doc("Recycling history").get().then(doc => {
               console.log(doc.data()) 

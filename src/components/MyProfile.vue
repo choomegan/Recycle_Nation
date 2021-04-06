@@ -8,6 +8,8 @@
                 <a id="name">{{username}} </a>
                 <br>
                 Joined {{date}}
+                <br><br>
+                <button v-on:click="logout">Log out</button>
             </div>
         </div>
         <br><br>
@@ -59,6 +61,13 @@ export default {
         },
         updatePage: function() {
             var user = firebase.auth().currentUser;
+            if (user) {
+                //user signed in
+            }
+            else {
+                alert("Please log in to continue")
+                this.$router.push('/');
+            }
             this.username = user.displayName;
             this.email = user.email;
             db.collection(this.email).doc("Profile").get().then((items) => {
@@ -82,6 +91,15 @@ export default {
                 console.log(this.noOfGoldStars)
             })
         },
+        logout: function() {
+            firebase.auth().signOut().then(() => {
+                // Sign-out successful.
+                this.$router.push('/');
+            }).catch((error) => {
+                // An error happened.
+                alert(error.message);
+            });
+        }
     },
     created: function() {
         this.updatePage();
