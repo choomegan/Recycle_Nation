@@ -9,6 +9,8 @@ import MyRewards from './components/MyRewards.vue'
 import RecyclingHistory from './components/RecyclingHistory.vue'
 import Registration from './components/Registration.vue'
 import ForgotPassword from './components/ForgotPassword.vue'
+import QR from './components/QrCode.vue'
+import GenerateQR from './components/GenerateQR.vue'
 
 export default[
     { name:'About Us', path: '/AboutUs', component: AboutUs},
@@ -22,5 +24,8 @@ export default[
     { name:'Rewards Shop', path: '/MyRewards', component: MyRewards},
     { name:'Recycling History', path: '/RecyclingHistory', component: RecyclingHistory},
     { name:'Registration', path: '/Registration', component: Registration},
-    { name:'Forgot Password', path: '/ForgotPassword', component: ForgotPassword}
+    { name:'Forgot Password', path: '/ForgotPassword', component: ForgotPassword},
+    { name:'QR Code Scanner', path: '/QR', component: QR},
+    { name:'Generate QR', path: '/GenerateQR', component: GenerateQR},
+
 ]

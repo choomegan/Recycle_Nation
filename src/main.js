@@ -2,10 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Routes from './routes.js'
-import VTooltip from 'v-tooltip'
+import VueQrcodeReader from "vue-qrcode-reader";
 
-Vue.use(VTooltip)
+Vue.use(VueQrcodeReader);
 Vue.use(VueRouter)
+
 Vue.config.productionTip = false
 
 //register routes

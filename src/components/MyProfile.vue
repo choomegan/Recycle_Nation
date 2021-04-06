@@ -16,18 +16,18 @@
             <a id="points">{{points}}</a>
             <span id="routes" v-on:click="rewards">Rewards Shop</span>
             <br><br>
-            Achievements
+            Achievements: 
+            <a id="points"> {{percent}}% </a> complete!
             <span id="routes" v-on:click="achievements">View All</span>
         </div>
 
         <div class="split">
-            <div class="halves" v-for="i in 3" v-bind:key="i">
-                <img v-bind:src="goldStar" id="star"/>
-            </div>
-            <div class="halves" v-for="i in 2" v-bind:key="i">
-                <img v-bind:src="greyStar" id="star"/>
+            <div class="halves" v-for="i in 5" v-bind:key="i">
+                <img v-bind:src="goldStar" id="star" v-if="i <= noOfGoldStars"/>
+                <img v-bind:src="greyStar" id="star" v-if="i > noOfGoldStars"/>
             </div>
         </div>
+        <br>
     </div>
 </template>
 
@@ -41,9 +41,13 @@ export default {
             image:require('../assets/holding_plants.png'),
             points: 0,
             username: "",
+            email:"",
             date: "",
+            noOfGoldStars: 0,
+            percent:0,
             goldStar: require('../assets/goldStar.png'),
-            greyStar: require('../assets/greyStar.png')
+            greyStar: require('../assets/greyStar.png'),
+            
         }
     },
     methods: {
@@ -63,9 +67,23 @@ export default {
                 var dateTimeNewFormat = date + '-' + month + '-' + year; 
                 this.date = dateTimeNewFormat
                 console.log(items.data())
+                this.computeStar()
             })
-
-        }
+            
+        },
+        computeStar: function() {
+            db.collection(this.email).doc("Achievements").get().then((doc) => {
+                for (var i = 0; i < Object.keys(doc.data()).length; i++) {
+                    if (doc.data()[i].completed) {
+                        this.noOfGoldStars += 1;
+                        console.log(this.noOfGoldStars)
+                    }
+                }
+                this.percent = this.noOfGoldStars/12 * 100
+                this.noOfGoldStars = Math.floor(this.noOfGoldStars/12 * 5);
+                console.log(this.noOfGoldStars)
+            })
+        },
     },
     created: function() {
         this.updatePage();
@@ -87,6 +105,7 @@ export default {
 
 #star {
     height: 120px;
+    color:goldenrod;
 }
 
 #routes {
@@ -110,7 +129,7 @@ export default {
 }
 
 #points {
-    font-size: 30px;
+    font-size: 35px;
     padding:20px;
 }
 
