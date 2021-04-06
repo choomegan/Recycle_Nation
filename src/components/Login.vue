@@ -54,6 +54,7 @@ export default {
                     })
                     .catch(err => {
                         this.error = err.message;
+                        alert("Wrong username/password. Please try again.")
                     });
         },
         getData: function() {
