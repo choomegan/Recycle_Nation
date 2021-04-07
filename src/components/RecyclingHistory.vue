@@ -43,13 +43,8 @@ export default {
               alert("Please log in to continue.")
                 this.$router.push('/');
             }
-            console.log("hello")
             db.collection(user.email).doc("Recycling history").get().then(doc => {
-              console.log(doc.data()) 
-              console.log("doc.data()")
               Object.values(doc.data()).forEach(item => {
-                console.log(item)
-                console.log("item")
                 let row = `<tr>
                               <td>${item.Date} ${item.Time}</td>
                               <td>${item.Item}</td> 
