@@ -11,7 +11,7 @@ export default {
                 datasets: [{
                     label: "Overview of materials recycled",
                     backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
-                    data:[0,0,0,5]
+                    data:[0,0,0,0]
                 }]
             },
             options: {
