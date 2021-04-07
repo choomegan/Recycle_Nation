@@ -1,5 +1,5 @@
 <template>
-  <vue-qrcode value='localhost:8080/Login/[{"item":"glass"}, {"points":40}]' />
+  <vue-qrcode value='[{"item":"glass"}, {"points":40}]' />
 </template>
 <script>
 import VueQrcode from 'vue-qrcode'
