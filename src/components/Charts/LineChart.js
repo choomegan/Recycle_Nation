@@ -11,7 +11,7 @@ export default {
                 datasets:[{
                     data: [5,10,7],
                     label: "Points Earned",
-                    borderColor: "#3e95cd",
+                    borderColor: "#E5634F",
                     fill: false
             }]
             },
@@ -21,7 +21,7 @@ export default {
                     text: "Points earned over the past 3 months",
                     fontSize: 20
                 },
-                responsive: true,
+                responsive: false,
                 maintainAspectRatio: false, 
                 scales : {
                     yAxes: [{

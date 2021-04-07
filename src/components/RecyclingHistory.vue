@@ -12,7 +12,7 @@
     <br>
     <h2>Summary and Statistics</h2> 
     <PieChart></PieChart>
-    <br>
+    <br><br>
     <LineChart id="linechart"></LineChart> 
   </div>
 </template>
