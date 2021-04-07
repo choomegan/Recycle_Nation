@@ -7,10 +7,10 @@ export default {
     data: function() {
         return {
             datacollection: {
-                labels: ['Apr 2021', 'May 2021', 'Jun 2021'],
+                labels: ['Jan 2021', 'Feb 2021', 'Mar 2021'],
                 datasets:[{
-                    data: [],
-                    label: "hi",
+                    data: [5,10,7],
+                    label: "Points Earned",
                     borderColor: "#3e95cd",
                     fill: false
             }]
@@ -18,10 +18,19 @@ export default {
             options: {
                 title: {
                     display: true,
-                    text: "Points earned over time"
+                    text: "Points earned over the past 3 months",
+                    fontSize: 20
                 },
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false, 
+                scales : {
+                    yAxes: [{
+                        ticks:{
+                            min:0,
+                            precision: 0
+                        }
+                    }]
+                }
             }
         }
     },

@@ -9,9 +9,11 @@
         </tr> 
       </thead> 
     </table> 
+    <br>
     <h2>Summary and Statistics</h2> 
     <PieChart></PieChart>
-    <LineChart></LineChart> 
+    <br>
+    <LineChart id="linechart"></LineChart> 
   </div>
 </template>
 
@@ -67,25 +69,27 @@ export default {
 
 <style scoped>
 div {
-  padding: 170px;
+  padding: 0px;
   background-color: #E8E1CF;
 }
 table{
     margin: 20px;
     font-size: 15px;
     font-family: sans-serif;
-    min-width: 1000px;
-    background-color: white;
+    min-width: 1500px;
+    padding-left: 170px;
+    padding-right: 200px;
+    padding-top: 50px;
 }
 
 thead {
     background-color: #70533b;
-    color: #ffffff;
+    color: black;
     text-align: left;
 }
 
 tr {
-  color: white;
+  color: white; 
   border-bottom: thin;
 }
 
@@ -96,6 +100,10 @@ th, td{
 
 h2 {
   color: #69815e;
+}
+
+#linechart {
+    padding-left: 250px;
 }
 
 </style>
