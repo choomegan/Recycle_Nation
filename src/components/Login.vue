@@ -30,11 +30,21 @@ export default {
     },
     methods :{
         register: function() {
-            this.$router.push({path:'Registration'})
+            if (typeof this.recycledData === "undefined") {
+                this.$router.push('/Registration');
+            }
+            else { // user logged in through scanning
+                this.$router.push({name:"Registration", params:{data: this.recycledData }});
+            }
         },
 
         resetPW: function() {
-            this.$router.push({path:'ForgotPassword'})
+            if (typeof this.recycledData === "undefined") {
+                this.$router.push('/ForgotPassword')
+            }
+            else { // user logged in through scanning
+                this.$router.push({name:"Forgot Password", params:{data: this.recycledData }});
+            }
         },
 
         login: function() {
@@ -54,10 +64,12 @@ export default {
                     })
                     .catch(err => {
                         this.error = err.message;
+                        alert("Wrong username/password. Please try again.")
                     });
         },
         getData: function() {
             this.recycledData = this.$route.params.data;
+            console.log("data in login: " + this.recycledData);
         }
     },
     created() {

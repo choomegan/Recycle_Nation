@@ -42,6 +42,13 @@ export default {
         },
         retrieve: function() {
             var user = firebase.auth().currentUser;
+            if (user) {
+                //user signed in
+            }
+            else {
+                alert("Please log in to continue.")
+                this.$router.push('/');
+            }
             var email = user.email;
             db.collection(email).doc("Achievements").get().then((querySnapShot) => {
                 console.log(querySnapShot.data())

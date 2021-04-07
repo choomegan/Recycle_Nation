@@ -28,7 +28,8 @@ export default {
             name:"",
             email:"",
             password:"",
-            rePassword:""
+            rePassword:"",
+            recycledData: ""
         }
     },
     methods :{
@@ -113,12 +114,25 @@ export default {
                 database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime})
                 database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                 alert('Successfully registered! Please login.');
-                this.$router.push({path:'/'});
+                if (typeof this.recycledData === "undefined") {
+                    this.$router.push('/');
+                }
+                else { // user logged in through scanning
+                    this.$router.push({name:"Login with data", params:{data: this.recycledData }});
+                }
+                //this.$router.push({path:'/'});
             })
             .catch(error => {
                 alert(error.message);
             });
         },
+        getData: function() {
+            this.recycledData = this.$route.params.data;
+            console.log("data in registration: " + this.recycledData);
+        }
+    },
+    created() {
+        this.getData();
     }
 }
 </script> 
