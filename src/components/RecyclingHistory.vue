@@ -11,6 +11,7 @@
     </table> 
     <h2>Summary and Statistics</h2> 
     <PieChart></PieChart>
+    <LineChart></LineChart> 
   </div>
 </template>
 
@@ -18,6 +19,7 @@
 import firebase from 'firebase/app'
 import db from '../firebase.js'
 import PieChart from './Charts/PieChart.vue'
+import LineChart from './Charts/LineChart.vue'
 
 export default {
     data() {
@@ -26,7 +28,8 @@ export default {
       }
     },
     components: {
-      PieChart
+      PieChart,
+      LineChart
     },
     methods: {
         retrieveData: function() {
