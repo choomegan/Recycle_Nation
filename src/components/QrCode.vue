@@ -1,8 +1,7 @@
 <template>
   <div>
-    <p class="decode-result">Last result: <b>{{ result }}</b></p>
-    
-    
+    <!-- <p class="decode-result">Last result: <b>{{ result }}</b></p> -->
+    <br>
     <qrcode-stream :camera="camera" @decode="onDecode" @init="onInit">
     
       <div v-if="validationSuccess" class="validation-success">
@@ -61,11 +60,13 @@ export default {
 
         this.isValid = content.startsWith('[{')
         
+        await this.timeout(2000)
+
         if (!this.isValid) {
             this.turnCameraOn()
+            this.isValid = undefined
         } else {
-            await this.timeout(2000)
-            this.$router.push({name:"Login with data", params:{data: this.result }});
+            this.$router.push({name:"Login with data", params:{data: this.result}});
         }
       
     },
@@ -111,6 +112,13 @@ export default {
 }
 .validation-failure {
   color: red;
+}
+.qrcode-stream__camera {
+  position: fixed;
+  right: 50%;
+  bottom: 50%;
+  max-width: 50% !important;
+  max-height: 50% !important;
 }
 
 </style>
