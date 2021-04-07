@@ -61,18 +61,20 @@ export default {
             var user = firebase.auth().currentUser;
             this.username = user.displayName;
             db.collection(user.email).doc("Profile").get().then((items) => {
-                var month = ('0' + (items.data().dateJoined.getMonth() + 1)).slice(-2);
-                var date = ('0' + items.data().dateJoined.getDate()).slice(-2);
-                var year = items.data().dateJoined.getFullYear();
+                var datejoined = new Date(items.data().dateJoined.seconds*1000)
+                var month = ('0' + (datejoined.getMonth() + 1)).slice(-2);
+                var date = ('0' + datejoined.getDate()).slice(-2);
+                var year = datejoined.getFullYear();
                 var dateTimeNewFormat = date + '-' + month + '-' + year; 
                 this.date = dateTimeNewFormat
-                console.log(items.data())
                 this.computeStar()
+                this.points = items.data().points
             })
             
         },
         computeStar: function() {
-            db.collection(this.email).doc("Achievements").get().then((doc) => {
+            var user = firebase.auth().currentUser
+            db.collection(user.email).doc("Achievements").get().then((doc) => {
                 for (var i = 0; i < Object.keys(doc.data()).length; i++) {
                     if (doc.data()[i].completed) {
                         this.noOfGoldStars += 1;

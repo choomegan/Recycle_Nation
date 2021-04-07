@@ -5,7 +5,8 @@
             <li><router-link to="/MyProfile" exact>My Profile</router-link></li>
             <li><router-link to="/RecyclingHistory" exact>Recycling History</router-link></li>
             <li><router-link to="/MapOfBins" exact>Map Of Bins</router-link></li>
-            <li><router-link to="/AboutUs" exact>About Us</router-link></li>       
+            <li><router-link to="/AboutUs" exact>About Us</router-link></li>
+            <li><router-link to="/QR" exact>Scan QR Code</router-link></li>       
         </ul>
     </div> 
 </template>

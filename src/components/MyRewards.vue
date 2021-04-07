@@ -196,7 +196,7 @@ export default {
                 console.log("doc.data().rewards")
                 console.log(doc.data())
                 if(doc.data().rewards != null) {
-                    for (var i = 0; i <Object.keys(doc.data().rewards); i++) {
+                    for (var i = 0; i <Object.keys(doc.data().rewards).length; i++) {
                         this.myRewards.push(doc.data().rewards[i])
                     }
                 }
