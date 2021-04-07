@@ -90,7 +90,7 @@ export default {
                         console.log(this.noOfGoldStars)
                     }
                 }
-                this.percent = this.noOfGoldStars/12 * 100
+                this.percent = (this.noOfGoldStars/12 * 100).toFixed(2)
                 this.noOfGoldStars = Math.floor(this.noOfGoldStars/12 * 5);
                 console.log(this.noOfGoldStars)
             })
