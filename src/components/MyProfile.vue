@@ -8,6 +8,8 @@
                 <a id="name">{{username}} </a>
                 <br>
                 Joined {{date}}
+                <br><br>
+                <button v-on:click="logout">Log out</button>
             </div>
         </div>
         <br><br>
@@ -59,6 +61,13 @@ export default {
         },
         updatePage: function() {
             var user = firebase.auth().currentUser;
+            if (user) {
+                //user signed in
+            }
+            else {
+                alert("Please log in to continue")
+                this.$router.push('/');
+            }
             this.username = user.displayName;
             db.collection(user.email).doc("Profile").get().then((items) => {
                 var month = ('0' + (items.data().dateJoined.getMonth() + 1)).slice(-2);
@@ -84,6 +93,15 @@ export default {
                 console.log(this.noOfGoldStars)
             })
         },
+        logout: function() {
+            firebase.auth().signOut().then(() => {
+                // Sign-out successful.
+                this.$router.push('/');
+            }).catch((error) => {
+                // An error happened.
+                alert(error.message);
+            });
+        }
     },
     created: function() {
         this.updatePage();

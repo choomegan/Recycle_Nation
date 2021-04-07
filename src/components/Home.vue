@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
 export default {
     data() {
         return {
@@ -24,6 +25,21 @@ export default {
                 {type: 'Metal',     data: ['Aluminum cans (from canned drinks and canned food)', 'Aerosal can']},
             ]
         }
+    },
+    methods: {
+        checkUser: function() {
+            var user = firebase.auth().currentUser;
+            if (user) {
+                //user signed in
+            }
+            else {
+                alert("Please log in to continue.")
+                this.$router.push('/');
+            }
+        }
+    },
+    created() {
+        this.checkUser();
     }
 }
 </script>
