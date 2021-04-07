@@ -66,7 +66,7 @@ export default {
             this.turnCameraOn()
             this.isValid = undefined
         } else {
-            this.$router.push({name:"Login with data", params:{data: this.result}});
+            this.$router.push({name:" Login ", params:{data: this.result}});
         }
       
     },

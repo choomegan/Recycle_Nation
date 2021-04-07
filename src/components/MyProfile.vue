@@ -66,7 +66,7 @@ export default {
             }
             else {
                 alert("Please log in to continue")
-                this.$router.push('/');
+                this.$router.push('/Login');
             }
             this.username = user.displayName;
             db.collection(user.email).doc("Profile").get().then((items) => {

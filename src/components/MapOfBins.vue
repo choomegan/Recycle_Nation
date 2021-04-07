@@ -53,7 +53,7 @@ export default {
             }
             else {
                 alert("Please log in to continue.")
-                this.$router.push('/');
+                this.$router.push('/Login');
             }
         }
     },
