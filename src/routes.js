@@ -25,7 +25,7 @@ export default[
     { name:'Rewards Shop', path: '/MyRewards', component: MyRewards},
     { name:'Recycling History', path: '/RecyclingHistory', component: RecyclingHistory},
     { name:'Registration', path: '/Registration', component: Registration},
-    { name:'Forgot Password', path: '/ForgotPassword', component: ForgotPassword},
+    { name:'Reset your password', path: '/ForgotPassword', component: ForgotPassword},
     { name:'QR Code Scanner', path: '/QR', component: QR},
     { name:'Generate QR', path: '/GenerateQR', component: GenerateQR},
     { name:'Welcome to Recycle Nation', path: '/', component: Options},

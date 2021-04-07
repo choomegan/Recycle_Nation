@@ -44,7 +44,7 @@ export default {
       }
     },
     updatingHeader: function() {
-      if (this.$route.name == "Login" || this.$route.name =="Registration" || this.$route.name =="Forgot Password") {
+      if (this.$route.name == "Login" || this.$route.name =="Registration") {
       this.title = 'Recycle Nation';
       } else {
       this.title = this.$route.name;

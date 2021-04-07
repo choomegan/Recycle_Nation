@@ -1,6 +1,6 @@
 <template> 
     <div id="forgotPW"> 
-        <h2>Reset your password</h2> 
+        
         <form> 
             <label>Enter email address: </label> 
             <input type="email" id="email" name="email" v-model="email" required> 
