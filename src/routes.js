@@ -11,13 +11,14 @@ import Registration from './components/Registration.vue'
 import ForgotPassword from './components/ForgotPassword.vue'
 import QR from './components/QrCode.vue'
 import GenerateQR from './components/GenerateQR.vue'
+import Options from './components/Options.vue'
 
 export default[
     { name:'About Us', path: '/AboutUs', component: AboutUs},
     { name:'Home', path: '/Home', component: Home},
     { name:'Identified Item', path: '/IdentifiedItem', component: IdentifiedItem }, 
-    { name:'Login with data', path: '/Login/:data', component: Login}, // data in form of [{"date":"2021-01-01"},{"time":"1.45pm"},[{"glass":40}, {"plastic":20}]]
-    { name:'Login', path: '/', component: Login}, //entrypoint to website
+    { name:' Login ', path: '/Login/:data', component: Login}, // data in form of [{"date":"2021-01-01"},{"time":"1.45pm"},[{"glass":40}, {"plastic":20}]]
+    { name:'Login', path: '/Login', component: Login}, //entrypoint to website
     { name:'Map Of Bins', path: '/MapOfBins', component: MapOfBins},
     { name:'My Achievements', path: '/MyAchievements', component: MyAchievements},
     { name:'My Profile', path: '/MyProfile', component: MyProfile},
@@ -27,5 +28,6 @@ export default[
     { name:'Forgot Password', path: '/ForgotPassword', component: ForgotPassword},
     { name:'QR Code Scanner', path: '/QR', component: QR},
     { name:'Generate QR', path: '/GenerateQR', component: GenerateQR},
+    { name:'Welcome to Recycle Nation', path: '/', component: Options},
 
 ]
