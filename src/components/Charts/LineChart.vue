@@ -1,7 +1,6 @@
 <template>
     <div>
-      <h2>Line Chart</h2>
-      <LineChart></LineChart>
+      <LineChart :width="1000"></LineChart>
     </div>
 </template>
 
