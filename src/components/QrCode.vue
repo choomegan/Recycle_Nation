@@ -65,7 +65,7 @@ export default {
             this.turnCameraOn()
         } else {
             await this.timeout(2000)
-            this.$router.push({path:"/"})
+            this.$router.push({path:"/Login/[{'item':'glass'}, {'points':40}]"})
         }
       
     },
