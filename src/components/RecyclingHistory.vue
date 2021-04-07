@@ -82,7 +82,7 @@ thead {
 }
 
 tr {
-  color: blue;
+  color: white;
   border-bottom: thin;
 }
 
