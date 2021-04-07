@@ -59,13 +59,13 @@ export default {
         this.result = content
         this.turnCameraOff()
 
-        this.isValid = content.startsWith('localhost')
+        this.isValid = content.startsWith('[{')
         
         if (!this.isValid) {
             this.turnCameraOn()
         } else {
             await this.timeout(2000)
-            this.$router.push({path:"/Login/[{'item':'glass'}, {'points':40}]"})
+            this.$router.push({name:"Login with data", params:{data: this.result }});
         }
       
     },
