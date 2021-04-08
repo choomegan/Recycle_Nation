@@ -19,7 +19,7 @@ export default {
                 title: {
                     display: true,
                     text: "Points earned over the past 3 months",
-                    fontSize: 20
+                    fontSize: 17
                 },
                 responsive: false,
                 maintainAspectRatio: false, 

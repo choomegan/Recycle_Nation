@@ -64,7 +64,8 @@ export default {
 
 <style scoped>
 #MyAchievements {
-    font-size: 20px;
+    font-size: 17px;
+    font-family: Avenir, Helvetica;
     padding: 100px;
     background-color: #E8E1CF;
 }
@@ -87,13 +88,15 @@ export default {
     margin:10px;
     width: 300px;
     height: 300px;
-    background-color:rgb(224, 212, 194);
+    background-color:#dbd2bc;
 }
 .box {
     padding: 10px;
 }
 
 #name {
+    font-family: Asap, Avenir;
+    color: rgb(92, 109, 70);
     font-weight: bold;
     font-size: 25px;
 }

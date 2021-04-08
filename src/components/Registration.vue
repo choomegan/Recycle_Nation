@@ -162,7 +162,13 @@ label {
     font-size: 20px;
     color: white;
     background-color: #7D6558;
+    border: none;
     height: 50px;
     width: 150px;
+    border-radius: 9px;
+}
+
+#button:hover {
+    background-color: #7d6558d2;
 }
 </style> 
