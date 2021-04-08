@@ -6,7 +6,7 @@
             </div>
             <div class="halves">
                 <a id="name">{{username}} </a>
-                <br>
+                <br><br>
                 Joined {{date}}
                 <br><br>
                 <button v-on:click="logout">Log out</button>
@@ -14,7 +14,7 @@
         </div>
         <br><br>
         <div>
-            Total Points earned: 
+            Total Points: 
             <a id="points">{{points}}</a>
             <span id="routes" v-on:click="rewards">Rewards Shop</span>
             <br><br>

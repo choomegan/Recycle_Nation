@@ -1,6 +1,6 @@
 <template>
     <div id="Home">
-        <p>Common Recyclable Items </p>
+        <p id="header">Common Recyclable Items </p>
         <br>
         <div class="recycle-box">
             <div class="recycle" v-for="recycle in this.info" v-bind:key="recycle[0]">
@@ -57,7 +57,7 @@ export default {
 }
 .recycle {
     border:solid;
-    border-color: slategray;
+    border-color: #b1a68c;
     width:400px;
     text-align: left;
     font-size: 20px;
@@ -66,12 +66,17 @@ export default {
 }
 #item {
     font-weight:bold;
-    color:darkgreen;
+    color:rgb(65, 99, 65);
     font-size:25px;
     text-align: center;
 }
 p {
     font-size: 25px;
     font-weight:bold;
+}
+
+#header {
+    font-family: Asap;
+    font-weight: bold;
 }
 </style>
