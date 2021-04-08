@@ -95,7 +95,7 @@ export default {
             if (currentUser == null) {
                 console.log("no user logged in");
                 alert("Please log in to continue.")
-                this.$router.push('/');
+                this.$router.push('/Login');
             } else {
                 console.log(currentUser.email)
                 this.redeem(item)

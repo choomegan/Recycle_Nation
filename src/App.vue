@@ -27,7 +27,7 @@ export default {
       if (this.$route.path == "/") {
         this.navigation = false;
       } 
-      else if (this.$route.path == "/Registration"){
+      else if (this.$route.path == "/Registration" || this.$route.path=="/QR"){
         this.navigation = false;
       } 
       else if (this.$route.path.startsWith("/IdentifiedItem")) {
@@ -44,7 +44,7 @@ export default {
       }
     },
     updatingHeader: function() {
-      if (this.$route.name == "Login" || this.$route.name =="Registration" || this.$route.name =="Forgot Password") {
+      if (this.$route.name == "Login" || this.$route.name =="Registration") {
       this.title = 'Recycle Nation';
       } else {
       this.title = this.$route.name;

@@ -115,10 +115,10 @@ export default {
                 database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                 alert('Successfully registered! Please login.');
                 if (typeof this.recycledData === "undefined") {
-                    this.$router.push('/');
+                    this.$router.push('/Login');
                 }
                 else { // user logged in through scanning
-                    this.$router.push({name:"Login with data", params:{data: this.recycledData }});
+                    this.$router.push({name:" Login ", params:{data: this.recycledData }});
                 }
                 //this.$router.push({path:'/'});
             })

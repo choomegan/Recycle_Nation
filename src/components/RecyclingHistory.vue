@@ -41,7 +41,7 @@ export default {
             }
             else {
               alert("Please log in to continue.")
-                this.$router.push('/');
+                this.$router.push('/Login');
             }
             db.collection(user.email).doc("Recycling history").get().then(doc => {
               Object.values(doc.data()).forEach(item => {

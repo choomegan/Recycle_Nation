@@ -34,7 +34,7 @@ export default {
             }
             else {
                 alert("Please log in to continue.")
-                this.$router.push('/');
+                this.$router.push('/Login');
             }
         }
     },
@@ -46,9 +46,10 @@ export default {
 
 <style scoped>
 #Home {
-    padding: 60px;
+    padding: 100px;
     background-color: #E8E1CF;
     text-align: center;
+    min-height: 500px;
 }
 .recycle-box {
     display: flex;

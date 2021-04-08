@@ -43,7 +43,7 @@ export default {
                 this.$router.push('/ForgotPassword')
             }
             else { // user logged in through scanning
-                this.$router.push({name:"Forgot Password", params:{data: this.recycledData }});
+                this.$router.push({name:"Reset your password", params:{data: this.recycledData }});
             }
         },
 
