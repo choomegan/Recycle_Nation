@@ -57,19 +57,21 @@ export default {
     justify-content: center;
 }
 .recycle {
+    font-family: Avenir, Helvetica;
     border:solid;
     border-color: #b1a68c;
     width:400px;
     text-align: left;
     font-size: 20px;
-    border-width: 2px;
+    border-width: 1px;
     padding:5px;
 }
 #item {
+    font-family: Avenir, Helvetica;
     font-weight:bold;
-    color:rgb(65, 99, 65);
+    color:rgb(57, 87, 52);
     font-size:25px;
-    text-align: center;
+    text-align:center;
 }
 p {
     font-size: 25px;

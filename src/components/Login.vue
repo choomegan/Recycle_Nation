@@ -81,7 +81,7 @@ export default {
 <style scoped> 
 #login{
     font-size: 25px;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: center;
     padding: 170px;
     background-color: #E8E1CF;
@@ -119,14 +119,22 @@ p,span {
 
 button {
     font-size: 20px;
+    border: none;
+    font-family: Asap, Helvetica;
     color: white;
     background-color: #7D6558;
     height: 50px;
     width: 150px;
+    border-radius: 9px;
+}
+
+button:hover {
+    background-color: #7d6558d2;
 }
 
 #extras {
     padding: 20px;
+    font-family: Asap;
 }
 </style> 
 

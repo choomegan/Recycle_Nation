@@ -18,7 +18,7 @@ export default {
                 title: {
                     display: true,
                     text: 'Distribution of all items recycled',
-                    fontSize: 20
+                    fontSize: 17
                 },
                 responsive: true,
                 maintainAspectRatio: false

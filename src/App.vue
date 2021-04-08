@@ -75,7 +75,7 @@ export default {
   }
 
   #title {
-    background-color: #8FA984;
+    background-color: #a2b39a;
     font-family: Asap;
     color:white;
     margin-top: 0;
@@ -87,6 +87,6 @@ export default {
 
   content {
     background-color: #E8E1CF;
-    font-family: "Segoe UI", Helvetica;
+    font-family: Avenir, Helvetica;
   }
 </style>

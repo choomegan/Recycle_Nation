@@ -48,7 +48,7 @@ export default {
 <style scoped> 
 #forgotPW{
     font-size: 20px;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: center;
     padding: 220px;
     background-color: #E8E1CF;
@@ -56,7 +56,7 @@ export default {
 }
 
 input {
-    height: 20px;
+    height: 25px;
     width: 200px;
 }
 
@@ -70,7 +70,13 @@ label {
     font-size: 20px;
     color: white;
     background-color: #7D6558;
+    border: none;
     height: 50px;
-    width: 200px;
+    width: 220px;
+    border-radius: 9px;
+}
+
+#button:hover {
+    background-color: #7d6558d2;
 }
 </style> 
