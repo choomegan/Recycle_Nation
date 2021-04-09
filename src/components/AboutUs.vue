@@ -1,9 +1,13 @@
 <template>
     <div id="AboutUs">
-        <h1>Our Vision</h1>
-        <p>Encouraging all Singaporeans to actively recycle.</p>
-        <h1>Our Mission</h1>
-        <p>We aim to promote green movement by making recycling easier for you.</p>
+        <div id="vision">
+            <h1>Our Vision</h1>
+            <p>Encouraging all Singaporeans to actively recycle.</p>
+        </div> 
+        <div id="mission">
+            <h1>Our Mission</h1>
+            <p>We aim to promote green movement by making recycling easier for you.</p>
+        </div> 
     </div>
 </template>
 
@@ -33,17 +37,31 @@ export default {
     position:absolute;
     width: 100%;
     height: 73%;
-    background-color: #E8E1CF;
     text-align: center;
+    background-color: #61756b;
+    color:  #ebe8de;
+
 }
 h1 {
     padding-top: 6.5%;
     font-size: 30px;
     font-family: Avenir;
-    color: rgb(57, 87, 52);
 }
 p {
     font-size: 22px;
     font-family: Avenir, Helvetica;
+}
+
+#vision {
+    background-color: #ebe8de;
+    color: #61756b;
+    padding-bottom: 100px;
+    padding-top: 10px;
+}
+#mission {
+    background-color: #61756b;
+    margin-top: 0;
+    padding-top: 10px;
+    padding-bottom: 100px;
 }
 </style>

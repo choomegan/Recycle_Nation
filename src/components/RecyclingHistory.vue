@@ -68,7 +68,7 @@ div {
   background-color: #E8E1CF;
 }
 table{
-    margin: 20px;
+    margin-left: 0%;
     font-size: 15px;
     font-family: Avenir;
     min-width: 1500px;
@@ -100,7 +100,7 @@ h2 {
 }
 
 #linechart {
-    padding-left: 220px;
+    padding-left: 15%;
 }
 
 </style>
