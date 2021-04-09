@@ -9,7 +9,8 @@
                     <li>{{item}}</li>
                 </ul>
             </div>
-        </div>
+        </div><br> 
+        <div id="disclaimer">Empty all food waste and liquids before recycling!</div> 
     </div>
 </template>
 
@@ -79,7 +80,14 @@ p {
 }
 
 #header {
-    font-family: Asap;
+    font-family: Asap, Avenir;
     font-weight: bold;
+}
+
+#disclaimer {
+    font-family: Avenir, Helvetica;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(112, 40, 40);
 }
 </style>

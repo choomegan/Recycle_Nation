@@ -39,7 +39,7 @@ export default {
         }
         else {
             alert("Please log in to continue.")
-            this.$router.push('/');
+            this.$router.push('/Login');
         }
         var data = JSON.parse(this.$route.params.data);
         this.item = data[0].item;
