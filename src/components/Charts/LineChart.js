@@ -21,7 +21,7 @@ export default {
                     text: "Points earned over the past 3 months",
                     fontSize: 17
                 },
-                responsive: false,
+                responsive: true,
                 maintainAspectRatio: false, 
                 scales : {
                     yAxes: [{

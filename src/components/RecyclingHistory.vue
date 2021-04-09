@@ -1,6 +1,6 @@
 <template>
   <div id="history">
-    <table id="table">
+    <table class="table" id="table">
       <thead> 
         <tr> 
           <th>Date/Time</th> 
@@ -46,13 +46,23 @@ export default {
             }
             db.collection(user.email).doc("Recycling history").get().then(doc => {
               Object.values(doc.data()).forEach(item => {
+                /*
                 let row = `<tr>
                               <td>${item.Date} ${item.Time}</td>
                               <td>${item.Item}</td> 
                               <td>${item.Points}</td> 
                           <tr>`
-                let table = document.getElementById("table")
-                table.innerHTML += row 
+                */
+                let table = document.getElementById("table").insertRow(1)
+                table.className = "rowdiv"
+                //table.innerHTML += row 
+                var x = table.insertCell(0)
+                var y = table.insertCell(1)
+                var z = table.insertCell(2)
+                x.innerHTML=item.Date + "  " + item.Time
+                y.innerHTML=item.Item
+                z.innerHTML=item.Points
+                
               })
             })
         }
@@ -66,9 +76,10 @@ export default {
 <style scoped>
 div {
   padding: 0px;
-  background-color: #E8E1CF;
+  background-color: #ebe8de;
 }
-table{
+
+.table{
     margin-left: 0%;
     font-size: 15px;
     font-family: Avenir;
@@ -76,14 +87,21 @@ table{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 50px;
+    padding-bottom: 103px;
     float: left;
-    
+    background-color: #E8E1CF;
+    min-height: 100px;
+}
+
+.rowdiv {
+  background-color: blue;
 }
 
 thead {
     background-color: #70533b;
-    color: black;
+    color: white;
     text-align: left;
+    border-collapse:collapse;
 }
 
 tr {
@@ -94,6 +112,8 @@ tr {
 th, td{
   text-align: center;
   padding: 10px;
+  color:white;
+
 }
 
 h2 {
@@ -103,10 +123,11 @@ h2 {
 }
 
 #linechart {
-    /*padding-left: 15%;*/
+    padding-left: 0%;
 }
 
 #charts {
+  padding-top: 40px;
   width: 60%;
   float: left;
 }
