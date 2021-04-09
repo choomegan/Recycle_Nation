@@ -119,8 +119,8 @@ export default {
               username: snapShot.data()["username"]
             })
           })
-        })
-      }  
+        })  
+      }
     },
   created() {
     this.getData();
