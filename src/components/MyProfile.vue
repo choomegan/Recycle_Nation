@@ -41,7 +41,7 @@ import db from '../firebase.js'
 export default {
     data() {
         return {
-            image:require('../assets/holding_plants.png'),
+            image:require('../assets/tree.jpeg'),
             points: 0,
             username: "",
             email:"",
@@ -122,7 +122,7 @@ export default {
 }
 #icon{
     width: 120px;
-    mix-blend-mode: difference;
+    mix-blend-mode: multiply;
 }
 
 #star {
