@@ -68,13 +68,12 @@ div {
   background-color: #E8E1CF;
 }
 table{
-    margin: 20px;
+    margin-left: 10%;
     font-size: 15px;
     font-family: Avenir;
     min-width: 1500px;
-    padding-left: 170px;
-    padding-right: 200px;
     padding-top: 50px;
+    
 }
 
 thead {
@@ -100,7 +99,7 @@ h2 {
 }
 
 #linechart {
-    padding-left: 220px;
+    margin-left: 15%;
 }
 
 </style>
