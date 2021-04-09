@@ -77,6 +77,7 @@ table{
     padding-right: 20px;
     padding-top: 50px;
     float: left;
+    
 }
 
 thead {
