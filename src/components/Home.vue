@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import db from "../firebase.js"
 import firebase from 'firebase/app'
 export default {
     data() {
@@ -24,7 +25,9 @@ export default {
                 {type: 'Plastic',   data: ['Plastic packaging from food','Empty detergent, soap and condiment bottles', 'Cosmetic bottles and containers']},
                 {type: 'Glass',     data: ['Empty condiment bottles and containers', 'Glassware']},
                 {type: 'Metal',     data: ['Aluminum cans (from canned drinks and canned food)', 'Aerosal can']},
-            ]
+            ],
+            email:"",
+            data:{}
         }
     },
     methods: {
@@ -37,10 +40,82 @@ export default {
                 alert("Please log in to continue.")
                 this.$router.push('/Login');
             }
+        },
+        getData: function() {
+            var user = firebase.auth().currentUser;
+            if (user) {
+                //user signed in
+                this.email = user.email;
+            }
+            else {
+                alert("Please log in to continue.")
+                this.$router.push('/Login');
+            }
+        },
+        update: function() {
+            db.collection(this.email).doc("Profile").get().then(snapShot => {
+                var current = new Date()
+                var diff = current.getTime()/1000 - snapShot.data()["dateJoined"]["seconds"]
+                var days = Math.floor(diff/86400)
+                if (days < 3) {
+                db.collection(this.email).doc("Achievements").update({
+                    0: {
+                    completed: false,
+                    type: "time",
+                    count: days,
+                    name: "Recycled for 3 days",
+                    numberRequired: 3 - days
+                    },
+                    1: {
+                    completed: false,
+                    type: "time",
+                    count: days,
+                    name: "Recycled for 30 days",
+                    numberRequired: 30 - days
+                    }
+                })
+                } else if (days > 30) {
+                db.collection(this.email).doc("Achievements").update({
+                    0: {
+                    completed: true,
+                    type: "time",
+                    count: days,
+                    name: "Recycled for 3 days",
+                    numberRequired: 0
+                    },
+                    1: {
+                    completed: true,
+                    type: "time",
+                    count: days,
+                    name: "Recycled for 30 days",
+                    numberRequired: 0
+                    }
+                })
+                } else {
+                db.collection(this.email).doc("Achievements").update({
+                    0: {
+                    completed: true,
+                    type: "time",
+                    count: days,
+                    name: "Recycled for 3 days",
+                    numberRequired: 0
+                    },
+                    1: {
+                    completed: false,
+                    type: "time",
+                    count: days,
+                    name: "Recycled for 30 days",
+                    numberRequired: 30 - days
+                    }
+                })
+                }
+            })
         }
     },
     created() {
         this.checkUser();
+        this.getData();
+        this.update()
     }
 }
 </script>
