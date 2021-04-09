@@ -24,6 +24,9 @@ export default {
             firebase.auth().sendPasswordResetEmail(this.email).then(function() {
                 console.log("sent email");
                 alert("Instructions to reset password have been sent to your email. Please reset your password through the link.")
+            }).catch((err) => {
+                console.log(err)
+                
             })
             if (typeof this.recycledData === "undefined") {
                 this.$router.push('/Login');
