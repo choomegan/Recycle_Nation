@@ -12,9 +12,9 @@
         This is NOT a valid QR code!
       </div>
 
-      <div v-if="validationPending" class="validation-pending">
+      <!-- <div v-if="validationPending" class="validation-pending">
         Validation in progress...
-      </div>
+      </div> -->
     </qrcode-stream>
     
   </div>
@@ -60,7 +60,7 @@ export default {
 
         this.isValid = content.startsWith('[{')
         
-        await this.timeout(2000)
+        await this.timeout(1000)
 
         if (!this.isValid) {
             this.turnCameraOn()
