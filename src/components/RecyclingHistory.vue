@@ -9,11 +9,12 @@
         </tr> 
       </thead> 
     </table> 
-    <br>
-    <h2>Summary and Statistics</h2> 
-    <PieChart></PieChart>
-    <br><br>
-    <LineChart id="linechart"></LineChart> 
+    <div id="charts">
+      <h2>Summary and Statistics</h2> 
+      <PieChart></PieChart>
+      <br><br>
+      <LineChart id="linechart"></LineChart> 
+    </div>
   </div>
 </template>
 
@@ -71,8 +72,11 @@ table{
     margin-left: 0%;
     font-size: 15px;
     font-family: Avenir;
-    min-width: 1500px;
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 50px;
+    float: left;
     
 }
 
@@ -99,7 +103,12 @@ h2 {
 }
 
 #linechart {
-    padding-left: 15%;
+    /*padding-left: 15%;*/
+}
+
+#charts {
+  width: 60%;
+  float: left;
 }
 
 </style>
