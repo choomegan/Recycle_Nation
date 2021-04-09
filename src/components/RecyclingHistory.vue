@@ -1,6 +1,6 @@
 <template>
   <div id="history">
-    <table class="table" id="table">
+    <table class="table" id="table" v-if="this.dataShow">
       <thead> 
         <tr> 
           <th>Date/Time</th> 
@@ -9,11 +9,15 @@
         </tr> 
       </thead> 
     </table> 
-    <div id="charts">
+    <div id="charts" v-if="this.dataShow">
       <h2>Summary and Statistics</h2> 
       <PieChart></PieChart>
       <br><br>
       <LineChart id="linechart"></LineChart> 
+    </div>
+    <div id="noData" v-if="!this.dataShow">
+      Welcome to Recycle Nation! 
+      <br>Start recycling to view your recycling history!
     </div>
   </div>
 </template>
@@ -27,7 +31,8 @@ import LineChart from './Charts/LineChart.vue'
 export default {
     data() {
       return {
-        title: "Recycling History"
+        title: "Recycling History",
+        dataShow: false
       }
     },
     components: {
@@ -35,7 +40,7 @@ export default {
       LineChart
     },
     methods: {
-        retrieveData: function() {
+        dataPresent: function() {
             var user = firebase.auth().currentUser;
             if (user) {
                 //user signed in
@@ -44,6 +49,20 @@ export default {
               alert("Please log in to continue.")
                 this.$router.push('/Login');
             }
+            db.collection(user.email).doc("Recycling history").get().then((doc) => {
+              console.log("doc.data()")
+              console.log(doc.data())
+              console.log(!doc.data())
+              if (!doc.data()) {
+                this.dataShow = false;
+              } else {
+                this.dataShow = true;
+                this.retrieveData()
+              }
+            })
+        },
+        retrieveData: function() {
+            var user = firebase.auth().currentUser;
             db.collection(user.email).doc("Recycling history").get().then(doc => {
               Object.values(doc.data()).forEach(item => {
                 /*
@@ -68,7 +87,7 @@ export default {
         }
     },
     created() {
-      this.retrieveData();
+      this.dataPresent();
     }
 }
 </script>
@@ -78,10 +97,12 @@ export default {
   height: 1000px;
   background-color: #ebe8de;
 }
-/* div {
-  padding: 0px;
-  background-color: #ebe8de;
-} */
+#noData {
+  padding: 100px;
+  font-size: 30px;
+  font-family: Avenir;
+  color: #69815e;
+}
 
 .table{
     margin-left: 0%;
