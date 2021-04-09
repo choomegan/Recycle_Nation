@@ -74,22 +74,23 @@ export default {
 </script>
 
 <style scoped>
-div {
-  padding: 0px;
+#history {
+  height: 1000px;
   background-color: #ebe8de;
 }
+/* div {
+  padding: 0px;
+  background-color: #ebe8de;
+} */
 
 .table{
     margin-left: 0%;
     font-size: 15px;
     font-family: Avenir;
-    width: 40%;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 50px;
-    padding-bottom: 103px;
+    width: 50%;
+    padding: 50px;
     float: left;
-    background-color: #E8E1CF;
+    /* background-color: #E8E1CF; */
     min-height: 100px;
 }
 
@@ -100,8 +101,9 @@ div {
 thead {
     background-color: #70533b;
     color: white;
-    text-align: left;
+    text-align: center;
     border-collapse:collapse;
+
 }
 
 tr {
@@ -120,6 +122,7 @@ h2 {
   color: #69815e;
   font-family: Asap, Avenir;
   text-decoration: underline;
+  text-align: center;
 }
 
 #linechart {
@@ -128,8 +131,9 @@ h2 {
 
 #charts {
   padding-top: 40px;
-  width: 60%;
+  width: 50%;
   float: left;
+  align-content: center;
 }
 
 </style>
