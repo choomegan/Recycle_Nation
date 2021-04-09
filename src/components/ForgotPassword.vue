@@ -16,29 +16,44 @@ export default {
     data() {
         return {
             email: "",
-            recycledData: ""
+            recycledData: "",
+            err:""
         }
     },
     methods: {
         sendEmail: function() {
+            this.err =""
+            var user = this;
             firebase.auth().sendPasswordResetEmail(this.email).then(function() {
                 console.log("sent email");
                 alert("Instructions to reset password have been sent to your email. Please reset your password through the link.")
+                console.log("inside firebase.auth() success")
+                user.pushRouter()
+                
             }).catch((err) => {
-                console.log(err)
+                //console.log(err)
+                this.err = err.message;
+                console.log("inside firebase.auth() failure")
+                console.log("this.err: " + this.err)
+                alert("Please input a valid email.")
                 
             })
-            if (typeof this.recycledData === "undefined") {
-                this.$router.push('/Login');
-            }
-            else { // user logged in through scanning
-                this.$router.push({name:" Login ", params:{data: this.recycledData }});
-            }
-            //this.$router.push({path:'/'});
+           
         },
         getData: function() {
             this.recycledData = this.$route.params.data;
             console.log("data in forgot password: " + this.recycledData);
+            console.log("!this.recycledData")
+            console.log(!this.recycledData && this.err=="")
+        },
+        pushRouter: function() {
+            if (!this.recycledData && this.err=="") {
+                console.log("no recycled data")
+                this.$router.push('/Login');
+            } else if (this.err=="") { // user logged in through scanning
+                console.log("with recycled data")
+                this.$router.push({name:" Login ", params:{data: this.recycledData }});
+            }
         }
     },
     created() {
