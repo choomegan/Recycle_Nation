@@ -70,7 +70,7 @@ div {
 table{
     margin: 20px;
     font-size: 15px;
-    font-family: sans-serif;
+    font-family: Avenir;
     min-width: 1500px;
     padding-left: 170px;
     padding-right: 200px;
@@ -95,10 +95,12 @@ th, td{
 
 h2 {
   color: #69815e;
+  font-family: Asap, Avenir;
+  text-decoration: underline;
 }
 
 #linechart {
-    padding-left: 250px;
+    padding-left: 220px;
 }
 
 </style>

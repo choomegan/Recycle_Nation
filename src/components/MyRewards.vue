@@ -2,15 +2,17 @@
     <div id="MyRewards">
         <div class="split">
             <div class="halves">
-                <p>Rewards Catalog </p>
+                <p>Rewards Catalogue</p>
                 <div class="sideBySide">
                     <div class="side" v-for="item in rewardsCatelog" v-bind:key ="item.title">
                         <img id="icon" v-bind:src="item.image"/>
                         <br>
-                        {{item.name}}
-                        <br>
-                        {{item.points}} points
-                        <br>
+                        <div id="name">
+                            {{item.name}}
+                        </div> 
+                        <div id="pts"> 
+                            {{item.points}} points
+                        </div>
                         <button v-on:click="confirmRedemption(item)">Exchange</button>
                         <br><br>
                     </div>
@@ -223,6 +225,7 @@ export default {
 <style scoped>
 #MyRewards {
     font-size: 25px;
+    font-family: Avenir, Helvetica;
     padding: 50px;
     background-color: #E8E1CF;
 }
@@ -239,11 +242,11 @@ export default {
 }
 .halves {
     padding: 40px;
-    background-color:oldlace;
+    background-color:rgb(248, 240, 227);
     margin:10px;
 }
 .side {
-    background-color:oldlace;
+    background-color:rgb(248, 240, 227);
     width: 300px;
 }
 .start {
@@ -251,6 +254,7 @@ export default {
     padding: 20px 10px 20px 30px;
 }
 .block {
+    font-family: Asap;
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
@@ -274,8 +278,35 @@ export default {
 #cross {
     padding: none;
 }
+
 p {
+    font-family: Asap, Avenir;
     font-size: 30px;
-    text-decoration-line:underline;
+    text-decoration: underline;
+}
+
+button {
+    font-size: 20px;
+    border: none;
+    font-family: Asap, Helvetica;
+    color: white;
+    background-color: #7D6558;
+    height: 40px;
+    width: 130px;
+    border-radius: 7px;
+}
+
+button:hover {
+    background-color: #7d6558d2;
+}
+
+#name {
+    font-family: Asap, Avenir;
+    color: rgb(49, 40, 40);
+}
+
+#pts {
+    font-size: 22px;
+    padding: 10px;
 }
 </style>

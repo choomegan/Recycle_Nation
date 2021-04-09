@@ -5,9 +5,10 @@
     <img src="../assets/plastic.jpg" width="200" height="200" v-if="this.item=='plastic'"/>
     <img src="../assets/paper.jpg" width="200" height="200" v-if="this.item=='paper'"/>
     <img src="../assets/metal.jpg" width="200" height="200" v-if="this.item=='metal'"/>
-    <p>Item recycled: {{this.item}}</p>
-    <p>Points earned: {{this.points}}</p>
-    
+    <br><br> 
+    <div>Item recycled:  {{this.item}}</div> 
+    <div>Points earned:  {{this.points}}</div> 
+    <br> 
     <button v-on:click="directed()">Back to Home</button>
   </div>
 </template>
@@ -362,16 +363,27 @@ export default {
 
 <style>
 button {
-    background-color: #7D6558;
-    color: white;
     font-size: 20px;
-
+    border: none;
+    font-family: Asap, Helvetica;
+    color: white;
+    background-color: #7D6558;
+    height: 50px;
+    width: 200px;
+    border-radius: 9px;
+    padding: 10px;
+}
+button:hover {
+    background-color: #7d6558d2;
 }
 #content {
     background-color: #E8E1CF;
     padding: 50px;
+    font-size: 25px;
+    font-family: Avenir, Helvetica;
 }
 #display {
   margin: 50px;
 }
+
 </style>

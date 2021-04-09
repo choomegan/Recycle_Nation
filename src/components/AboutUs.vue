@@ -1,9 +1,9 @@
 <template>
     <div id="AboutUs">
         <h1>Our Vision</h1>
-        <p>Encouraging all Singaporeans to actively recycle</p>
+        <p>Encouraging all Singaporeans to actively recycle.</p>
         <h1>Our Mission</h1>
-        <p>We aim to promote green movement by making recycling easier for you</p>
+        <p>We aim to promote green movement by making recycling easier for you.</p>
     </div>
 </template>
 
@@ -38,10 +38,12 @@ export default {
 }
 h1 {
     padding-top: 6.5%;
-    font-size: 40px;
-    color: rgb(88, 44, 2);
+    font-size: 30px;
+    font-family: Avenir;
+    color: rgb(57, 87, 52);
 }
 p {
-    font-size: 30px;
+    font-size: 22px;
+    font-family: Avenir, Helvetica;
 }
 </style>

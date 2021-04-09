@@ -7,19 +7,20 @@
             <div class="halves">
                 <a id="name">{{username}} </a>
                 <br>
-                Joined {{date}}
-                <br><br>
-                <button v-on:click="logout">Log out</button>
+                Joined {{date}} 
+                <span>
+                    <button v-on:click="logout">Log out</button>
+                </span> 
             </div>
         </div>
         <br><br>
-        <div>
-            Total Points earned: 
+        <div id="status">
+            Total Points:  
             <a id="points">{{points}}</a>
             <span id="routes" v-on:click="rewards">Rewards Shop</span>
             <br><br>
             Achievements: 
-            <a id="points"> {{percent}}% </a> complete!
+            <a id="points"> {{percent}}% </a>complete!
             <span id="routes" v-on:click="achievements">View All</span>
         </div>
 
@@ -113,6 +114,7 @@ export default {
 
 <style scoped>
 #MyProfile {
+    font-family: Avenir, Helvetica;
     font-size: 25px;
     padding: 100px;
     background-color: #E8E1CF;
@@ -129,8 +131,13 @@ export default {
 }
 
 #routes {
-    color:deepskyblue;
+    color:rgb(30, 144, 182);
+    font-size: 20px;
     padding: 20px;
+}
+
+#routes:hover {
+    text-decoration: underline;
 }
 
 .split {
@@ -144,13 +151,34 @@ export default {
 }
 
 #name {
-    font-weight: bold;
+    font-family: Asap, Avenir;
+    font-weight: 400;
     font-size: 35px;
 }
 
 #points {
-    font-size: 35px;
+    font-size: 32px;
     padding:20px;
 }
 
+button {
+    font-size: 19px;
+    font-family: Asap, Avenir;
+    color: white;
+    background-color: #7D6558;
+    border: none;
+    height: 40px;
+    width: 120px;
+    border-radius: 6px;
+    margin-left: 20px;
+}
+
+
+button:hover {
+    background-color: #7d6558d2;
+}
+
+#status {
+    font-family: Avenir;
+}
 </style>

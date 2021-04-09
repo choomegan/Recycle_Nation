@@ -64,8 +64,10 @@ export default {
 </script>
 
 <style>
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Asap|Lato|Open+Sans|Segoe+UI');
+
+  #app {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     text-align:center;
     margin-top: 0;
     padding-top: 0;
@@ -73,16 +75,18 @@ export default {
   }
 
   #title {
-    background-color: #8FA984;
+    background-color: #a2b39a;
+    font-family: Asap;
     color:white;
     margin-top: 0;
     margin-bottom: 0;
     padding: 50px;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 50px;
   }
 
   content {
     background-color: #E8E1CF;
+    font-family: Avenir, Helvetica;
   }
 </style>

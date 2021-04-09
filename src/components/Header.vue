@@ -39,10 +39,11 @@ li a {
 }
 .router-link-active {
     text-decoration-line: underline;
-    font-weight: bold;
+    font-weight: 400;
 }
 #header {
     background-color:white;
-    font-size: 20px;
+    font-family: Avenir, Helvetica;
+    font-size: 18px;
 }
 </style>
