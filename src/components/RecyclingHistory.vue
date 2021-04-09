@@ -72,9 +72,8 @@ table{
     font-size: 15px;
     font-family: Avenir;
     min-width: 1500px;
-    padding-left: 170px;
-    padding-right: 200px;
     padding-top: 50px;
+    
 }
 
 thead {
