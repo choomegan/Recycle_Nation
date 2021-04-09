@@ -37,8 +37,8 @@
                             $10 GrabGifts voucher
                             <br>{{item.code}}
                         </div>
-                        <div id="cross">
-                            <button v-on:click="deleteReward(item)"> X </button>
+                        <div>
+                            <button id="cross" v-on:click="deleteReward(item)"> X </button>
                         </div>
                     </div>
                     <br>
@@ -276,7 +276,9 @@ export default {
     max-width: 250px;
 }
 #cross {
-    padding: none;
+    padding: 0px;
+    width: 30px;
+    height: 30px;
 }
 
 p {
