@@ -126,29 +126,40 @@ export default {
                 },
                 
             ]
+            if (this.password != this.rePassword) {
+                alert("Re-enter Password is different from Password. Please try again.")
 
-            firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.email, this.password)
-            .then((data) => {
-                data.user.updateProfile( {
-                    displayName: this.name,
+            } else if (this.name == "") {
+                alert("Please enter your username.")
+            } else {
+                firebase
+                .auth()
+                .createUserWithEmailAndPassword(this.email, this.password)
+                .then((data) => {
+                    data.user.updateProfile( {
+                        displayName: this.name,
+                    })
+                    database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
+                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime})
+                    database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
+                    alert('Successfully registered! Please login.');
+                    if (typeof this.recycledData === "undefined") {
+                        this.$router.push('/Login');
+                    }
+                    else { // user logged in through scanning
+                        this.$router.push({name:" Login ", params:{data: this.recycledData }});
+                    }
+                    //this.$router.push({path:'/'});
                 })
-                database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
-                database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime})
-                database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
-                alert('Successfully registered! Please login.');
-                if (typeof this.recycledData === "undefined") {
-                    this.$router.push('/Login');
-                }
-                else { // user logged in through scanning
-                    this.$router.push({name:" Login ", params:{data: this.recycledData }});
-                }
-                //this.$router.push({path:'/'});
-            })
-            .catch(error => {
-                alert(error.message);
-            });
+                .catch(error => {
+                    if (error.message == "The email address is badly formatted.") {
+                        alert("Please enter a valid email.")
+                    } else {
+                        alert(error.message);
+                    }
+                    
+                });
+            }
         },
         getData: function() {
             this.recycledData = this.$route.params.data;
