@@ -41,20 +41,6 @@ export default {
 
             var achievements =[
                 {
-                    name: "Recycled for 3 days",
-                    type: "time",
-                    count: 0,
-                    numberRequired: 3,
-                    completed: false
-                },
-                {
-                    name: "Recycled for 30 days",
-                    type: "time",
-                    count: 0,
-                    numberRequired: 30,
-                    completed: false
-                },
-                {
                     name: "Reycled 3 plastic items",
                     type: "plastic",
                     count: 0,
@@ -118,12 +104,26 @@ export default {
                     completed: false
                 },
                 {
+                    name: "Recycled 25 items in total",
+                    type: null,
+                    count: 0,
+                    numberRequired: 25,
+                    completed: false
+                },
+                {
+                    name: "Recycled 50 items in total",
+                    type: null,
+                    count: 0,
+                    numberRequired: 50,
+                    completed: false
+                },
+                {
                     name: "Recycled 100 items in total",
                     type: null,
                     count: 0,
                     numberRequired: 100,
                     completed: false
-                },
+                }
                 
             ]
             if (this.password != this.rePassword) {
