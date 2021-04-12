@@ -41,14 +41,14 @@ export default {
 
             var achievements =[
                 {
-                    name: "Reycled 3 plastic items",
+                    name: "Recycled 3 plastic items",
                     type: "plastic",
                     count: 0,
                     numberRequired: 3,
                     completed: false
                 },
                 {
-                    name: "Reycled 30 plastic items",
+                    name: "Recycled 30 plastic items",
                     type: "plastic",
                     count: 0,
                     numberRequired: 30,
@@ -62,7 +62,7 @@ export default {
                     completed: false
                 },
                 {
-                    name: "Reycled 30 metal items",
+                    name: "Recycled 30 metal items",
                     type: "metal",
                     count: 0,
                     numberRequired: 30,
