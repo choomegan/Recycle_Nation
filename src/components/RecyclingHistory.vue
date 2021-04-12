@@ -1,6 +1,6 @@
 <template>
   <div id="history">
-    <table class="table" id="table" v-if="this.dataShow">
+    <table class="table" id="table" v-show="this.dataShow">
       <thead> 
         <tr> 
           <th>Date/Time</th> 
@@ -9,15 +9,15 @@
         </tr> 
       </thead> 
     </table> 
-    <div id="charts" v-if="this.dataShow">
+    <div id="charts" v-show="this.dataShow">
       <h2>Summary and Statistics</h2> 
       <PieChart></PieChart>
       <br><br>
       <LineChart id="linechart"></LineChart> 
     </div>
-    <div id="noData" v-if="!this.dataShow">
+    <div id="noData" v-show="!this.dataShow">
       Welcome to Recycle Nation! 
-      <br>Start recycling to view your recycling history!
+      <p>Start recycling to view your recycling history</p>
     </div>
   </div>
 </template>
@@ -57,7 +57,7 @@ export default {
                 this.dataShow = false;
               } else {
                 this.dataShow = true;
-                this.retrieveData()
+                //this.retrieveData()
               }
             })
         },
@@ -73,7 +73,6 @@ export default {
                           <tr>`
                 */
                 let table = document.getElementById("table").insertRow(1)
-                table.className = "rowdiv"
                 //table.innerHTML += row 
                 var x = table.insertCell(0)
                 var y = table.insertCell(1)
@@ -88,6 +87,7 @@ export default {
     },
     created() {
       this.dataPresent();
+      this.retrieveData();
     }
 }
 </script>
@@ -99,9 +99,15 @@ export default {
 }
 #noData {
   padding: 100px;
-  font-size: 30px;
-  font-family: Avenir;
+  font-size: 35px;
+  font-family: Asap,Avenir;
   color: #69815e;
+}
+
+#noData p {
+  font-size: 20px;
+  font-family: Avenir;
+  color: black;
 }
 
 .table{
@@ -111,31 +117,21 @@ export default {
     width: 50%;
     padding: 50px;
     float: left;
-    /* background-color: #E8E1CF; */
     min-height: 100px;
 }
 
-.rowdiv {
-  background-color: blue;
-}
-
 thead {
-    background-color: #70533b;
-    color: white;
+    background-color: #dbd5c8;
+    color: black;
     text-align: center;
     border-collapse:collapse;
 
 }
 
-tr {
-  color: white; 
-  border-bottom: thin;
-}
-
 th, td{
   text-align: center;
   padding: 10px;
-  color:white;
+  color:#69815e;
 
 }
 
