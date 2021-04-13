@@ -117,12 +117,15 @@ export default {
     font-family: Avenir, Helvetica;
     font-size: 25px;
     padding: 100px;
-    background-color: #E8E1CF;
+    color: white;
+    object-fit: cover;
+    background-image: url('~@/assets/forest-full.jpg');
+    /*background-color: #E8E1CF;*/
     text-align: left;
 }
 #icon{
     width: 120px;
-    mix-blend-mode: multiply;
+    /*mix-blend-mode: multiply;*/
 }
 
 #star {
@@ -131,9 +134,10 @@ export default {
 }
 
 #routes {
-    color:rgb(30, 144, 182);
+    color:rgb(80, 169, 199);
     font-size: 20px;
     padding: 20px;
+    font-style: italic;
 }
 
 #routes:hover {

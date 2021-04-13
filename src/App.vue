@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1 id="title">{{title}}</h1>
-    <Header v-if="navigation"></Header>
+    <Header v-if="navigation" id="head"></Header>
     
     <content><router-view></router-view></content>
   </div>
@@ -89,5 +89,10 @@ export default {
   content {
     background-color: #E8E1CF;
     font-family: Avenir, Helvetica;
+  }
+  
+  #head {
+    background-color: #d8d4c8;
+    padding: 2px;
   }
 </style>

@@ -54,7 +54,7 @@ p {
 
 #vision {
     background-color: #ebe8de;
-    color: rgba(59, 68, 34, 0.877);
+    color: hsla(76, 33%, 20%);
     padding-bottom: 100px;
     padding-top: 10px;
 }

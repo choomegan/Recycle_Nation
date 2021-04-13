@@ -50,9 +50,11 @@ export default {
 <style scoped>
 #Home {
     padding: 100px;
-    background-color: #E8E1CF;
+    background-image: url('~@/assets/forest-full2.jpg');
+    background-size: cover;
     text-align: center;
     min-height: 500px;
+    color:white;
 }
 .recycle-box {
     display: flex;
@@ -67,13 +69,14 @@ export default {
     text-align: left;
     font-size: 20px;
     border-width: 1px;
-    padding:5px;
+    padding:20px;
 }
 #item {
     font-family: Avenir, Helvetica;
     font-weight:bold;
-    color:rgb(57, 87, 52);
+    color: rgb(204, 149, 46);; 
     font-size:25px;
+    font-style: italic;
     text-align:center;
 }
 p {
@@ -82,14 +85,14 @@ p {
 }
 
 #header {
-    font-family: Asap, Avenir;
+    font-family: Avenir;
     font-weight: bold;
 }
 
 #disclaimer {
-    font-family: Avenir, Helvetica;
+    font-family: Asap,Avenir, Helvetica;
     font-weight: bold;
     font-size: 18px;
-    color: rgb(112, 40, 40);
+    color: rgb(224, 201, 152);
 }
 </style>
