@@ -84,7 +84,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     text-align: center;
     padding: 170px;
-    background-color: #E8E1CF;
+    background-color:#E8E1CF;
 }
 
 form {

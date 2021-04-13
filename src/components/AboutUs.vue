@@ -54,12 +54,12 @@ p {
 
 #vision {
     background-color: #ebe8de;
-    color: #61756b;
+    color: rgba(59, 68, 34, 0.877);
     padding-bottom: 100px;
     padding-top: 10px;
 }
 #mission {
-    background-color: #61756b;
+    background-color:  hsl(76, 33%, 20%);
     margin-top: 0;
     padding-top: 10px;
     padding-bottom: 100px;

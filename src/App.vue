@@ -75,7 +75,8 @@ export default {
   }
 
   #title {
-    background-color: #a2b39a;
+    background-image: url('~@/assets/forest-bg.jpg');
+    object-fit: cover;
     font-family: Asap;
     color:white;
     margin-top: 0;
