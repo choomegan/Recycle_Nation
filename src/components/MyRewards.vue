@@ -38,7 +38,7 @@
                             <br>{{item.code}}
                         </div>
                         <div>
-                            <button id="cross" v-on:click="deleteReward(item)"> X </button>
+                            <button id="cross" v-on:click="confirmDelete(item)"> X </button>
                         </div>
                     </div>
                     <br>
@@ -192,6 +192,15 @@ export default {
             }
             console.log(this.myRewards)
             this.updateDatabase();
+        },
+        confirmDelete: function(item) {
+            var msg = 'Delete voucher [' + item.name + ": " + item.code + '] ?'
+            if(confirm(msg)) {
+                console.log('Clicked on proceed');
+                this.deleteReward(item);
+            } else {
+                console.log('Clicked on cancel');
+            }
         },
         getMyRewards: function() {
             var currentUser = firebase.auth().currentUser;
