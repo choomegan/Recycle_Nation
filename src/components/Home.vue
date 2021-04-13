@@ -23,8 +23,7 @@ export default {
                 {type: 'Paper',      data: ['Flyers, Letters, Envelopes', 'Newspaper', 'Flattened tissue box']},
                 {type: 'Plastic',    data: ['Plastic packaging from food','Empty detergent, soap and condiment bottles', 'Cosmetic bottles and containers']},
                 {type: 'Glass',      data: ['Empty condiment bottles and containers', 'Glassware']},
-                {type: 'Metal',      data: ['Aluminum cans (from canned drinks and canned food)', 'Aerosal can']},
-                {type: 'Electronic', data: ['Household appliances', 'Laptops', 'Mobile Phones', 'Tablets']},
+                {type: 'Metal',      data: ['Aluminum cans (from canned drinks and canned food)', 'Aerosal can']}
             ],
             email:"",
             data:{}

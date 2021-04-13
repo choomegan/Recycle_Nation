@@ -7,11 +7,11 @@ export default {
     data: function() {
         return {
             datacollection: {
-                labels: ["Glass", "Plastic", "Paper", "Metal","Electronic"],
+                labels: ["Glass", "Plastic", "Paper", "Metal"],
                 datasets: [{
                     label: "Overview of materials recycled",
                     backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#b4b4cb"],
-                    data:[0,0,0,0,0]
+                    data:[0,0,0,0]
                 }]
             },
             options: {
@@ -38,8 +38,6 @@ export default {
                         this.datacollection.datasets[0].data[1] += 1;
                     } else if (item[index].Item == "paper") {
                         this.datacollection.datasets[0].data[2] += 1;
-                    } else if (item[index].Item == "electronic") {
-                        this.datacollection.datasets[0].data[4] += 1;  
                     } else {
                         this.datacollection.datasets[0].data[3] += 1;
                     }       

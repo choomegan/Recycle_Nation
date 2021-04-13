@@ -5,7 +5,6 @@
     <img src="../assets/plastic.jpg" width="200" height="200" v-if="this.item=='plastic'"/>
     <img src="../assets/paper.jpg" width="200" height="200" v-if="this.item=='paper'"/>
     <img src="../assets/metal.jpg" width="200" height="200" v-if="this.item=='metal'"/>
-    <img src="../assets/electronic.jpg" width="200" height="200" v-if="this.item=='electronic'"/>
     <br><br> 
     <div>Item recycled:  {{this.item}}</div> 
     <div>Points earned:  {{this.points}}</div> 
