@@ -97,6 +97,20 @@ export default {
                     completed: false
                 },
                 {
+                    name: "Recycled 3 electronic items",
+                    type: "electronic",
+                    count: 0,
+                    numberRequired: 3,
+                    completed: false
+                },
+                {
+                    name: "Recycled 30 electronic items",
+                    type: "electronic",
+                    count: 0,
+                    numberRequired: 30,
+                    completed: false
+                },
+                {
                     name: "Recycled 10 items in total",
                     type: null,
                     count: 0,
