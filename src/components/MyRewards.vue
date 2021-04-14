@@ -62,14 +62,14 @@ export default {
                 {
                     title: "tree",
                     name: "Plant a real tree!",
-                    image: require('../assets/tree.png'),
+                    image: require('../assets/tree2.png'),
                     points: 500,
                     code: "",
                 },
                 {
                     title: 'GrabFood',
                     name: "$10 GrabFood Voucher",
-                    image: require('../assets/grabFood.png'),
+                    image: require('../assets/food.png'),
                     points: 500,
                     code: "",
                 },
@@ -141,7 +141,7 @@ export default {
                 item = {
                     title: 'GrabFood',
                     name: "$10 GrabFood Voucher",
-                    image: require('../assets/grabFood.png'),
+                    image: require('../assets/food.png'),
                     points: 500,
                     code: "",
                 }
@@ -236,7 +236,7 @@ export default {
     font-size: 25px;
     font-family: Avenir, Helvetica;
     padding: 50px;
-    background-color: #E8E1CF;
+    background-color: #ebe8de;
 }
 .split {
     display: flex;
@@ -251,11 +251,11 @@ export default {
 }
 .halves {
     padding: 40px;
-    background-color:rgb(248, 240, 227);
+    background-color:#dbd5c8;
     margin:10px;
 }
 .side {
-    background-color:rgb(248, 240, 227);
+    background-color:#dbd5c8;
     width: 300px;
 }
 .start {
@@ -270,7 +270,7 @@ export default {
     justify-content:space-evenly;
     width:430px;
     padding: 20px 10px 20px 30px;
-    background-color:white;
+    background-color:rgb(247, 247, 247);
 }
 .right {
     padding: 10px;

@@ -41,7 +41,7 @@ import db from '../firebase.js'
 export default {
     data() {
         return {
-            image:require('../assets/tree.jpeg'),
+            image:require('../assets/tree3.png'),
             points: 0,
             username: "",
             email:"",
@@ -129,7 +129,7 @@ export default {
 }
 
 #star {
-    height: 120px;
+    height: 95px;
     color:goldenrod;
 }
 

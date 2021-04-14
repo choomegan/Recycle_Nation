@@ -67,7 +67,9 @@ export default {
     font-size: 17px;
     font-family: Avenir, Helvetica;
     padding: 100px;
-    background-color: #E8E1CF;
+    /*background-color: #E8E1CF;*/
+    object-fit: cover;
+    background-image: url('~@/assets/forest-full.jpg');
 }
 .sideBySide {
     display: flex;
@@ -88,7 +90,7 @@ export default {
     margin:10px;
     width: 300px;
     height: 300px;
-    background-color:#dbd2bc;
+    background-color:#f0eaddb0;
 }
 .box {
     padding: 10px;
@@ -96,7 +98,7 @@ export default {
 
 #name {
     font-family: Asap, Avenir;
-    color: rgb(92, 109, 70);
+    color: rgb(65, 78, 47);
     font-weight: bold;
     font-size: 25px;
 }
