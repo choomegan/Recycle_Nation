@@ -6,7 +6,8 @@
         </form>
         <form> 
             <label>Password: </label>
-            <input type="text" id="password" name="password" v-model="password" required>
+            <input type="password" id="password" name="password" v-model="password" required><br>
+            <input type="checkbox" v-on:click="toggle()" id="toggle"><span>Show Password</span>
         </form>
         <button type="button" v-on:click="login()">Login</button>
         <div id="extras">
@@ -70,6 +71,14 @@ export default {
         getData: function() {
             this.recycledData = this.$route.params.data;
             console.log("data in login: " + this.recycledData);
+        },
+        toggle: function() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
         }
     },
     created() {
@@ -135,6 +144,9 @@ button:hover {
 #extras {
     padding: 20px;
     font-family: Asap;
+}
+#toggle {
+    margin-left: 120px;
 }
 </style> 
 
