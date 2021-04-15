@@ -274,11 +274,12 @@ export default {
 }
 .right {
     padding: 10px;
+    margin-top: 7%;
     font-size: 20px;
 }
 .left {
-    height: 80px;
-    width: 120px;
+    height: 120px;
+    width: 140px;
 }
 #icon {
     height: 110px;
