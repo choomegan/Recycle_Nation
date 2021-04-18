@@ -2,7 +2,7 @@
   <div id="app">
     <h1 id="title">{{title}}</h1>
     <Header v-if="navigation" id="head" />
-    <transition name="slide-fade">
+    <transition name="custom-classes-transition" enter-active-class="animated fadeInLeft">
       <router-view></router-view>
     </transition>
   </div>
@@ -66,7 +66,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Asap|Lato|Open+Sans|Segoe+UI');
-/*@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";*/
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
   #app {
     font-family: "Segoe UI", Helvetica, Arial, sans-serif;
@@ -95,17 +95,14 @@ export default {
     font-size: 16px;
   }
 
-  .slide-fade-enter-active {
-    transition: all .3s ease;
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
   }
 
-  .slide-fade-leave-active {
-    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  }
 
-  .slide-fade-enter, .slide-fade-leave-to{
-    transform: translateX(10px);
+  .fade-enter-from,
+  .fade-leave-to {
     opacity: 0;
   }
-
 </style>
