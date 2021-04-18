@@ -7,7 +7,12 @@
         <div id="mission">
             <h1>Our Mission</h1>
             <p>We aim to promote green movement by making recycling easier for you.</p>
-        </div> 
+        </div>
+        <footer>
+            Feel free to drop us a message!<br>
+            <a href="tel:+65 67583827">+65 67583827</a> 
+            <a href="mailto:recyclenation@gmail.com">recyclenation@gmail.com</a> 
+        </footer> 
     </div>
 </template>
 
@@ -34,7 +39,6 @@ export default {
 
 <style scoped>
 #AboutUs {
-    position:absolute;
     width: 100%;
     height: 73%;
     text-align: center;
@@ -54,14 +58,41 @@ p {
 
 #vision {
     background-color: #ebe8de;
-    color: hsla(76, 33%, 20%);
-    padding-bottom: 100px;
-    padding-top: 10px;
+    color:hsl(76, 33%, 20%);
+    padding-bottom: 110px;
+    padding-top: 20px;
 }
 #mission {
     background-color:  hsl(76, 33%, 20%);
     margin-top: 0;
-    padding-top: 10px;
-    padding-bottom: 100px;
+    padding-top: 20px;
+    padding-bottom: 110px;
 }
+
+footer {
+    font-size: 20px;
+    text-align: left;
+    padding: 50px;
+    background-color: black;
+    object-fit: cover;
+    background-image: url('~@/assets/forest-full.jpg');
+    font-family:Asap;
+}
+a {
+    padding-right: 30px;
+    font-size: 17px;
+}
+
+a:link {
+  color: rgb(228, 168, 89); 
+  background-color: transparent; 
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(162, 180, 140);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 </style>

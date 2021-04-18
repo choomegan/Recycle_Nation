@@ -1,5 +1,6 @@
 <template>
     <div id="register">
+        <p id="back" v-on:click="back()"> ← back </p>
         <form> 
             <label>Username: </label>
             <input type="text" id="username" name="username" v-model="name" required>
@@ -33,6 +34,9 @@ export default {
         }
     },
     methods :{
+        back: function() {
+            this.$router.push('/Login')
+        },
         input: function() {
             database.collection(this.name).add()
         },
@@ -205,5 +209,21 @@ label {
 
 #button:hover {
     background-color: #7d6558d2;
+}
+
+#back {
+    position: absolute;
+    top: 173px;
+    left:40px;
+    font-size: 17px;
+    text-decoration: underline;
+    font-family: Asap;
+    color: rgb(55, 83, 55);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#back:hover {
+    color: black;
 }
 </style> 
