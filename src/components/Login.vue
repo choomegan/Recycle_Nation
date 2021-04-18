@@ -7,7 +7,7 @@
         <form> 
             <label>Password: </label>
             <input type="password" id="password" name="password" v-model="password" required><br>
-            <input type="checkbox" v-on:click="toggle()" id="toggle"><span>Show Password</span>
+            <input type="checkbox" v-on:click="toggle()" id="toggle"><span id="showPW">Show Password</span>
         </form>
         <button type="button" v-on:click="login()">Login</button>
         <div id="extras">
@@ -146,7 +146,16 @@ button:hover {
     font-family: Asap;
 }
 #toggle {
-    margin-left: 120px;
+    margin-left: 140px;
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: middle;
 }
+
+#showPW {
+    vertical-align: middle;
+    padding-left:4px;
+}
+
 </style> 
 

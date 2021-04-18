@@ -210,7 +210,7 @@ button {
 
 
 button:hover {
-    background-color: #7d6558d2;
+    background-color: #695449;
 }
 
 #status {

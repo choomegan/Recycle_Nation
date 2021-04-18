@@ -1,11 +1,13 @@
 <template> 
     <div id="forgotPW"> 
-        
+        <p id="back" v-on:click="back()"> ← back</p>
         <form> 
             <label>Enter email address: </label> 
             <input type="email" id="email" name="email" v-model="email" required> 
             <br><br>
-            <input type="button" id="button" value="Send Login Link" v-on:click="sendEmail()">
+            <input type="button" id="button" value="Send reset password link" v-on:click="sendEmail()">
+            <br><br>
+            
         </form> 
     </div> 
 </template> 
@@ -21,6 +23,9 @@ export default {
         }
     },
     methods: {
+        back: function() {
+            this.$router.push('/Login')
+        },
         sendEmail: function() {
             this.err =""
             var user = this;
@@ -86,15 +91,35 @@ label {
 
 #button {
     font-size: 20px;
+    font-family: Avenir;
     color: white;
     background-color: #7D6558;
-    border: none;
     height: 50px;
-    width: 220px;
+    width: 250px;
     border-radius: 9px;
 }
 
 #button:hover {
     background-color: #7d6558d2;
+}
+
+/*#button:active {
+    background-color: #7c5b4ad2;
+    transform: translateY(1px);
+}*/
+#back {
+    position: absolute;
+    top: 173px;
+    left:40px;
+    font-size: 17px;
+    text-decoration: underline;
+    font-family: Asap;
+    color: rgb(55, 83, 55);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#back:hover {
+    color: black;
 }
 </style> 
