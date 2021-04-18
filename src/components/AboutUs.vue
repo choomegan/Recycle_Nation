@@ -9,7 +9,7 @@
             <p>We aim to promote green movement by making recycling easier for you.</p>
         </div>
         <footer>
-            Feel free to drop us a message!<br>
+            Feel free to drop us a message!<br><br>
             <a href="tel:+65 67583827">+65 67583827</a> 
             <a href="mailto:recyclenation@gmail.com">recyclenation@gmail.com</a> 
         </footer> 
@@ -70,21 +70,21 @@ p {
 }
 
 footer {
-    font-size: 20px;
-    text-align: left;
+    font-size: 19px;
+    color: rgb(228, 200, 148);
+    text-align: center;
     padding: 50px;
-    background-color: black;
     object-fit: cover;
     background-image: url('~@/assets/forest-full.jpg');
-    font-family:Asap;
+    font-family:Asap, Avenir;
 }
 a {
-    padding-right: 30px;
+    padding: 30px;
     font-size: 17px;
 }
 
 a:link {
-  color: rgb(228, 168, 89); 
+  color: rgb(228, 163, 78); 
   background-color: transparent; 
   text-decoration: none;
 }
