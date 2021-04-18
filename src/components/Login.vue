@@ -133,8 +133,8 @@ button {
     color: white;
     background-color: #7D6558;
     height: 50px;
-    width: 150px;
-    border-radius: 9px;
+    width: 135px;
+    border-radius: 25px;
 }
 
 button:hover {

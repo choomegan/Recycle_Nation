@@ -133,14 +133,14 @@ export default {
 
 <style>
 button {
-    font-size: 20px;
+    font-size: 19px;
     border: none;
     font-family: Asap, Helvetica;
     color: white;
     background-color: #7D6558;
     height: 50px;
     width: 200px;
-    border-radius: 9px;
+    border-radius: 25px;
     padding: 10px;
 }
 button:hover {

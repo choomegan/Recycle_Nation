@@ -90,23 +90,20 @@ label {
 }
 
 #button {
-    font-size: 20px;
-    font-family: Avenir;
+    font-size: 18px;
+    font-family: Asap, Avenir;
     color: white;
     background-color: #7D6558;
     height: 50px;
-    width: 250px;
-    border-radius: 9px;
+    width: 255px;
+    border: none;
+    border-radius: 25px;
 }
 
 #button:hover {
     background-color: #7d6558d2;
 }
 
-/*#button:active {
-    background-color: #7c5b4ad2;
-    transform: translateY(1px);
-}*/
 #back {
     position: absolute;
     top: 173px;

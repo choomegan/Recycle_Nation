@@ -199,12 +199,13 @@ label {
 
 #button {
     font-size: 20px;
+    font-family: Asap, Avenir;
     color: white;
     background-color: #7D6558;
     border: none;
     height: 50px;
     width: 150px;
-    border-radius: 9px;
+    border-radius: 25px;
 }
 
 #button:hover {

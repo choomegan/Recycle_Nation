@@ -199,14 +199,16 @@ export default {
 }
 
 button {
-    font-size: 19px;
+    font-size: 16px;
     font-family: Asap, Avenir;
+    font-weight: bold;
+    letter-spacing: 0.0600em;
     color: white;
     background-color: #7D6558;
     border: none;
     height: 40px;
     width: 120px;
-    border-radius: 6px;
+    border-radius: 20px;
     margin-left: 20px;
 }
 
