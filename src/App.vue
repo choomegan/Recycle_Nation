@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <h1 id="title">{{title}}</h1>
-    <Header v-if="navigation" id="head"></Header>
-    
-    <content><router-view></router-view></content>
+    <Header v-if="navigation" id="head" />
+    <router-view v-slot="{ Component }">
+      <transition name="slide">
+          <component :is="Component" />
+      </transition> 
+    </router-view>
   </div>
 </template>
 
@@ -65,6 +68,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Asap|Lato|Open+Sans|Segoe+UI');
+/*@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";*/
 
   #app {
     font-family: "Segoe UI", Helvetica, Arial, sans-serif;
@@ -86,15 +90,33 @@ export default {
     font-size: 50px;
   }
 
-  content {
-    background-color: #E8E1CF;
-    font-family: Avenir, Helvetica;
-  }
-  
   #head {
     background-color: #d8d4c8;
     padding: 2px;
     font-family: Asap, Avenir;
     font-size: 16px;
   }
+
+  .wrapper {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: all 0.75s ease-out;
+  }
+
+
+.slide-enter-to {
+  position: absolute;
+  right: 0;
+}
+
+
+.slide-enter-from {
+  position: absolute;
+  right: -100%;
+}
+
 </style>
