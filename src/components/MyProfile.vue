@@ -13,14 +13,15 @@
                 </span> 
             </div>
         </div>
-        <div id="myProgress">
-            <span id="prog">{{width}}%</span>
-            <div id="myBar"></div>
-        </div>
-        <div>Level: {{level}} 
-            <span>[{{title}}]</span>
-        </div>
         <br>
+        <p id="prog" v-if="hovered">{{width}}%</p>
+        <div id="myProgress">
+            <div id="myBar" @mouseover="hovered=true" @mouseleave="hovered=false"></div>
+        </div><br> 
+        <div id="level">Level: {{level}} --
+            <span id="recycler">{{title}}</span>
+        </div> 
+        <br><br>
         <div id="status">
             Total Points:  
             <a id="points">{{points}}</a>
@@ -59,7 +60,8 @@ export default {
             greyStar: require('../assets/greyStar.png'),
             width:0,
             level:0,
-            title:""
+            title:"",
+            hovered: false
         }
     },
     methods: {
@@ -151,7 +153,6 @@ export default {
     color: white;
     object-fit: cover;
     background-image: url('~@/assets/forest-full.jpg');
-    /*background-color: #E8E1CF;*/
     text-align: left;
 }
 #icon{
@@ -165,8 +166,9 @@ export default {
 }
 
 #routes {
-    color:rgb(80, 169, 199);
+    color:rgb(80, 184, 219);
     font-size: 20px;
+    font-weight: bold;
     padding: 20px;
     font-style: italic;
 }
@@ -219,24 +221,27 @@ button:hover {
 
 #myProgress {
   width: 100%;
-  background-color: grey;
+  background-color: rgb(65, 90, 65);
   border-radius: 25px;
 }
 
 #prog {
-    display: none;
     text-align: center;
-}
-
-#myProgress:hover #prog{
-    display: block;
 }
 
 #myBar {
   width: 1%;
   height: 30px;
-  background-color: green;
+  background-color: rgb(103, 143, 103);
   border-radius: 25px;
 }
 
+#level {
+    font-family: Asap, Avenir;
+    text-align: center;
+}
+#recycler {
+    color: rgb(216, 184, 0);
+    font-family: Asap, Avenir;
+}
 </style>
