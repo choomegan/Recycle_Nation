@@ -37,6 +37,7 @@ li a {
     text-decoration-line: none;
     color:saddlebrown;
 }
+
 .router-link-active {
     text-decoration-line: underline;
     font-weight: 400;

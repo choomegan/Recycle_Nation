@@ -98,10 +98,12 @@ label {
     width: 255px;
     border: none;
     border-radius: 25px;
+    opacity:1;
+    transition: 0.4s;
 }
 
 #button:hover {
-    background-color: #7d6558d2;
+    opacity: 0.84;
 }
 
 #back {

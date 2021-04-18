@@ -4,10 +4,12 @@
             <h1>Our Vision</h1>
             <p>Encouraging all Singaporeans to actively recycle.</p>
         </div> 
+        <transition name="fade" enter-active-class="animated slideInRight"> 
         <div id="mission">
             <h1>Our Mission</h1>
             <p>We aim to promote green movement by making recycling easier for you.</p>
         </div>
+        </transition>
         <footer>
             Feel free to drop us a message!<br><br>
             <a href="tel:+65 67583827">+65 67583827</a> 
@@ -94,5 +96,7 @@ a:hover {
   background-color: transparent;
   text-decoration: underline;
 }
+
+
 
 </style>

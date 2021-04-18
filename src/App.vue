@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1 id="title">{{title}}</h1>
+    
     <Header v-if="navigation" id="head" />
     <transition name="custom-classes-transition" enter-active-class="animated fadeInLeft">
       <router-view></router-view>
@@ -95,14 +96,10 @@ export default {
     font-size: 16px;
   }
 
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s ease;
-  }
-
-
-  .fade-enter-from,
-  .fade-leave-to {
-    opacity: 0;
-  }
+  .fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-duration: 1.3s;
+    animation-duration: 1.3s;
+}
 </style>

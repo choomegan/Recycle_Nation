@@ -309,10 +309,12 @@ button {
     width: 130px;
     border-radius: 20px;
     padding: 5px;
+    opacity:1;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #7d6558d2;
+    opacity:0.84;
 }
 
 #name {

@@ -134,11 +134,13 @@ button {
     background-color: #7D6558;
     height: 50px;
     width: 135px;
+    opacity: 1;
     border-radius: 25px;
+    transition: 0.4s;
 }
 
 button:hover {
-    background-color: #7d6558d2;
+    opacity: 0.84;
 }
 
 #extras {
