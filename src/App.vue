@@ -2,11 +2,9 @@
   <div id="app">
     <h1 id="title">{{title}}</h1>
     <Header v-if="navigation" id="head" />
-    <router-view v-slot="{ Component }">
-      <transition name="slide">
-          <component :is="Component" />
-      </transition> 
-    </router-view>
+    <transition name="slide-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -97,26 +95,17 @@ export default {
     font-size: 16px;
   }
 
-  .wrapper {
-    width: 100%;
-    min-height: 100vh;
+  .slide-fade-enter-active {
+    transition: all .3s ease;
   }
 
-  .slide-enter-active,
-  .slide-leave-active {
-    transition: all 0.75s ease-out;
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
   }
 
-
-.slide-enter-to {
-  position: absolute;
-  right: 0;
-}
-
-
-.slide-enter-from {
-  position: absolute;
-  right: -100%;
-}
+  .slide-fade-enter, .slide-fade-leave-to{
+    transform: translateX(10px);
+    opacity: 0;
+  }
 
 </style>
