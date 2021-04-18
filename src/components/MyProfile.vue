@@ -71,18 +71,14 @@ export default {
             percent:0,
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png'),
-<<<<<<< HEAD
             imageData: null,
             picture: null,
-            uploadValue: 0
-            
-=======
+            uploadValue: 0,
             width:0,
             level:0,
             title:"",
             hovered: false,
             remaining:0
->>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
         }
     },
     methods: {
@@ -201,13 +197,10 @@ export default {
     },
     created: function() {
         this.updatePage();
-<<<<<<< HEAD
         this.getPic();
-=======
     },
     mounted: function() {
         this.bar()
->>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
     }
 }
 </script>
@@ -289,7 +282,6 @@ button:hover {
     font-family: Avenir;
 }
 
-<<<<<<< HEAD
 img.preview {
     width: 200px;
 }
@@ -297,7 +289,6 @@ u {
     font-size: 12px;
 }
 
-=======
 #myProgress {
   width: 100%;
   background-color: rgb(65, 90, 65);
@@ -323,5 +314,4 @@ u {
     color: rgb(216, 184, 0);
     font-family: Asap, Avenir;
 }
->>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
 </style>
