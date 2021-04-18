@@ -116,6 +116,7 @@ export default {
             db.collection(this.email).doc("Profile").update({
               dateJoined: snapShot.data()["dateJoined"],
               points: snapShot.data()["points"] + this.points,
+              total: snapShot.data()["total"] + this.points,
               username: snapShot.data()["username"]
             })
           })

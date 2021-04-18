@@ -13,7 +13,14 @@
                 </span> 
             </div>
         </div>
-        <br><br>
+        <div id="myProgress">
+            <span id="prog">{{width}}%</span>
+            <div id="myBar"></div>
+        </div>
+        <div>Level: {{level}} 
+            <span>[{{title}}]</span>
+        </div>
+        <br>
         <div id="status">
             Total Points:  
             <a id="points">{{points}}</a>
@@ -50,7 +57,9 @@ export default {
             percent:0,
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png'),
-            
+            width:0,
+            level:0,
+            title:""
         }
     },
     methods: {
@@ -104,10 +113,32 @@ export default {
                 // An error happened.
                 alert(error.message);
             });
+        },
+        bar: function() {
+            var elem = document.getElementById("myBar");
+            var user = firebase.auth().currentUser
+            db.collection(user.email).doc("Profile").get().then(snapShot => {
+                this.width = (snapShot.data()["total"]%400)/4
+                this.level = Math.floor(snapShot.data()["total"]/400) + 1
+                console.log(this.width)
+                elem.style.width = this.width + "%"
+                if (this.level >= 60) {
+                    this.title = "Grandmaster Recycler"
+                } else if (this.level >= 30) {
+                    this.title = "Master Recycler"
+                } else if (this.level >= 10) {
+                    this.title = "Apprentice Recycler"
+                } else {
+                    this.title = "Novice Recycler"
+                }
+            })
         }
     },
     created: function() {
         this.updatePage();
+    },
+    mounted: function() {
+        this.bar()
     }
 }
 </script>
@@ -185,4 +216,27 @@ button:hover {
 #status {
     font-family: Avenir;
 }
+
+#myProgress {
+  width: 100%;
+  background-color: grey;
+  border-radius: 25px;
+}
+
+#prog {
+    display: none;
+    text-align: center;
+}
+
+#myProgress:hover #prog{
+    display: block;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+  border-radius: 25px;
+}
+
 </style>
