@@ -146,11 +146,7 @@ export default {
                         displayName: this.name,
                     })
                     database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
-<<<<<<< HEAD
-                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, pic: image})
-=======
-                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, total: 0})
->>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
+                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, total: 0, pic: image})
                     database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                     alert('Successfully registered! Please login.');
                     if (typeof this.recycledData === "undefined") {
