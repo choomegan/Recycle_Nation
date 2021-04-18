@@ -2,9 +2,22 @@
     <div id="MyProfile">
         <div class="split">
             <div class="halves">
-                <img v-bind:src="image" id="icon"/>
-            </div>
-            <div class="halves">
+                <img id="icon"/>
+                <div>
+                    <div>
+                        <input style="display: none" type="file" @change="previewImage" accept="image/*" ref="fileInput">
+                        <u @click="$refs.fileInput.click()">Change photo</u>
+                    </div>
+                    <div>
+                        <p>Progress: {{uploadValue.toFixed()+"%"}}
+                        <progress id="progress" :value="uploadValue" max="100" ></progress>  </p>
+                    </div>
+                    <div v-if="imageData!=null">
+                        <img class="preview" :src="picture">
+                        <br>
+                        <button @click="onUpload">Upload</button>
+                    </div>
+                </div>
                 <a id="name">{{username}} </a>
                 <br>
                 Joined {{date}} 
@@ -41,7 +54,7 @@ import db from '../firebase.js'
 export default {
     data() {
         return {
-            image:require('../assets/tree3.png'),
+            image:"",
             points: 0,
             username: "",
             email:"",
@@ -50,10 +63,54 @@ export default {
             percent:0,
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png'),
+            imageData: null,
+            picture: null,
+            uploadValue: 0
             
         }
     },
     methods: {
+        getPic: function() { //get path of image from db
+            db.collection(this.email).doc("Profile").get().then((querySnapShot) => {
+                //console.log(querySnapShot.data().pic); // tree3.png is the default profile pic for new users
+                this.image = querySnapShot.data().pic;
+                var storage    = firebase.storage();
+                var storageRef = storage.ref();
+
+                storageRef.child(this.image).getDownloadURL().then(function(url) {
+                    var test = url;
+                    document.querySelector('img').src = test;
+                }).catch(function(error) {
+                    console.log(error);
+                });
+                
+            })
+        },
+        previewImage(event) {
+            this.uploadValue=0;
+            this.picture=null;
+            this.imageData = event.target.files[0];
+            },
+
+        onUpload(){
+            this.picture=null;
+            const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
+            storageRef.on(`state_changed`,snapshot=>{
+                this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+            }, error=>{console.log(error.message)},
+            ()=>{this.uploadValue=100;
+                storageRef.snapshot.ref.getDownloadURL().then((url)=>{
+                this.picture =url;
+                });
+            }
+            );
+            // Update user's profile image path in firebase
+            db.collection(this.email).doc("Profile").update({
+                pic: this.imageData.name
+            });
+
+            alert("Profile picture updated!")
+        },
         rewards: function() {
             this.$router.push({path:"/MyRewards"})
         },
@@ -64,13 +121,14 @@ export default {
             var user = firebase.auth().currentUser;
             if (user) {
                 //user signed in
+                this.email = user.email;
+                this.username = user.displayName;
             }
             else {
                 alert("Please log in to continue")
                 this.$router.push('/Login');
             }
-            this.username = user.displayName;
-            db.collection(user.email).doc("Profile").get().then((items) => {
+            db.collection(this.email).doc("Profile").get().then((items) => {
                 var datejoined = new Date(items.data().dateJoined.seconds*1000)
                 var month = ('0' + (datejoined.getMonth() + 1)).slice(-2);
                 var date = ('0' + datejoined.getDate()).slice(-2);
@@ -83,8 +141,7 @@ export default {
             
         },
         computeStar: function() {
-            var user = firebase.auth().currentUser
-            db.collection(user.email).doc("Achievements").get().then((doc) => {
+            db.collection(this.email).doc("Achievements").get().then((doc) => {
                 for (var i = 0; i < Object.keys(doc.data()).length; i++) {
                     if (doc.data()[i].completed) {
                         this.noOfGoldStars += 1;
@@ -108,6 +165,7 @@ export default {
     },
     created: function() {
         this.updatePage();
+        this.getPic();
     }
 }
 </script>
@@ -125,6 +183,7 @@ export default {
 }
 #icon{
     width: 120px;
+    border-radius: 50%;
     /*mix-blend-mode: multiply;*/
 }
 
@@ -185,4 +244,12 @@ button:hover {
 #status {
     font-family: Avenir;
 }
+
+img.preview {
+    width: 200px;
+}
+u {
+    font-size: 12px;
+}
+
 </style>

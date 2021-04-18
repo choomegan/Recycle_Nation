@@ -39,6 +39,8 @@ export default {
         register:function() {
             var dateTime = new Date();
 
+            var image = 'tree3.png';
+
             var achievements =[
                 {
                     name: "Recycled 3 plastic items",
@@ -140,7 +142,7 @@ export default {
                         displayName: this.name,
                     })
                     database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
-                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime})
+                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, pic: image})
                     database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                     alert('Successfully registered! Please login.');
                     if (typeof this.recycledData === "undefined") {
