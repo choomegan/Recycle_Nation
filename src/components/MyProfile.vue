@@ -14,7 +14,7 @@
             </div>
         </div>
         <br>
-        <p id="prog" v-if="hovered">{{width}}%</p>
+        <p id="prog" v-if="hovered">{{width}}% {{remaining}} points until next level!</p>
         <div id="myProgress">
             <div id="myBar" @mouseover="hovered=true" @mouseleave="hovered=false"></div>
         </div><br> 
@@ -61,7 +61,8 @@ export default {
             width:0,
             level:0,
             title:"",
-            hovered: false
+            hovered: false,
+            remaining:0
         }
     },
     methods: {
@@ -122,6 +123,7 @@ export default {
             db.collection(user.email).doc("Profile").get().then(snapShot => {
                 this.width = (snapShot.data()["total"]%400)/4
                 this.level = Math.floor(snapShot.data()["total"]/400) + 1
+                this.remaining = 400 - this.width*4
                 console.log(this.width)
                 elem.style.width = this.width + "%"
                 if (this.level >= 60) {
