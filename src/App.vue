@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <h1 id="title">{{title}}</h1>
-    <Header v-if="navigation" id="head"></Header>
     
-    <content><router-view></router-view></content>
+    <Header v-if="navigation" id="head" />
+    <transition name="custom-classes-transition" enter-active-class="animated fadeInLeft">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -65,6 +67,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Asap|Lato|Open+Sans|Segoe+UI');
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
   #app {
     font-family: "Segoe UI", Helvetica, Arial, sans-serif;
@@ -86,13 +89,17 @@ export default {
     font-size: 50px;
   }
 
-  content {
-    background-color: #E8E1CF;
-    font-family: Avenir, Helvetica;
-  }
-  
   #head {
     background-color: #d8d4c8;
     padding: 2px;
+    font-family: Asap, Avenir;
+    font-size: 16px;
   }
+
+  .fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-duration: 1.3s;
+    animation-duration: 1.3s;
+}
 </style>

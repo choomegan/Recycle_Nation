@@ -1,5 +1,6 @@
 <template>
     <div id="register">
+        <p id="back" v-on:click="back()"> ← back </p>
         <form> 
             <label>Username: </label>
             <input type="text" id="username" name="username" v-model="name" required>
@@ -33,6 +34,9 @@ export default {
         }
     },
     methods :{
+        back: function() {
+            this.$router.push('/Login')
+        },
         input: function() {
             database.collection(this.name).add()
         },
@@ -142,7 +146,11 @@ export default {
                         displayName: this.name,
                     })
                     database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
+<<<<<<< HEAD
                     database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, pic: image})
+=======
+                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, total: 0})
+>>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
                     database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                     alert('Successfully registered! Please login.');
                     if (typeof this.recycledData === "undefined") {
@@ -197,15 +205,34 @@ label {
 
 #button {
     font-size: 20px;
+    font-family: Asap, Avenir;
     color: white;
     background-color: #7D6558;
     border: none;
     height: 50px;
     width: 150px;
-    border-radius: 9px;
+    border-radius: 25px;
+    opacity:1;
+    transition: 0.4s;
 }
 
 #button:hover {
-    background-color: #7d6558d2;
+    opacity:0.84;
+}
+
+#back {
+    position: absolute;
+    top: 173px;
+    left:40px;
+    font-size: 17px;
+    text-decoration: underline;
+    font-family: Asap;
+    color: rgb(55, 83, 55);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#back:hover {
+    color: black;
 }
 </style> 

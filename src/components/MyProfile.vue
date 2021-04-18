@@ -26,6 +26,14 @@
                 </span> 
             </div>
         </div>
+        <br>
+        <p id="prog" v-if="hovered">{{width}}% {{remaining}} points until next level!</p>
+        <div id="myProgress">
+            <div id="myBar" @mouseover="hovered=true" @mouseleave="hovered=false"></div>
+        </div><br> 
+        <div id="level">Level: {{level}} --
+            <span id="recycler">{{title}}</span>
+        </div> 
         <br><br>
         <div id="status">
             Total Points:  
@@ -63,10 +71,18 @@ export default {
             percent:0,
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png'),
+<<<<<<< HEAD
             imageData: null,
             picture: null,
             uploadValue: 0
             
+=======
+            width:0,
+            level:0,
+            title:"",
+            hovered: false,
+            remaining:0
+>>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
         }
     },
     methods: {
@@ -161,11 +177,37 @@ export default {
                 // An error happened.
                 alert(error.message);
             });
+        },
+        bar: function() {
+            var elem = document.getElementById("myBar");
+            var user = firebase.auth().currentUser
+            db.collection(user.email).doc("Profile").get().then(snapShot => {
+                this.width = (snapShot.data()["total"]%400)/4
+                this.level = Math.floor(snapShot.data()["total"]/400) + 1
+                this.remaining = 400 - this.width*4
+                console.log(this.width)
+                elem.style.width = this.width + "%"
+                if (this.level >= 60) {
+                    this.title = "Grandmaster Recycler"
+                } else if (this.level >= 30) {
+                    this.title = "Master Recycler"
+                } else if (this.level >= 10) {
+                    this.title = "Apprentice Recycler"
+                } else {
+                    this.title = "Novice Recycler"
+                }
+            })
         }
     },
     created: function() {
         this.updatePage();
+<<<<<<< HEAD
         this.getPic();
+=======
+    },
+    mounted: function() {
+        this.bar()
+>>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
     }
 }
 </script>
@@ -178,7 +220,6 @@ export default {
     color: white;
     object-fit: cover;
     background-image: url('~@/assets/forest-full.jpg');
-    /*background-color: #E8E1CF;*/
     text-align: left;
 }
 #icon{
@@ -193,8 +234,9 @@ export default {
 }
 
 #routes {
-    color:rgb(80, 169, 199);
+    color:rgb(80, 184, 219);
     font-size: 20px;
+    font-weight: bold;
     padding: 20px;
     font-style: italic;
 }
@@ -225,26 +267,29 @@ export default {
 }
 
 button {
-    font-size: 19px;
+    font-size: 16px;
     font-family: Asap, Avenir;
+    font-weight: bold;
+    letter-spacing: 0.0600em;
     color: white;
     background-color: #7D6558;
     border: none;
     height: 40px;
     width: 120px;
-    border-radius: 6px;
+    border-radius: 20px;
     margin-left: 20px;
 }
 
 
 button:hover {
-    background-color: #7d6558d2;
+    background-color: #695449;
 }
 
 #status {
     font-family: Avenir;
 }
 
+<<<<<<< HEAD
 img.preview {
     width: 200px;
 }
@@ -252,4 +297,31 @@ u {
     font-size: 12px;
 }
 
+=======
+#myProgress {
+  width: 100%;
+  background-color: rgb(65, 90, 65);
+  border-radius: 25px;
+}
+
+#prog {
+    text-align: center;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: rgb(103, 143, 103);
+  border-radius: 25px;
+}
+
+#level {
+    font-family: Asap, Avenir;
+    text-align: center;
+}
+#recycler {
+    color: rgb(216, 184, 0);
+    font-family: Asap, Avenir;
+}
+>>>>>>> 028efd11318d93db35b22bac743b8093adb704a8
 </style>

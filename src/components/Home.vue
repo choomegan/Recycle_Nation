@@ -9,8 +9,10 @@
                     <li>{{item}}</li>
                 </ul>
             </div>
-        </div><br> 
-        <div id="disclaimer">Empty all food waste and liquids before recycling!</div> 
+        </div><br><br> 
+        <div id="disclaimer">Check out NEA's guide to common recyclables
+            <a href="https://www.nea.gov.sg/docs/default-source/our-services/waste-management/list-of-items-that-are-recyclable-and-not.pdf">here</a> 
+        </div> 
     </div>
 </template>
 
@@ -74,7 +76,7 @@ export default {
 #item {
     font-family: Avenir, Helvetica;
     font-weight:bold;
-    color: rgb(204, 149, 46);; 
+    color: rgb(204, 149, 46); 
     font-size:25px;
     font-style: italic;
     text-align:center;
@@ -92,7 +94,16 @@ p {
 #disclaimer {
     font-family: Asap,Avenir, Helvetica;
     font-weight: bold;
-    font-size: 18px;
-    color: rgb(224, 201, 152);
+    font-size: 19px;
+    color:  rgb(204, 149, 46);
+    letter-spacing: 0.0625em;
+}
+
+a {
+    color: rgb(204, 149, 46);
+}
+
+a:hover {
+    color:  rgb(224, 201, 152);
 }
 </style>

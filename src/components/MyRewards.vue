@@ -298,18 +298,23 @@ p {
 }
 
 button {
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.0625em;
     border: none;
     font-family: Asap, Helvetica;
     color: white;
     background-color: #7D6558;
     height: 40px;
     width: 130px;
-    border-radius: 7px;
+    border-radius: 20px;
+    padding: 5px;
+    opacity:1;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #7d6558d2;
+    opacity:0.84;
 }
 
 #name {
