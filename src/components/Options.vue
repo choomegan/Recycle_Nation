@@ -1,5 +1,6 @@
 <template>
     <div id="options">
+        <h2>Welcome to Recycle Nation!</h2> 
         <button v-on:click="login()"><span>Login</span></button>
         <button v-on:click="scanQR()"><span>Scan QR code</span></button>
     </div>
@@ -21,21 +22,25 @@ export default {
 <style scoped>
 #options {
     text-align: center;
-    padding: 200px 50px;
-    background-color: #E8E1CF;
+    padding-top: 250px;
+    padding-bottom: 350px;
+    background-image: url('~@/assets/forest-full2.jpg');
+    height: 100%;
+    margin:0;
+    background-size: cover;
 }
 button {
-    background-color: rgba(69, 85, 10, 0.459);
+    background-color: rgb(185, 140, 72);
     color:white;
-    font-size: 30px;
+    font-size: 27px;
     font-family: Asap, Helvetica;
     border: none;
     margin: 20px;
-    width: 290px;
-    height: 125px;
+    width: 255px;
+    height: 120px;
     transition: all 0.5s;
     cursor: pointer;
-    border-radius: 9px;
+    border-radius: 26px;
 }
 
 button span {
@@ -63,4 +68,13 @@ button:hover span:after {
   right: 0;
 }
 
+h2 {
+    font-family: Asap;
+    color:white;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 50px;
+    font-weight: 600;
+    font-size: 35px;
+}
 </style>

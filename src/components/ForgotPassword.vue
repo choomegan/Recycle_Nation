@@ -1,5 +1,5 @@
 <template> 
-    <transition name="fade" enter-active-class="animated fadeInLeft" appear>
+    <transition name="fade" enter-active-class="animated slideInLeft" appear>
     <div id="forgotPW"> 
         <p id="back" v-on:click="back()"> ← back</p>
         <form> 
@@ -73,11 +73,13 @@ export default {
 <style scoped> 
 #forgotPW{
     font-size: 20px;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Asap, Avenir, Helvetica, Arial, sans-serif;
     text-align: center;
-    padding: 220px;
-    background-color: #E8E1CF;
-    margin: 0;
+    padding-top: 350px;
+    padding-bottom: 350px;
+    background-image: url('~@/assets/forest-full2.jpg');
+    background-size: cover;
+    color: white;
 }
 
 input {
@@ -90,20 +92,22 @@ input {
 }
 
 input:focus {
-    border: 2px solid #555;
+    border: 2px solid rgb(158, 121, 65);
 }
 
 label {
     width: 200px;
+    font-size: 22px;
     text-align: left;
     display: inline-block;  
+    padding-right: 14px;
 }
 
 #button {
     font-size: 18px;
     font-family: Asap, Avenir;
     color: white;
-    background-color: #7D6558;
+    background-color: rgb(177, 128, 55);
     height: 50px;
     width: 255px;
     border: none;
@@ -113,22 +117,22 @@ label {
 }
 
 #button:hover {
-    opacity: 0.84;
+    background-color: rgb(150, 103, 33);
 }
 
 #back {
     position: absolute;
-    top: 173px;
-    left:40px;
-    font-size: 17px;
+    top: 3%;
+    left:4%;
+    font-size: 20px;
     text-decoration: underline;
     font-family: Asap;
-    color: rgb(55, 83, 55);
+    color: white;
     cursor: pointer;
     font-weight: bold;
 }
 
 #back:hover {
-    color: black;
+    color: rgb(247, 148, 0);
 }
 </style> 

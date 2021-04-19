@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 id="title">{{title}}</h1> 
+    <h1 v-if="showTitle" id="title">{{title}}</h1> 
     <Header v-if="navigation" id="head" />
     <router-view></router-view>
   </div>
@@ -13,7 +13,8 @@ export default {
   data() {
     return {
       title: 'Recycle Nation',
-      navigation: true
+      navigation: true,
+      showTitle: true
     }
   },
 
@@ -48,16 +49,27 @@ export default {
       } else {
       this.title = this.$route.name;
     }
+    }, 
+    
+    updatingTitle: function () {
+      if (this.$route.name == "Welcome to Recycle Nation" || this.$route.name == "Login" || this.$route.name == "Reset your password" || this.$route.name == "Registration") {
+        this.showTitle = false;
+      } else {
+        this.showTitle = true;
+      }
     }
+    
   },
   
   created : function() {
     this.showNavigation()
     this.updatingHeader()
+    this.updatingTitle()
   },
   updated: function() {
     this.showNavigation();
     this.updatingHeader()
+    this.updatingTitle()
   }
 }
 </script>
