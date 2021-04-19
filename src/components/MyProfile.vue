@@ -8,14 +8,12 @@
                         <input style="display: none" type="file" @change="previewImage" accept="image/*" ref="fileInput">
                         <u @click="$refs.fileInput.click()">Change photo</u>
                     </div>
-                    <div>
+                    <div v-if="imageData!=null">
+                        <!--img class="preview" :src="picture"-->
+                        <br>
                         <p>Progress: {{uploadValue.toFixed()+"%"}}
                         <progress id="progress" :value="uploadValue" max="100" ></progress>  </p>
-                    </div>
-                    <div v-if="imageData!=null">
-                        <img class="preview" :src="picture">
-                        <br>
-                        <button @click="onUpload">Upload</button>
+                        <button id="uploadButton" @click="onUpload">Upload</button>
                     </div>
                 </div>
                 <a id="name">{{username}} </a>
@@ -78,13 +76,14 @@ export default {
             level:0,
             title:"",
             hovered: false,
-            remaining:0
+            remaining:0,
+            uploaded: false
         }
     },
     methods: {
         getPic: function() { //get path of image from db
             db.collection(this.email).doc("Profile").get().then((querySnapShot) => {
-                //console.log(querySnapShot.data().pic); // tree3.png is the default profile pic for new users
+                console.log(querySnapShot.data().pic); // tree3.png is the default profile pic for new users
                 this.image = querySnapShot.data().pic;
                 var storage    = firebase.storage();
                 var storageRef = storage.ref();
@@ -122,6 +121,8 @@ export default {
             });
 
             alert("Profile picture updated!")
+            this.uploaded = true;
+
         },
         rewards: function() {
             this.$router.push({path:"/MyRewards"})
@@ -193,6 +194,12 @@ export default {
                     this.title = "Novice Recycler"
                 }
             })
+        }
+    },
+    watch: {
+        uploaded: function() {
+            console.log("upload watch");
+            this.getPic();
         }
     },
     created: function() {
@@ -313,5 +320,10 @@ u {
 #recycler {
     color: rgb(216, 184, 0);
     font-family: Asap, Avenir;
+}
+
+#uploadButton {
+    margin-left:0;
+    margin-bottom: 10px;
 }
 </style>
