@@ -1,28 +1,33 @@
 <template> 
-    <transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="login"> 
         <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
             <h2>Login</h2>
         </transition>
         <br><br> 
         <p id="back" v-on:click="back()"> ← back</p>
-        <form> 
-            <label>Email: </label>
-            <input type="text" id="email" name="email" v-model="email" required>
-        </form>
-        <form> 
-            <label>Password: </label>
-            <input type="password" id="password" name="password" v-model="password" required><br>
-            <input type="checkbox" v-on:click="toggle()" id="toggle"><span id="showPW">Show Password</span>
-        </form>
-        <button type="button" v-on:click="login()">Login</button>
-        <div id="extras">
-            <span id="signUp" v-on:click="register()">CREATE ACCOUNT</span>
-            <span id="forgotPW" v-on:click="resetPW()">FORGOT PASSWORD?</span>
-        </div>
-
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <form> 
+                <label>Email: </label>
+                <input type="text" id="email" name="email" v-model="email" required>
+            </form>
+        </transition>
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <form> 
+                <label>Password: </label>
+                <input type="password" id="password" name="password" v-model="password" required><br>
+                <input type="checkbox" v-on:click="toggle()" id="toggle"><span id="showPW">Show Password</span>
+            </form>
+        </transition>
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <button type="button" v-on:click="login()">Login</button>
+        </transition>
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <div id="extras">
+                <span id="signUp" v-on:click="register()">CREATE ACCOUNT</span>
+                <span id="forgotPW" v-on:click="resetPW()">FORGOT PASSWORD?</span>
+            </div>
+        </transition>
     </div> 
-    </transition>
 </template> 
 
 <script>

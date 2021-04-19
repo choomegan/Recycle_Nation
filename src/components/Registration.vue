@@ -1,28 +1,28 @@
 <template>
-    <transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="register">
         <p id="back" v-on:click="back()"> ← back </p>
         <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
             <h2>Registration</h2>
         </transition>
         <br><br> 
-        <form> 
-            <label>Username: </label>
-            <input type="text" id="username" name="username" v-model="name" required>
-            <br>
-            <label>Email:</label>
-            <input type="email" id="email" name="email" v-model="email" required>
-            <br>
-            <label>Password: </label>
-            <input type="text" id="password" name="password" v-model="password" required>
-            <br>
-            <label>Re-enter Password: </label>
-            <input type="text" id="Repassword" name="Repassword" v-model="rePassword" required>
-            <br><br><br>
-            <input type="button" id="button" v-on:click="register()" value="Sign up">
-        </form>
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <form> 
+                <label>Username: </label>
+                <input type="text" id="username" name="username" v-model="name" required>
+                <br>
+                <label>Email:</label>
+                <input type="email" id="email" name="email" v-model="email" required>
+                <br>
+                <label>Password: </label>
+                <input type="text" id="password" name="password" v-model="password" required>
+                <br>
+                <label>Re-enter Password: </label>
+                <input type="text" id="Repassword" name="Repassword" v-model="rePassword" required>
+                <br><br><br>
+                <input type="button" id="button" v-on:click="register()" value="Sign up">
+            </form>
+        </transition>
     </div> 
-    </transition>
 </template>
 
 <script>
@@ -261,7 +261,4 @@ label {
     color: rgb(247, 148, 0);
 }
 
-.bounceInLeft {
-    animation-delay:0.3s;
-}
 </style> 
