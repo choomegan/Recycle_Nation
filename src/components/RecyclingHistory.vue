@@ -51,19 +51,15 @@ export default {
                 } else {
                     console.log(user)
                     this.email = user.email;
-                    console.log(this.email)
+                    db.collection(this.email).doc("Recycling history").get().then((doc) => {
+                      if (!doc.data()) {
+                        this.dataShow = false;
+                      } else {
+                        this.dataShow = true;
+                      }
+                    })
+                    this.retrieveData();
                 }
-            })
-            db.collection(this.email).doc("Recycling history").get().then((doc) => {
-              console.log("doc.data()")
-              console.log(doc.data())
-              console.log(!doc.data())
-              if (!doc.data()) {
-                this.dataShow = false;
-              } else {
-                this.dataShow = true;
-                //this.retrieveData()
-              }
             })
         },
         retrieveData: function() {
@@ -91,7 +87,6 @@ export default {
     },
     created() {
       this.dataPresent();
-      this.retrieveData();
     }
 }
 </script>

@@ -27,25 +27,30 @@ export default {
     },
     methods: {
         chartData: function() {
-            var user = firebase.auth().currentUser;
-            db.collection(user.email).doc("Recycling history").get().then((doc) => {
-                var index;
-                var item = doc.data()
-                for(index = 0; index < Object.keys(item).length; index++) {
-                    if (item[index].Item == "glass") { 
-                        this.datacollection.datasets[0].data[0] += 1;
-                    } else if (item[index].Item == "plastic") {
-                        this.datacollection.datasets[0].data[1] += 1;
-                    } else if (item[index].Item == "paper") {
-                        this.datacollection.datasets[0].data[2] += 1;
-                    } else {
-                        this.datacollection.datasets[0].data[3] += 1;
-                    }       
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user== null) {
+                    console.log("not logged in")
+                    this.$router.push('/Login');
+                } else {
+                    this.email = user.email;
+                    db.collection(user.email).doc("Recycling history").get().then((doc) => {
+                        var index;
+                        var item = doc.data()
+                        for(index = 0; index < Object.keys(item).length; index++) {
+                            if (item[index].Item == "glass") { 
+                                this.datacollection.datasets[0].data[0] += 1;
+                            } else if (item[index].Item == "plastic") {
+                                this.datacollection.datasets[0].data[1] += 1;
+                            } else if (item[index].Item == "paper") {
+                                this.datacollection.datasets[0].data[2] += 1;
+                            } else {
+                                this.datacollection.datasets[0].data[3] += 1;
+                            }       
+                        }
+                        this.renderChart(this.datacollection, this.options)
+                    });
                 }
-                this.renderChart(this.datacollection, this.options)
-            });
-            
-            
+            })
         }
     },
     created() {
