@@ -1,5 +1,5 @@
 <template> 
-    <transition name="fade" enter-active-class="animated fadeInLeft" appear>
+    <transition name="fade" enter-active-class="animated slideInLeft" appear>
     <div id="login"> 
         <p id="back" v-on:click="back()"> ← back</p>
         <form> 
@@ -96,14 +96,21 @@ export default {
 <style scoped> 
 #login{
     font-size: 25px;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Asap,Avenir, Helvetica, Arial, sans-serif;
+    letter-spacing: 0.5px;
     text-align: center;
-    padding: 170px;
-    background-color:#E8E1CF;
+    padding-top: 300px;
+    padding-bottom: 300px;
+    background-image: url('~@/assets/forest-full2.jpg');
+    background-size: cover;
+    color: white;
+    top: 0;
+    bottom:0;
+    left:0;
 }
 
 form {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 input {
@@ -115,16 +122,16 @@ input {
 }
 
 input:focus {
-    border: 2px solid #555;
+    border: 2px solid rgb(158, 121, 65);
 }
 label {
-    width: 125px;
+    width: 134px;
     text-align: left;
     display: inline-block;  
 }
 
 #signUp:hover {
-    color: #184eff;
+    color: rgb(240, 41, 75);
     text-decoration: underline;
 }
 
@@ -134,7 +141,7 @@ label {
 }
 
 p,span {
-    color: #565755;
+    color: white;
     font-size: 16px;
     padding: 20px;
 }
@@ -144,7 +151,7 @@ button {
     border: none;
     font-family: Asap, Helvetica;
     color: white;
-    background-color: #7D6558;
+    background-color: rgb(177, 128, 55);
     height: 50px;
     width: 135px;
     opacity: 1;
@@ -153,7 +160,7 @@ button {
 }
 
 button:hover {
-    opacity: 0.84;
+    background-color: rgb(150, 103, 33);
 }
 
 #extras {
@@ -170,22 +177,23 @@ button:hover {
 #showPW {
     vertical-align: middle;
     padding-left:4px;
+    color:white;
 }
 
 #back {
     position: absolute;
-    top: 173px;
-    left:40px;
-    font-size: 17px;
+    top: 2%;
+    left:3%;
+    font-size: 20px;
     text-decoration: underline;
     font-family: Asap;
-    color: rgb(55, 83, 55);
+    color: white;
     cursor: pointer;
     font-weight: bold;
 }
 
 #back:hover {
-    color: black;
+    color: rgb(247, 148, 0);
 }
 
 </style> 

@@ -1,5 +1,5 @@
 <template>
-    <transition name="fade" enter-active-class="animated fadeInLeft" appear>
+    <transition name="fade" enter-active-class="animated slideInLeft" appear>
     <div id="register">
         <p id="back" v-on:click="back()"> ← back </p>
         <form> 
@@ -183,11 +183,14 @@ export default {
 <style scoped> 
 #register{
     font-size: 23px;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: Asap,'Avenir', Helvetica, Arial, sans-serif;
+    letter-spacing: 0.5px;
     text-align: center;
-    padding: 150px;
-    background-color: #E8E1CF;
-    margin: 0;
+    padding-top: 310px;
+    padding-bottom: 310px;
+    background-image: url('~@/assets/forest-full2.jpg');
+    background-size: cover;
+    color: white;
 }
 
 input {
@@ -199,11 +202,11 @@ input {
 }
 
 input:focus {
-    border: 2px solid #555;
+    border: 2px solid rgb(158, 121, 65);
 }
 
 label {
-    width: 210px;
+    width: 220px;
     text-align: left;
     display: inline-block;  
     padding: 5px;
@@ -214,7 +217,7 @@ label {
     font-size: 20px;
     font-family: Asap, Avenir;
     color: white;
-    background-color: #7D6558;
+    background-color: rgb(177, 128, 55);
     border: none;
     height: 50px;
     width: 150px;
@@ -224,22 +227,22 @@ label {
 }
 
 #button:hover {
-    opacity:0.84;
+    background-color: rgb(150, 103, 33);
 }
 
 #back {
     position: absolute;
-    top: 173px;
-    left:40px;
-    font-size: 17px;
+    top: 3%;
+    left:4%;
+    font-size: 20px;
     text-decoration: underline;
     font-family: Asap;
-    color: rgb(55, 83, 55);
+    color: white;
     cursor: pointer;
     font-weight: bold;
 }
 
 #back:hover {
-    color: black;
+    color: rgb(247, 148, 0);
 }
 </style> 
