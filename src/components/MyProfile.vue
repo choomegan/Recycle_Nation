@@ -1,5 +1,5 @@
 <template>
-<transition name="fade" enter-active-class="animated flipInY" appear>
+<transition name="fade" enter-active-class="animated fadeInUp" appear>
     <div id="MyProfile">
         <div class="split">
             <div class="halves">
@@ -222,6 +222,7 @@ export default {
     color: white;
     object-fit: cover;
     background-image: url('~@/assets/forest-full.jpg');
+    background-size: cover;
     text-align: left;
 }
 #icon{
@@ -328,5 +329,12 @@ u {
 #uploadButton {
     margin-left:0;
     margin-bottom: 10px;
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
 }
 </style>

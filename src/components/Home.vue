@@ -1,5 +1,5 @@
 <template>
-<transition name="fade" enter-active-class="animated zoomIn" appear>
+<transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="Home">
         <p id="header">Common Recyclable Items </p>
         <br>
@@ -55,6 +55,7 @@ export default {
 <style scoped>
 #Home {
     padding: 40px 100px 60px;
+    padding-bottom: 100px;
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
     text-align: center;

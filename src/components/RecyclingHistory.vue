@@ -155,4 +155,11 @@ h2 {
   align-content: center;
 }
 
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
 </style>

@@ -77,6 +77,7 @@ export default {
   #title {
     background-image: url('~@/assets/forest-bg.jpg');
     object-fit: cover;
+    background-size: cover;
     font-family: Asap;
     color:white;
     margin-top: 0;
@@ -93,10 +94,4 @@ export default {
     font-size: 16px;
   }
 
-  .fadeInLeft {
-    -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft;
-    -webkit-animation-duration: 1.3s;
-    animation-duration: 1.3s;
-}
 </style>

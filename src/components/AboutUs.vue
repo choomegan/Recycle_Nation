@@ -1,13 +1,13 @@
 <template>
     <div id="AboutUs">
         <div class="side">
-        <transition name="fade" enter-active-class="animated fadeInLeft" appear>
+        <transition name="fade" enter-active-class="animated slideInLeft" appear>
         <div id="vision">
             <h1>Our Vision</h1>
             <p>Encouraging all Singaporeans to actively recycle.</p>
         </div> 
         </transition>
-        <transition name="fade" enter-active-class="animated fadeInRight" appear>
+        <transition name="fade" enter-active-class="animated slideInRight" appear>
         <div id="mission">
             <h1>Our Mission</h1>
             <p>We aim to promote green movement by making recycling easier for you.</p>
@@ -15,7 +15,7 @@
         </transition>
         </div>
         <footer>
-            Feel free to drop us a message!<br><br>
+            For enquiries, please contact:<br><br>
             <a href="tel:+65 67583827">+65 67583827</a> 
             <a href="mailto:recyclenation@gmail.com">recyclenation@gmail.com</a> 
         </footer> 
@@ -46,10 +46,12 @@ export default {
 <style scoped>
 #AboutUs {
     width: 100%;
-    height: 73%;
+    height: 100%;
     text-align: center;
-    background-color: #61756b;
-    color:  #ebe8de;
+    object-fit: cover;
+    background-image: url('~@/assets/forest3.jpg');
+    background-size: cover;
+    color:#ebe8de;
 
 }
 .side {
@@ -58,33 +60,31 @@ export default {
 }
 h1 {
     padding: 2%;
-    font-size: 30px;
+    font-size: 26px;
     font-family: Avenir;
 }
 p {
-    font-size: 22px;
+    font-size: 20px;
     font-family: Avenir, Helvetica;
 }
 
 #vision {
     background-color: #ebe8de;
     color:hsl(76, 33%, 20%);
-    padding:100px;
+    padding:130px;
     width:40%;
 }
 #mission {
     background-color:  hsl(76, 33%, 20%);
-    padding: 100px;
+    padding: 130px;
     width:40%;
 }
 
 footer {
     font-size: 19px;
-    color: rgb(228, 200, 148);
+    color: rgb(228, 163, 78);
     text-align: center;
     padding: 50px;
-    object-fit: cover;
-    background-image: url('~@/assets/forest-full.jpg');
     font-family:Asap, Avenir;
 }
 a {
@@ -93,14 +93,28 @@ a {
 }
 
 a:link {
-  color: rgb(228, 163, 78); 
+  color:rgb(228, 163, 78);
   background-color: transparent; 
   text-decoration: none;
 }
 
 a:hover {
-  color: rgb(162, 180, 140);
+  color: rgb(162, 180, 140);;
   background-color: transparent;
   text-decoration: underline;
+}
+
+.slideInLeft {
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+
+.slideInRight {
+    -webkit-animation-name: slideInRight;
+    animation-name: slideInRight;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
 }
 </style>
