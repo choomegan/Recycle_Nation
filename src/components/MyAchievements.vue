@@ -31,7 +31,8 @@ export default {
         return {
             goldStar: require('../assets/goldStar.png'),
             greyStar: require('../assets/greyStar.png'),
-            data: []
+            data: [],
+            email:"",
         }
     },
     methods: {
@@ -43,16 +44,18 @@ export default {
             }
         },
         retrieve: function() {
-            var user = firebase.auth().currentUser;
-            if (user) {
-                //user signed in
-            }
-            else {
-                alert("Please log in to continue.")
-                this.$router.push('/Login');
-            }
-            var email = user.email;
-            db.collection(email).doc("Achievements").get().then((querySnapShot) => {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user== null) {
+                    console.log("not logged in")
+                    alert("Please log in to continue.")
+                    this.$router.push('/Login');
+                } else {
+                    console.log(user)
+                    this.email = user.email;
+                    console.log(this.email)
+                }
+            })
+            db.collection(this.email).doc("Achievements").get().then((querySnapShot) => {
                 console.log(querySnapShot.data())
                 this.data = querySnapShot.data();
             })

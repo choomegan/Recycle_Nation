@@ -34,7 +34,8 @@ export default {
     data() {
       return {
         title: "Recycling History",
-        dataShow: false
+        dataShow: false,
+        email: "",
       }
     },
     components: {
@@ -43,15 +44,17 @@ export default {
     },
     methods: {
         dataPresent: function() {
-            var user = firebase.auth().currentUser;
-            if (user) {
-                //user signed in
-            }
-            else {
-              alert("Please log in to continue.")
-                this.$router.push('/Login');
-            }
-            db.collection(user.email).doc("Recycling history").get().then((doc) => {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user== null) {
+                    console.log("not logged in")
+                    this.$router.push('/Login');
+                } else {
+                    console.log(user)
+                    this.email = user.email;
+                    console.log(this.email)
+                }
+            })
+            db.collection(this.email).doc("Recycling history").get().then((doc) => {
               console.log("doc.data()")
               console.log(doc.data())
               console.log(!doc.data())
@@ -64,8 +67,7 @@ export default {
             })
         },
         retrieveData: function() {
-            var user = firebase.auth().currentUser;
-            db.collection(user.email).doc("Recycling history").get().then(doc => {
+            db.collection(this.email).doc("Recycling history").get().then(doc => {
               Object.values(doc.data()).forEach(item => {
                 /*
                 let row = `<tr>

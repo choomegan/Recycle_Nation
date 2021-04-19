@@ -133,16 +133,6 @@ export default {
             this.$router.push({path:"/MyAchievements"})
         },
         updatePage: function() {
-            var user = firebase.auth().currentUser;
-            if (user) {
-                //user signed in
-                this.email = user.email;
-                this.username = user.displayName;
-            }
-            else {
-                alert("Please log in to continue")
-                this.$router.push('/Login');
-            }
             db.collection(this.email).doc("Profile").get().then((items) => {
                 var datejoined = new Date(items.data().dateJoined.seconds*1000)
                 var month = ('0' + (datejoined.getMonth() + 1)).slice(-2);
@@ -179,8 +169,7 @@ export default {
         },
         bar: function() {
             var elem = document.getElementById("myBar");
-            var user = firebase.auth().currentUser
-            db.collection(user.email).doc("Profile").get().then(snapShot => {
+            db.collection(this.email).doc("Profile").get().then(snapShot => {
                 this.width = (snapShot.data()["total"]%400)/4
                 this.level = Math.floor(snapShot.data()["total"]/400) + 1
                 this.remaining = 400 - this.width*4
@@ -196,6 +185,22 @@ export default {
                     this.title = "Novice Recycler"
                 }
             })
+        },
+        checkLogin() {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user== null) {
+                    console.log("not logged in")
+                    this.$router.push('/Login');
+                } else {
+                    console.log(user)
+                    this.username = user.displayName;
+                    this.email = user.email;
+                    console.log(this.username, this.email)
+                    this.updatePage();
+                    this.getPic();
+                    this.bar();
+                }
+            })
         }
     },
     watch: {
@@ -205,11 +210,9 @@ export default {
         }
     },
     created: function() {
-        this.updatePage();
-        this.getPic();
-    },
-    mounted: function() {
-        this.bar()
+        this.checkLogin();
+        
+        
     }
 }
 </script>

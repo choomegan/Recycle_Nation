@@ -94,16 +94,19 @@ export default {
         }
     }, 
     methods: {
-        checkUser: function(item) {
-            var currentUser = firebase.auth().currentUser;
-            if (currentUser == null) {
-                console.log("no user logged in");
-                alert("Please log in to continue.")
-                this.$router.push('/Login');
-            } else {
-                console.log(currentUser.email)
-                this.redeem(item)
-            }
+        checkUser: function() {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user== null) {
+                    console.log("not logged in")
+                    alert("Please log in to continue.")
+                    this.$router.push('/Login');
+                } else {
+                    console.log(user)
+                    this.email = user.email;
+                    console.log(this.email)
+                    this.getMyRewards();
+                }
+            })
         },
         confirmRedemption: function(item) {
             var msg = 'Redeem reward [' + item.name + '] ?'
@@ -227,7 +230,7 @@ export default {
     },
     created: function() {
         console.log("created")
-        this.getMyRewards()
+        this.checkUser();
         
     },
 }
