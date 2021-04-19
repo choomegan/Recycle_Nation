@@ -78,6 +78,9 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Asap|Lato|Open+Sans|Segoe+UI');
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
+* {
+  margin:0px;
+}
   #app {
     font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     text-align:center;

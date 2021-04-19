@@ -1,9 +1,11 @@
 <template>
+    <transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="options">
         <h2>Welcome to Recycle Nation!</h2> 
         <button v-on:click="login()"><span>Login</span></button>
         <button v-on:click="scanQR()"><span>Scan QR code</span></button>
     </div>
+    </transition>
 </template>
 
 <script>
