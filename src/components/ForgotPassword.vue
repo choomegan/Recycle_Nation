@@ -2,6 +2,7 @@
     <transition name="fade" enter-active-class="animated slideInLeft" appear>
     <div id="forgotPW"> 
         <p id="back" v-on:click="back()"> ← back</p>
+        <h2>Forgot Password</h2><br><br> 
         <form> 
             <label>Enter email address: </label> 
             <input type="email" id="email" name="email" v-model="email" required> 
@@ -80,6 +81,16 @@ export default {
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
     color: white;
+}
+
+h2 {
+    font-family: Asap;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 33px;
+    text-decoration: underline;
 }
 
 input {

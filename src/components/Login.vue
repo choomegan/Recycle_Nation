@@ -1,6 +1,7 @@
 <template> 
     <transition name="fade" enter-active-class="animated slideInLeft" appear>
     <div id="login"> 
+        <h2>Login</h2><br><br> 
         <p id="back" v-on:click="back()"> ← back</p>
         <form> 
             <label>Email: </label>
@@ -107,6 +108,16 @@ export default {
     top: 0;
     bottom:0;
     left:0;
+}
+
+h2 {
+    font-family: Asap;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 35px;
+    text-decoration: underline;
 }
 
 form {

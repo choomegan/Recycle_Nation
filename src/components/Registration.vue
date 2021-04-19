@@ -2,6 +2,7 @@
     <transition name="fade" enter-active-class="animated slideInLeft" appear>
     <div id="register">
         <p id="back" v-on:click="back()"> ← back </p>
+        <h2>Registration</h2><br><br> 
         <form> 
             <label>Username: </label>
             <input type="text" id="username" name="username" v-model="name" required>
@@ -14,7 +15,7 @@
             <br>
             <label>Re-enter Password: </label>
             <input type="text" id="Repassword" name="Repassword" v-model="rePassword" required>
-            <br><br>
+            <br><br><br>
             <input type="button" id="button" v-on:click="register()" value="Sign up">
         </form>
     </div> 
@@ -191,6 +192,17 @@ export default {
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
     color: white;
+}
+
+
+h2 {
+    font-family: Asap;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 35px;
+    text-decoration: underline;
 }
 
 input {
