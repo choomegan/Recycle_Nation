@@ -34,15 +34,17 @@ export default {
         this.$router.push({name:"Home", params:{ userEmail: this.email }})
       },
       getData: function() {
-        var user = firebase.auth().currentUser;
-        if (user) {
-            //user signed in
-            this.email = user.email;
-        }
-        else {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user== null) {
+            console.log("not logged in")
             alert("Please log in to continue.")
             this.$router.push('/Login');
-        }
+          } else {
+            console.log(user)
+            this.email = user.email;
+            console.log(this.email)
+          }
+        })
         var data = JSON.parse(this.$route.params.data);
         this.item = data[0].item;
         this.points = data[1].points;

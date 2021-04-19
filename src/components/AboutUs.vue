@@ -27,14 +27,15 @@ import firebase from 'firebase/app'
 export default {
     methods: {
         checkUser: function() {
-            var user = firebase.auth().currentUser;
-            if (user) {
-                //user signed in
-            }
-            else {
-                alert("Please log in to continue.")
-                this.$router.push('/Login');
-            }
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user== null) {
+                    console.log("not logged in")
+                    alert("Please log in to continue.")
+                    this.$router.push('/Login');
+                } else {
+                    console.log(user)
+                }
+            })
         }
     },
     created() {
