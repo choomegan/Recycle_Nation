@@ -1,4 +1,5 @@
 <template>
+<transition name="fade" enter-active-class="animated zoomIn" appear>
     <div id="Home">
         <p id="header">Common Recyclable Items </p>
         <br>
@@ -10,10 +11,12 @@
                 </ul>
             </div>
         </div><br><br> 
-        <div id="disclaimer">Check out NEA's guide to common recyclables
-            <a href="https://www.nea.gov.sg/docs/default-source/our-services/waste-management/list-of-items-that-are-recyclable-and-not.pdf">here</a> 
+        <div id="disclaimer">Check out  
+            <a href="https://www.nea.gov.sg/docs/default-source/our-services/waste-management/list-of-items-that-are-recyclable-and-not.pdf">NEA's guide</a> 
+            to common recyclables
         </div> 
     </div>
+</transition>
 </template>
 
 <script>
@@ -51,7 +54,7 @@ export default {
 
 <style scoped>
 #Home {
-    padding: 100px;
+    padding: 40px 100px 60px;
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
     text-align: center;

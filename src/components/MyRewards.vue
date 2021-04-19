@@ -1,4 +1,5 @@
 <template>
+    <transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="MyRewards">
         <div class="split">
             <div class="halves">
@@ -46,6 +47,7 @@
             </div>
         </div>
     </div>
+    </transition>
 </template>
 
 <script>

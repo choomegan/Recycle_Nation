@@ -1,4 +1,5 @@
 <template>
+    <transition name="fade" enter-active-class="animated fadeInLeft" appear>
     <div id="register">
         <p id="back" v-on:click="back()"> ← back </p>
         <form> 
@@ -17,6 +18,7 @@
             <input type="button" id="button" v-on:click="register()" value="Sign up">
         </form>
     </div> 
+    </transition>
 </template>
 
 <script>
@@ -42,6 +44,8 @@ export default {
         },
         register:function() {
             var dateTime = new Date();
+
+            var image = 'tree3.png';
 
             var achievements =[
                 {
@@ -144,7 +148,7 @@ export default {
                         displayName: this.name,
                     })
                     database.collection(this.email).doc("Authentication").set({email: this.email, username: this.name, password: this.password})
-                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, total: 0})
+                    database.collection(this.email).doc("Profile").set({username: this.name, points: 0, dateJoined: dateTime, total: 0, pic: image})
                     database.collection(this.email).doc("Achievements").set(Object.assign({},achievements))
                     alert('Successfully registered! Please login.');
                     if (typeof this.recycledData === "undefined") {

@@ -1,4 +1,5 @@
 <template>
+<transition name="fade" enter-active-class="animated fadeInUp" appear>
   <div id="history">
     <table class="table" id="table" v-show="this.dataShow">
       <thead> 
@@ -20,6 +21,7 @@
       <p>Start recycling to view your recycling history</p>
     </div>
   </div>
+</transition>
 </template>
 
 <script>

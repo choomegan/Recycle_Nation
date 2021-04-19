@@ -14,7 +14,7 @@ import GenerateQR from './components/GenerateQR.vue'
 import Options from './components/Options.vue'
 
 export default[
-    { name:'About Us', path: '/AboutUs', component: AboutUs},
+    { name:'About Us', path: '/AboutUs', component: AboutUs, meta: { transition: 'zoom' }},
     { name:'Home', path: '/Home', component: Home},
     { name:'Identified Item', path: '/IdentifiedItem', component: IdentifiedItem }, 
     { name:' Login ', path: '/Login/:data', component: Login}, // data in form of [{"date":"2021-01-01"},{"time":"1.45pm"},[{"glass":40}, {"plastic":20}]]
