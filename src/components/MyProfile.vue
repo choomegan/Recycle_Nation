@@ -3,20 +3,11 @@
     <div id="MyProfile">
         <div class="split">
             <div class="halves">
-                <img id="icon"/>
-                <div>
-                    <div>
-                        <input style="display: none" type="file" @change="previewImage" accept="image/*" ref="fileInput">
-                        <u @click="$refs.fileInput.click()">Change photo</u>
-                    </div>
-                    <div v-if="imageData!=null">
-                        <!--img class="preview" :src="picture"-->
-                        <br>
-                        <p>Progress: {{uploadValue.toFixed()+"%"}}
-                        <progress id="progress" :value="uploadValue" max="100" ></progress>  </p>
-                        <button id="uploadButton" @click="onUpload">Upload</button>
-                    </div>
-                </div>
+                <img id="icon"/><br>
+                <button v-on:click="showModal()">Upload</button>
+                <update-profile v-show="modalVisible" @close="closeModal"></update-profile>
+            </div>
+            <div class="halves">
                 <a id="name">{{username}} </a>
                 <br>
                 Joined {{date}} 
@@ -61,8 +52,12 @@
 <script>
 import firebase from 'firebase/app'
 import db from '../firebase.js'
+import UpdateProfile from './UpdateProfile.vue'
 
 export default {
+    components: {
+        UpdateProfile
+    },
     data() {
         return {
             image:"",
@@ -82,7 +77,8 @@ export default {
             title:"",
             hovered: false,
             remaining:0,
-            uploaded: false
+            uploaded: false,
+            modalVisible: false,
         }
     },
     methods: {
@@ -98,7 +94,7 @@ export default {
             db.collection(this.email).doc("Profile").get().then((querySnapShot) => {
                 console.log(querySnapShot.data().pic); // tree3.png is the default profile pic for new users
                 this.image = querySnapShot.data().pic;
-                var storage    = firebase.storage();
+                var storage = firebase.storage();
                 var storageRef = storage.ref();
 
                 storageRef.child(this.image).getDownloadURL().then(function(url) {
@@ -212,6 +208,15 @@ export default {
                     this.bar();
                 }
             })
+        },
+        showModal() {
+            this.modalVisible = true;
+        },
+        closeModal(changed) {
+            this.modalVisible = false;
+            if (changed) {
+                this.uploaded = !this.uploaded;
+            } 
         }
     },
     watch: {
@@ -222,8 +227,7 @@ export default {
     },
     created: function() {
         this.checkLogin();
-        
-        
+        this.getPic();        
     }
 }
 </script>
@@ -232,12 +236,13 @@ export default {
 #MyProfile {
     font-family: Avenir, Helvetica;
     font-size: 25px;
-    padding: 100px;
+    padding: 50px 100px;
     color: white;
     object-fit: cover;
     background-image: url('~@/assets/forest-full.jpg');
     background-size: cover;
     text-align: left;
+    
 }
 #icon{
     width: 120px;
