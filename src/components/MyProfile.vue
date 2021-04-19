@@ -17,13 +17,17 @@
             </div>
         </div>
         <br>
-        <p id="prog" v-if="hovered">{{remaining}} points to the next level !</p>
-        <div id="myProgress">
+        <div class="tooltip">
+            <span id="prog" class="tooltiptext"> {{remaining}} points to the next level !</span>
             
-            <transition appear @before-appear="beforeEnter" @after-appear="enter">
-                <div id="myBar" @mouseover="hovered=true" @mouseleave="hovered=false"></div>
-            </transition>
-        </div><br> 
+            <div id="myProgress" >
+                <transition appear @before-appear="beforeEnter" @after-appear="enter">
+                    <div id="myBar"></div>
+                </transition>
+            </div>
+        </div>
+
+        <br> 
         <div id="level">Level: {{level}} --
             <span id="recycler">{{title}}</span>
         </div> 
@@ -79,6 +83,7 @@ export default {
             remaining:0,
             uploaded: false,
             modalVisible: false,
+            msg: "this is the message"
         }
     },
     methods: {
@@ -233,6 +238,7 @@ export default {
 </script>
 
 <style scoped>
+
 #MyProfile {
     font-family: Avenir, Helvetica;
     font-size: 25px;
@@ -357,5 +363,31 @@ u {
     animation-name: fadeInUp;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  bottom: 140%;
+  left: 30%;
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
 }
 </style>
