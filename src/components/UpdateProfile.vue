@@ -67,13 +67,13 @@ import db from '../firebase.js'
      },
     methods: {
         success() {
-            this.image = "";
-            this.imageData = null;
-            this.picture = null;
-            this.uploadValue = 0;
-            this.remaining = 0;
-            this.uploaded = false;
-            this.uploading = false;
+            // this.image = "";
+            // this.imageData = null;
+            // this.picture = null;
+            // this.uploadValue = 0;
+            // this.remaining = 0;
+            // this.uploaded = false;
+            // this.uploading = false;
             this.$emit('close', true);
         },
         close() {

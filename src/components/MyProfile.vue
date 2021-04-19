@@ -4,7 +4,7 @@
         <div class="split">
             <div class="halves">
                 <img id="icon"/><br>
-                <button v-on:click="showModal()">Upload</button>
+                <u v-on:click="showModal()">Upload Photo</u>
                 <update-profile v-show="modalVisible" @close="closeModal"></update-profile>
             </div>
             <div class="halves">
@@ -315,7 +315,8 @@ img.preview {
     width: 200px;
 }
 u {
-    font-size: 12px;
+    font-size: 20px;
+    padding-left: 10px;
 }
 
 #myProgress {
