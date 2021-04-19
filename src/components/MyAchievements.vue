@@ -50,14 +50,12 @@ export default {
                     alert("Please log in to continue.")
                     this.$router.push('/Login');
                 } else {
-                    console.log(user)
                     this.email = user.email;
-                    console.log(this.email)
+                    db.collection(this.email).doc("Achievements").get().then((querySnapShot) => {
+                    console.log(querySnapShot.data())
+                    this.data = querySnapShot.data();
+                    })
                 }
-            })
-            db.collection(this.email).doc("Achievements").get().then((querySnapShot) => {
-                console.log(querySnapShot.data())
-                this.data = querySnapShot.data();
             })
         }
     },

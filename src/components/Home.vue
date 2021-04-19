@@ -42,11 +42,10 @@ export default {
                     alert("Please log in to continue.")
                     this.$router.push('/Login');
                 } else {
-                    console.log(user)
                     this.email = user.email;
-                    console.log(this.email)
                 }
             })
+            console.log(this.email);
         }
     },
     created() {

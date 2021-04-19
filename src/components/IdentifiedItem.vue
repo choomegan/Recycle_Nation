@@ -43,6 +43,8 @@ export default {
             console.log(user)
             this.email = user.email;
             console.log(this.email)
+            this.addToDB();
+            this.update();
           }
         })
         var data = JSON.parse(this.$route.params.data);
@@ -129,8 +131,6 @@ export default {
     },
   created() {
     this.getData();
-    this.addToDB();
-    this.update();
   }
 }
 </script>
