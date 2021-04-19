@@ -26,7 +26,7 @@
             </div>
         </div>
         <br>
-        <p id="prog" v-if="hovered">{{width}}% {{remaining}} points until next level!</p>
+        <p id="prog" v-if="hovered">{{remaining}} points to the next level !</p>
         <div id="myProgress">
             <div id="myBar" @mouseover="hovered=true" @mouseleave="hovered=false"></div>
         </div><br> 
@@ -309,6 +309,7 @@ u {
 
 #prog {
     text-align: center;
+    font-family: Asap, Avenir;
 }
 
 #myBar {
