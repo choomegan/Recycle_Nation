@@ -12,8 +12,7 @@
         </header>
 
         <section class="modal-body" id="modalDescription" >
-          <slot name="body">
-              
+          <slot name="body">   
             <div>
                 <div>
                     <input style="display: none" type="file" @change="previewImage" accept="image/*" ref="fileInput">
@@ -67,13 +66,13 @@ import db from '../firebase.js'
      },
     methods: {
         success() {
-            // this.image = "";
-            // this.imageData = null;
-            // this.picture = null;
-            // this.uploadValue = 0;
-            // this.remaining = 0;
-            // this.uploaded = false;
-            // this.uploading = false;
+            this.image = "";
+            this.imageData = null;
+            this.picture = require('../assets/emptyImage.png');
+            this.uploadValue = 0;
+            this.remaining = 0;
+            this.uploaded = false;
+            this.uploading = false;
             this.$emit('close', true);
         },
         close() {

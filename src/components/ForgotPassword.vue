@@ -78,8 +78,8 @@ export default {
     font-size: 20px;
     font-family: Asap, Avenir, Helvetica, Arial, sans-serif;
     text-align: center;
-    padding-top: 350px;
-    padding-bottom: 350px;
+    padding-top: 300px;
+    padding-bottom: 318px;
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
     color: white;
@@ -135,7 +135,7 @@ label {
 
 #back {
     position: absolute;
-    top: 3%;
+    top: 3.5%;
     left:4%;
     font-size: 20px;
     text-decoration: underline;

@@ -300,6 +300,7 @@ p {
     font-family: Asap, Avenir;
     font-size: 30px;
     text-decoration: underline;
+    padding-bottom: 10px;
 }
 
 button {

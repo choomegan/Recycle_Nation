@@ -70,14 +70,14 @@ p {
 }
 
 #vision {
-    background-color: #ebe8de;
+    background-color: #ebe8de; 
     color:hsl(76, 33%, 20%);
-    padding:130px;
+    padding:150px 180px;
     width:40%;
 }
 #mission {
     background-color:  hsl(76, 33%, 20%);
-    padding: 130px;
+    padding: 150px 180px;
     width:40%;
 }
 
@@ -85,7 +85,7 @@ footer {
     font-size: 19px;
     color: rgb(228, 163, 78);
     text-align: center;
-    padding: 50px;
+    padding: 70px 50px 100px 50px;
     font-family:Asap, Avenir;
 }
 a {

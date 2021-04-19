@@ -22,7 +22,7 @@ export default {
 <style scoped>
 #options {
     text-align: center;
-    padding-top: 300px;
+    padding-top: 230px;
     padding-bottom: 300px;
     background-image: url('~@/assets/forest-full2.jpg');
     height: 100%;

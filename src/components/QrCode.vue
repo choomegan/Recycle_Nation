@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <p class="decode-result">Last result: <b>{{ result }}</b></p> -->
-    <br>
+    
     <qrcode-stream :camera="camera" @decode="onDecode" @init="onInit">
     
       <div v-if="validationSuccess" class="validation-success">
@@ -96,12 +96,10 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-
   background-color: rgba(255, 255, 255, .8);
   text-align: center;
   font-weight: bold;
   font-size: 3rem;
-  padding: 10px;
 
   display: flex;
   flex-flow: column nowrap;
@@ -119,6 +117,8 @@ export default {
   bottom: 50%;
   max-width: 50% !important;
   max-height: 50% !important;
+  margin:0px;
+  
 }
 
 </style>

@@ -108,8 +108,8 @@ export default {
     font-family: Asap,Avenir, Helvetica, Arial, sans-serif;
     letter-spacing: 0.5px;
     text-align: center;
-    padding-top: 300px;
-    padding-bottom: 300px;
+    padding-top: 230px;
+    padding-bottom: 273px;
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
     color: white;
@@ -201,8 +201,8 @@ button:hover {
 
 #back {
     position: absolute;
-    top: 2%;
-    left:3%;
+    top: 1%;
+    left:2%;
     font-size: 20px;
     text-decoration: underline;
     font-family: Asap;

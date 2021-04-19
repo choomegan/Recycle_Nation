@@ -190,8 +190,8 @@ export default {
     font-family: Asap,'Avenir', Helvetica, Arial, sans-serif;
     letter-spacing: 0.5px;
     text-align: center;
-    padding-top: 310px;
-    padding-bottom: 310px;
+    padding-top: 230px;
+    padding-bottom: 262px;
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
     color: white;
