@@ -1,4 +1,5 @@
 <template>
+<transition name="fade" enter-active-class="animated fadeInLeft" appear>
   <div id="content">
     
     <img src="../assets/glass.jpg" width="200" height="200" v-if="this.item=='glass'"/>
@@ -11,6 +12,7 @@
     <br> 
     <button v-on:click="directed()">Back to Home</button>
   </div>
+</transition>
 </template>
 
 <script>

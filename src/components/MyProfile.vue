@@ -1,4 +1,5 @@
 <template>
+<transition name="fade" enter-active-class="animated flipInY" appear>
     <div id="MyProfile">
         <div class="split">
             <div class="halves">
@@ -51,6 +52,7 @@
         </div>
         <br>
     </div>
+</transition>
 </template>
 
 <script>

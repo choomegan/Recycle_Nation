@@ -1,15 +1,19 @@
 <template>
     <div id="AboutUs">
+        <div class="side">
+        <transition name="fade" enter-active-class="animated fadeInLeft" appear>
         <div id="vision">
             <h1>Our Vision</h1>
             <p>Encouraging all Singaporeans to actively recycle.</p>
         </div> 
-        <transition name="fade" enter-active-class="animated slideInRight"> 
+        </transition>
+        <transition name="fade" enter-active-class="animated fadeInRight" appear>
         <div id="mission">
             <h1>Our Mission</h1>
             <p>We aim to promote green movement by making recycling easier for you.</p>
         </div>
         </transition>
+        </div>
         <footer>
             Feel free to drop us a message!<br><br>
             <a href="tel:+65 67583827">+65 67583827</a> 
@@ -48,8 +52,12 @@ export default {
     color:  #ebe8de;
 
 }
+.side {
+    display: flex;
+    flex-direction: row;
+}
 h1 {
-    padding-top: 6.5%;
+    padding: 2%;
     font-size: 30px;
     font-family: Avenir;
 }
@@ -61,14 +69,13 @@ p {
 #vision {
     background-color: #ebe8de;
     color:hsl(76, 33%, 20%);
-    padding-bottom: 110px;
-    padding-top: 20px;
+    padding:100px;
+    width:40%;
 }
 #mission {
     background-color:  hsl(76, 33%, 20%);
-    margin-top: 0;
-    padding-top: 20px;
-    padding-bottom: 110px;
+    padding: 100px;
+    width:40%;
 }
 
 footer {
@@ -96,7 +103,4 @@ a:hover {
   background-color: transparent;
   text-decoration: underline;
 }
-
-
-
 </style>

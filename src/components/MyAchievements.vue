@@ -1,4 +1,5 @@
 <template>
+<transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="MyAchievements">
         <div class="sideBySide">
             <div class="boxDisplay" v-for="item in data" v-bind:key="item.name"> 
@@ -18,6 +19,7 @@
             </div>
         </div>
     </div>
+</transition>
 </template>
 
 <script>

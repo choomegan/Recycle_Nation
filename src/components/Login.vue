@@ -1,4 +1,5 @@
 <template> 
+    <transition name="fade" enter-active-class="animated fadeInLeft" appear>
     <div id="login"> 
         <form> 
             <label>Email: </label>
@@ -16,6 +17,7 @@
         </div>
 
     </div> 
+    </transition>
 </template> 
 
 <script>

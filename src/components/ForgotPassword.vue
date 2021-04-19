@@ -1,4 +1,5 @@
 <template> 
+    <transition name="fade" enter-active-class="animated fadeInLeft" appear>
     <div id="forgotPW"> 
         <p id="back" v-on:click="back()"> ← back</p>
         <form> 
@@ -10,6 +11,7 @@
             
         </form> 
     </div> 
+    </transition>
 </template> 
 
 <script> 

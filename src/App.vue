@@ -1,11 +1,8 @@
 <template>
   <div id="app">
-    <h1 id="title">{{title}}</h1>
-    
+    <h1 id="title">{{title}}</h1> 
     <Header v-if="navigation" id="head" />
-    <transition name="custom-classes-transition" enter-active-class="animated fadeInLeft">
-      <router-view></router-view>
-    </transition>
+    <router-view></router-view>
   </div>
 </template>
 
