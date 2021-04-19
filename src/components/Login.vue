@@ -1,6 +1,7 @@
 <template> 
     <transition name="fade" enter-active-class="animated fadeInLeft" appear>
     <div id="login"> 
+        <p id="back" v-on:click="back()"> ← back</p>
         <form> 
             <label>Email: </label>
             <input type="text" id="email" name="email" v-model="email" required>
@@ -32,6 +33,9 @@ export default {
         }
     },
     methods :{
+        back: function() {
+            this.$router.push('/')
+        },
         register: function() {
             if (typeof this.recycledData === "undefined") {
                 this.$router.push('/Registration');
@@ -103,9 +107,16 @@ form {
 }
 
 input {
-    height: 20px;
+    height: 22px;
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
 }
 
+input:focus {
+    border: 2px solid #555;
+}
 label {
     width: 125px;
     text-align: left;
@@ -159,6 +170,22 @@ button:hover {
 #showPW {
     vertical-align: middle;
     padding-left:4px;
+}
+
+#back {
+    position: absolute;
+    top: 173px;
+    left:40px;
+    font-size: 17px;
+    text-decoration: underline;
+    font-family: Asap;
+    color: rgb(55, 83, 55);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#back:hover {
+    color: black;
 }
 
 </style> 

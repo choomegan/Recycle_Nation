@@ -28,7 +28,10 @@
         <br>
         <p id="prog" v-if="hovered">{{remaining}} points to the next level !</p>
         <div id="myProgress">
-            <div id="myBar" @mouseover="hovered=true" @mouseleave="hovered=false"></div>
+            
+            <transition appear @before-appear="beforeEnter" @after-appear="enter">
+                <div id="myBar" @mouseover="hovered=true" @mouseleave="hovered=false"></div>
+            </transition>
         </div><br> 
         <div id="level">Level: {{level}} --
             <span id="recycler">{{title}}</span>
@@ -83,6 +86,14 @@ export default {
         }
     },
     methods: {
+        beforeEnter (el) {
+            el.style.width = 0
+        },
+        enter (el) {
+            el.style.width = `${this.percentage}%`
+            el.style.transition = `width 1s linear`
+            el.style.transitionDelay = `0.90s`
+        },
         getPic: function() { //get path of image from db
             db.collection(this.email).doc("Profile").get().then((querySnapShot) => {
                 console.log(querySnapShot.data().pic); // tree3.png is the default profile pic for new users
@@ -318,6 +329,7 @@ u {
   height: 30px;
   background-color: rgb(103, 143, 103);
   border-radius: 25px;
+  transition-property: margin-right;
 }
 
 #level {

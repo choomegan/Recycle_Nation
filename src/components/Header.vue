@@ -38,6 +38,10 @@ li a {
     color:saddlebrown;
 }
 
+li:hover{
+    font-weight:bold;
+}
+
 .router-link-active {
     text-decoration-line: underline;
     font-weight: 400;

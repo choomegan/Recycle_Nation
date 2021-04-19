@@ -83,6 +83,14 @@ export default {
 input {
     height: 25px;
     width: 200px;
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input:focus {
+    border: 2px solid #555;
 }
 
 label {

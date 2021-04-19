@@ -191,7 +191,15 @@ export default {
 }
 
 input {
-    height: 20px;
+    height: 22px;
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input:focus {
+    border: 2px solid #555;
 }
 
 label {
@@ -200,6 +208,7 @@ label {
     display: inline-block;  
     padding: 5px;
 }
+
 
 #button {
     font-size: 20px;

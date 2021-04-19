@@ -84,7 +84,7 @@ export default {
     margin-bottom: 0;
     padding: 50px;
     font-weight: 600;
-    font-size: 50px;
+    font-size: 47px;
   }
 
   #head {
