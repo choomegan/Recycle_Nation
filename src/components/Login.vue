@@ -1,7 +1,10 @@
 <template> 
-    <transition name="fade" enter-active-class="animated slideInLeft" appear>
+    <transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="login"> 
-        <h2>Login</h2><br><br> 
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <h2>Login</h2>
+        </transition>
+        <br><br> 
         <p id="back" v-on:click="back()"> ← back</p>
         <form> 
             <label>Email: </label>
@@ -207,5 +210,11 @@ button:hover {
     color: rgb(247, 148, 0);
 }
 
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
 </style> 
 

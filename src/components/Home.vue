@@ -57,6 +57,7 @@ export default {
 <style scoped>
 #Home {
     padding: 40px 100px 60px;
+    padding-top:110px;
     padding-bottom: 100px;
     background-image: url('~@/assets/forest-full2.jpg');
     background-size: cover;
@@ -77,7 +78,7 @@ export default {
     text-align: left;
     font-size: 20px;
     border-width: 1px;
-    padding:20px;
+    padding:30px;
 }
 #item {
     font-family: Avenir, Helvetica;
@@ -90,6 +91,7 @@ export default {
 p {
     font-size: 25px;
     font-weight:bold;
+    padding-bottom:20px;
 }
 
 #header {

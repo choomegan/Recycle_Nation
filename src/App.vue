@@ -104,7 +104,7 @@ export default {
 
   #head {
     background-color: #d8d4c8;
-    padding: 2px;
+    padding: 10px;
     font-family: Asap, Avenir;
     font-size: 16px;
   }

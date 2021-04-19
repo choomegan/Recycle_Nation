@@ -1,8 +1,11 @@
 <template> 
-    <transition name="fade" enter-active-class="animated slideInLeft" appear>
+    <transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="forgotPW"> 
         <p id="back" v-on:click="back()"> ← back</p>
-        <h2>Forgot Password</h2><br><br> 
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <h2>Forgot Password</h2>
+        </transition>
+        <br><br> 
         <form> 
             <label>Enter email address: </label> 
             <input type="email" id="email" name="email" v-model="email" required> 

@@ -1,8 +1,11 @@
 <template>
-    <transition name="fade" enter-active-class="animated slideInLeft" appear>
+    <transition name="fade" enter-active-class="animated fadeIn" appear>
     <div id="register">
         <p id="back" v-on:click="back()"> ← back </p>
-        <h2>Registration</h2><br><br> 
+        <transition name="bounce" enter-active-class="animated bounceInLeft" appear>
+            <h2>Registration</h2>
+        </transition>
+        <br><br> 
         <form> 
             <label>Username: </label>
             <input type="text" id="username" name="username" v-model="name" required>
@@ -256,5 +259,9 @@ label {
 
 #back:hover {
     color: rgb(247, 148, 0);
+}
+
+.bounceInLeft {
+    animation-delay:0.3s;
 }
 </style> 
