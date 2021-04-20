@@ -294,11 +294,7 @@ button {
     border-radius: 20px;
     padding: 5px;
     opacity:1;
-    transition: 0.3s;
-}
-
-button:hover {
-    opacity:0.84;
+    transition:0s;
 }
 
 #name {
