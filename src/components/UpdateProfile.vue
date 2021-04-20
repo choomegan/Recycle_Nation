@@ -7,7 +7,7 @@
             Upload Profile Picture
           </slot>
           <button id="cross" v-on:click="close" v-show="!uploading">
-            x
+            X
           </button>
         </header>
 
@@ -172,6 +172,7 @@ import db from '../firebase.js'
     padding: 0px;
     width: 30px;
     height: 30px;
+    font-family: Asap, Avenir;
 }
   .modal-backdrop {
     position: fixed;
@@ -193,6 +194,7 @@ import db from '../firebase.js'
     flex-direction: column;
     padding: 10px;
     width: 50%;
+    font-family: Asap, Avenir;
   }
 
   .modal-header,

@@ -325,6 +325,10 @@ u {
     padding-left: 10px;
 }
 
+u:hover {
+    color: orange;
+}
+
 #myProgress {
   width: 100%;
   background-color: rgb(65, 90, 65);
@@ -368,9 +372,9 @@ u {
   visibility: hidden;
   width: 120px;
   bottom: 140%;
-  left: 30%;
+  left: 35%;
   color: white;
-  background-color: black;
+  background-color: rgb(153, 115, 34);
   text-align: center;
   padding: 5px 10px;
   border-radius: 6px;
@@ -388,6 +392,6 @@ u {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: black transparent transparent transparent;
+  border-color: rgb(153, 115, 34) transparent transparent transparent;
 }
 </style>

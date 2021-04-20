@@ -133,6 +133,7 @@ import db from '../firebase.js'
     height: 110px;
     max-width: 250px;
 }
+
   .modal-backdrop {
     position: fixed;
     top: 0;
