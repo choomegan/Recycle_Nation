@@ -184,8 +184,9 @@ export default {
                 }
             }
             console.log(this.myRewards)
-            this.updateDatabase();
             this.closeModal();
+            this.updateDatabase();
+            
         },
         getMyRewards: function() {
             db.collection(this.email).doc("Profile").get().then((doc) => {
@@ -209,7 +210,6 @@ export default {
     created: function() {
         console.log("created")
         this.checkUser();
-        
     },
 }
 </script>

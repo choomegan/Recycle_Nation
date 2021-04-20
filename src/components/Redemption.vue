@@ -95,12 +95,12 @@ import db from '../firebase.js'
           this.$emit('success')
       },
       getPoints() {
-        db.collection(this.email).doc("Profile").get().then((doc) => {
+        db.collection(this.email).doc("Profile").onSnapshot((doc) => {
             this.points = doc.data().points;
             console.log("getPoints")
             console.log(this.email, this.points, this.item.title)
             console.log(this.points > this.item.points)
-        })
+        });
         console.log(this.points > this.item.points)
       },
       redeem() {
