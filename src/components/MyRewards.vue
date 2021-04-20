@@ -184,8 +184,9 @@ export default {
                 }
             }
             console.log(this.myRewards)
-            this.updateDatabase();
             this.closeModal();
+            this.updateDatabase();
+            
         },
         getMyRewards: function() {
             db.collection(this.email).doc("Profile").get().then((doc) => {
@@ -209,7 +210,6 @@ export default {
     created: function() {
         console.log("created")
         this.checkUser();
-        
     },
 }
 </script>
@@ -294,11 +294,7 @@ button {
     border-radius: 20px;
     padding: 5px;
     opacity:1;
-    transition: 0.3s;
-}
-
-button:hover {
-    opacity:0.84;
+    transition:0s;
 }
 
 #name {

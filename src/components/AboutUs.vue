@@ -61,6 +61,7 @@ export default {
 }
 h1 {
     padding: 2%;
+    padding-bottom: 7px;
     font-size: 26px;
     font-family: Avenir;
 }
@@ -72,12 +73,12 @@ p {
 #vision {
     background-color: #ebe8de; 
     color:hsl(76, 33%, 20%);
-    padding:150px 180px;
+    padding:160px 190px;
     width:40%;
 }
 #mission {
     background-color:  hsl(76, 33%, 20%);
-    padding: 150px 180px;
+    padding: 160px 190px;
     width:40%;
 }
 
@@ -85,7 +86,7 @@ footer {
     font-size: 19px;
     color: rgb(228, 163, 78);
     text-align: center;
-    padding: 70px 50px 100px 50px;
+    padding: 60px;
     font-family:Asap, Avenir;
 }
 a {

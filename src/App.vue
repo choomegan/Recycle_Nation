@@ -54,6 +54,8 @@ export default {
     updatingTitle: function () {
       if (this.$route.name == "Welcome to Recycle Nation" || this.$route.name == "Login" || this.$route.name == "Reset your password" || this.$route.name == "Registration") {
         this.showTitle = false;
+      } else if (this.$route.path.startsWith("/Login")) {
+        this.showTitle = false;
       } else {
         this.showTitle = true;
       }
