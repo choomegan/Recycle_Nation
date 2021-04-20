@@ -173,7 +173,7 @@ export default {
         logout: function() {
             firebase.auth().signOut().then(() => {
                 // Sign-out successful.
-                this.$router.push('/');
+                //this.$router.push('/');
             }).catch((error) => {
                 // An error happened.
                 alert(error.message);
