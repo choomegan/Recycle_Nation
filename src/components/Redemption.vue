@@ -6,12 +6,13 @@
           <slot name="header">
             {{this.item.name}}
           </slot>
-          <div v-if="this.points < this.item.points">
+          
+          <div v-show="!success" v-if="this.points < this.item.points">
           <button id="cross" v-on:click="close">
             x
           </button>
           </div>
-          <div v-if="success">
+          <div v-show="success">
           <button id="cross" v-on:click="successfullyRedeemed">
             x
           </button>
@@ -20,7 +21,7 @@
 
         <section class="modal-body" id="modalDescription" >
           <slot name="body">
-              <div v-if="!success">
+              <div v-show="!success">
                 <div>
                     <img id="icon" :src="this.item.image"/>
                 </div>  
@@ -34,7 +35,7 @@
                     Points left after redemption: {{this.points - this.item.points}} <br>
                 </div>
             </div>
-            <div v-if="success">
+            <div v-show="success">
                 <div v-if="this.item.title == 'tree'">
                     Congratulations you have planted a tree!
                 </div>
@@ -59,10 +60,10 @@
             
           </slot>
           <div v-if="!success">
-          <button @click="close" v-if="this.points > this.item.points" >Cancel</button>
+          <button @click="close" v-if="this.points >= this.item.points" >Cancel</button>
           </div>
           <div v-if="!success">
-          <button @click="redeem" v-if="this.points > this.item.points">Redeem</button>
+          <button @click="redeem" v-if="this.points >= this.item.points">Redeem</button>
           </div>
         </footer>
       </div>

@@ -6,7 +6,7 @@
           <slot name="header">
             Upload Profile Picture
           </slot>
-          <button id="cross" v-on:click="close">
+          <button id="cross" v-on:click="close" v-show="!uploading">
             x
           </button>
         </header>
