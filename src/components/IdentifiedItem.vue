@@ -152,7 +152,7 @@ button:hover {
 }
 #content {
     background-color: #E8E1CF;
-    padding: 50px;
+    padding: 150px;
     font-size: 25px;
     font-family: Avenir, Helvetica;
 }
