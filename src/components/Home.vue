@@ -36,15 +36,18 @@ export default {
     },
     methods: {
         checkUser: function() {
-            firebase.auth().onAuthStateChanged((user) => {
-                if (user== null) {
-                    console.log("not logged in")
-                    alert("Please log in to continue.")
-                    this.$router.push('/Login');
-                } else {
-                    this.email = user.email;
-                }
-            })
+            var user = firebase.auth().currentUser;
+
+            if (user) {
+                // User is signed in.
+                console.log(user)
+                this.email=user.email;
+            } else {
+                // No user is signed in.
+                console.log("Not logged in")
+                alert("Please login to continue")
+                this.$router.push('/Login');
+            }
             console.log(this.email);
         }
     },
