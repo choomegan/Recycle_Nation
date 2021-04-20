@@ -26,7 +26,7 @@
                 <div class="start" v-if="myRewards.length==0">
                     You have no existing rewards.
                 </div>
-                <div v-for="item in myRewards" v-bind:key="item.code">
+                <div v-for="(item, index) in myRewards" v-bind:key="item.code">
                     <div class="block">
                         <img class="left" v-if="item.title == 'GrabFood'" v-bind:src="item.image"/>
                         <img class="left" v-if="item.title == 'GrabGifts'" v-bind:src="item.image"/>
@@ -41,7 +41,9 @@
                             <br>{{item.code}}
                         </div>
                         <div>
-                            <button id="cross" v-on:click="confirmDelete(item)"> X </button>
+                            <deletion v-bind:item=item 
+                            v-show="deleteVisible==index" v-on:deleted="deleteReward(item)" @close="closeModal"></deletion>
+                            <button id="cross" v-on:click="showDeletion(item, index)"> X </button>
                         </div>
                     </div>
                     <br>
@@ -56,10 +58,12 @@
 import firebase from 'firebase/app'
 import db from '../firebase.js'
 import Redemption from './Redemption.vue'
+import Deletion from './Deletion.vue'
 
 export default {
     components: {
-        Redemption
+        Redemption,
+        Deletion
     },
     data() {
         return {
@@ -67,6 +71,7 @@ export default {
             myRewards: [],
             email: "",
             modalVisible: null,
+            deleteVisible:null,
             rewardsCatelog: [
                 {
                     title: "tree",
@@ -121,6 +126,11 @@ export default {
         },
         closeModal() {
             this.modalVisible = null;
+            this.deleteVisible =null;
+        },
+        showDeletion(item, index) {
+            this.deleteVisible = index;
+            console.log(item.name)
         },
         success(item) {
             this.closeModal()
@@ -175,15 +185,7 @@ export default {
             }
             console.log(this.myRewards)
             this.updateDatabase();
-        },
-        confirmDelete: function(item) {
-            var msg = 'Delete voucher [' + item.name + ": " + item.code + '] ?'
-            if(confirm(msg)) {
-                console.log('Clicked on proceed');
-                this.deleteReward(item);
-            } else {
-                console.log('Clicked on cancel');
-            }
+            this.closeModal();
         },
         getMyRewards: function() {
             db.collection(this.email).doc("Profile").get().then((doc) => {
