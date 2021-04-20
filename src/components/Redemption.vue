@@ -95,6 +95,7 @@ import db from '../firebase.js'
           this.$emit('success')
       },
       getPoints() {
+
         db.collection(this.email).doc("Profile").onSnapshot((doc) => {
             this.points = doc.data().points;
             console.log("getPoints")
@@ -115,11 +116,9 @@ import db from '../firebase.js'
 
       },
     },
-    watch: {
-        email: function() {
-            this.getPoints()
-        }
-    },
+    created() {
+      this.getPoints()
+    }
   };
 </script>
 
@@ -128,6 +127,9 @@ import db from '../firebase.js'
     padding: 0px;
     width: 30px;
     height: 30px;
+}
+button:hover {
+  opacity: 0.85;
 }
 #icon {
     height: 110px;

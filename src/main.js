@@ -17,13 +17,6 @@ const myRouter = new VueRouter({
     mode: 'history'
 })
 
-/* myRouter.beforeEach((to, from, next) => {
-    const currentUser = firebase.auth().currentUser();
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    if (requiresAuth && !currrentUser) next('login');
-    else next();
-}); */
-
 let app = '';
 
 firebase.auth().onAuthStateChanged(user => {
