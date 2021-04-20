@@ -129,6 +129,9 @@ import db from '../firebase.js'
     width: 30px;
     height: 30px;
 }
+button:hover {
+  opacity: 0.85;
+}
 #icon {
     height: 110px;
     max-width: 250px;
