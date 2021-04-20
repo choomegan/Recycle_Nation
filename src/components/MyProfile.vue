@@ -250,6 +250,9 @@ export default {
     created: function() {
         this.checkLogin();
         this.getPic();        
+    },
+    mounted: function() {
+        this.bar();
     }
 }
 </script>
