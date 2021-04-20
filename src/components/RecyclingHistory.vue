@@ -44,23 +44,27 @@ export default {
     },
     methods: {
         dataPresent: function() {
-            firebase.auth().onAuthStateChanged((user) => {
-                if (user== null) {
-                    console.log("not logged in")
-                    this.$router.push('/Login');
-                } else {
-                    console.log(user)
-                    this.email = user.email;
-                    db.collection(this.email).doc("Recycling history").get().then((doc) => {
-                      if (!doc.data()) {
-                        this.dataShow = false;
-                      } else {
-                        this.dataShow = true;
-                      }
-                    })
-                    this.retrieveData();
-                }
-            })
+            var user = firebase.auth().currentUser;
+
+            if (user) {
+                // User is signed in.
+                console.log(user)
+                this.email = user.email;
+                db.collection(this.email).doc("Recycling history").get().then((doc) => {
+                  if (!doc.data()) {
+                    this.dataShow = false;
+                  } else {
+                    this.dataShow = true;
+                  }
+                })
+                this.retrieveData();
+            } else {
+                // No user is signed in.
+                console.log("Not logged in")
+                alert("Please log in to continue")
+                this.$router.push('/Login');
+            }
+
         },
         retrieveData: function() {
             db.collection(this.email).doc("Recycling history").get().then(doc => {

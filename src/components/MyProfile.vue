@@ -199,7 +199,7 @@ export default {
             })
         },
         checkLogin() {
-            firebase.auth().onAuthStateChanged((user) => {
+            /* firebase.auth().onAuthStateChanged((user) => {
                 if (user== null) {
                     console.log("not logged in")
                     this.$router.push('/Login');
@@ -212,7 +212,24 @@ export default {
                     this.getPic();
                     this.bar();
                 }
-            })
+            }) */
+            var user = firebase.auth().currentUser;
+
+            if (user) {
+                // User is signed in.
+                console.log(user)
+                this.username = user.displayName;
+                this.email = user.email;
+                console.log(this.username, this.email)
+                this.updatePage();
+                this.getPic();
+                this.bar();
+            } else {
+                // No user is signed in.
+                console.log("Not logged in")
+                alert("Please log in to continue")
+                this.$router.push('/Login');
+            }
         },
         showModal() {
             this.modalVisible = true;
@@ -233,6 +250,9 @@ export default {
     created: function() {
         this.checkLogin();
         this.getPic();        
+    },
+    mounted: function() {
+        this.bar();
     }
 }
 </script>
