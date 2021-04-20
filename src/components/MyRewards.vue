@@ -5,7 +5,7 @@
             <div class="halves">
                 <p>Rewards Catalogue</p>
                 <div class="sideBySide">
-                    <div class="side" v-for="item in rewardsCatelog" v-bind:key ="item.title">
+                    <div class="side" v-for="(item, index) in rewardsCatelog" v-bind:key ="item.title">
                         <img id="icon" v-bind:src="item.image"/>
                         <br>
                         <div id="name">
@@ -14,7 +14,9 @@
                         <div id="pts"> 
                             {{item.points}} points
                         </div>
-                        <button v-on:click="confirmRedemption(item)">Exchange</button>
+                        <redemption v-bind:item=item :email=email
+                         v-show="modalVisible==index" v-on:success="success(item)" @close="closeModal"></redemption>
+                        <button v-on:click="showModal(item, index)">Exchange</button>
                         <br><br>
                     </div>
                 </div>
@@ -53,13 +55,18 @@
 <script>
 import firebase from 'firebase/app'
 import db from '../firebase.js'
+import Redemption from './Redemption.vue'
 
 export default {
+    components: {
+        Redemption
+    },
     data() {
         return {
             points:0,
             myRewards: [],
             email: "",
+            modalVisible: null,
             rewardsCatelog: [
                 {
                     title: "tree",
@@ -108,41 +115,16 @@ export default {
                 }
             })
         },
-        confirmRedemption: function(item) {
-            var msg = 'Redeem reward [' + item.name + '] ?'
-            if(confirm(msg)) {
-                console.log('Clicked on proceed');
-                this.redeem(item)
-            } else {
-                console.log('Clicked on cancel');
-            }
+        showModal(item, index) {
+            this.modalVisible = index;
+            console.log(item.name)
         },
-        redeem: function(item) {
-            db.collection(this.email).doc("Profile").get().then((doc) => {
-                this.points = doc.data().points;
-                console.log(this.email, this.points, item.title)
-                if (this.points - item.points < 0) {
-                    console.log(this.points, item.title)
-                    alert("You do not have enough points to redeem this reward. Recycle more to earn more points!")
-                } else {
-                    this.points -= item.points;
-                    db.collection(this.email).doc("Profile").update({
-                        points: this.points
-                    }).then(() => console.log("Successfully updated points")).catch((error) => {
-                        // The document probably doesn't exist.
-                        console.error("Error updating document: ", error);
-                    });
-                    this.success(item)
-                    console.log("myRewards")
-                    console.log(this.myRewards)
-                    
-                }
-            })
+        closeModal() {
+            this.modalVisible = null;
         },
         success(item) {
-            if (item.title =="tree"){
-                alert("Congratulations you have planted a tree!")
-            } else if (item.title == "GrabFood") {
+            this.closeModal()
+            if (item.title == "GrabFood") {
                 item = {
                     title: 'GrabFood',
                     name: "$10 GrabFood Voucher",
@@ -154,7 +136,6 @@ export default {
                 console.log(this.myRewards);
                 this.myRewards.push(item);
                 this.updateDatabase()
-                alert("Congratulations you have redeemed a GrabFood Voucher! You can now view the voucher and redemption code at [My Rewards]")
             } else if (item.title == "GrabGifts") {
                 item = {
                     title: 'GrabGifts',
@@ -166,9 +147,6 @@ export default {
                 item.code = this.displayCode(item);
                 this.myRewards.push(item);
                 this.updateDatabase()
-                alert("Congratulations you have redeemed a GrabGifts Voucher! You can now view the voucher and redemption code at [My Rewards]")
-            } else if (item.title == "Donate") {
-                alert("Congratulations you have donated $1!")
             }
         },
         displayCode: function(item) {
@@ -208,8 +186,6 @@ export default {
             }
         },
         getMyRewards: function() {
-            var currentUser = firebase.auth().currentUser;
-            this.email = currentUser.email
             db.collection(this.email).doc("Profile").get().then((doc) => {
                 console.log("doc.data().rewards")
                 console.log(doc.data())
